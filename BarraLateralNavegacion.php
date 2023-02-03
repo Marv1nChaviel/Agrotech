@@ -1,3 +1,4 @@
+<div class="cargando" id="cargando"></div>
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
 
