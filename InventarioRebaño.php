@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    
+
 
     <!--=====Barra de navegacion lateral y cabecera======-->
     <?php include('./BarraLateralNavegacion.php'); ?>
@@ -51,6 +51,9 @@
                     <li class="breadcrumb-item active">Inventario del Rebaño</li>
                 </ol>
             </nav>
+            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
+                    class="bi bi-file-earmark-plus"></i>
+                Nuevo Registro</button>
         </div>
         <!--=======Final Texto de la tabla interna =======   -->
         <!--=======Inicio TABLA--------------------------------------------------- =======   -->
@@ -74,24 +77,107 @@
 
             </tbody>
             <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>N° Animal</th>
-                    <th>Tipo Rebaño</th>
-                    <th>Color</th>
-                    <th>Lote</th>
-                    <th>Partos</th>
-                    <th>Peso</th>
-                    <th>Raza</th>
-                    <th>Sexo</th>
-                    <th>Clasificacion</th>
-                    <th>Opciones</th>
-                </tr>
+                
             </tfoot>
         </table>
         <!--======= Final TABLA--------------------------------------------------- =======   -->
 
+        <!-- Modal Nuevo -------------------------------------- -->
+        <div class="modal fade" id="ModalNuevo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Titulo">Nuevo Registro</h1>
 
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                            <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Cuerpo del formulario------ -->
+                        <form class="row g-3">
+                            <div class="col-md-5 col-8">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="NumeroAnimal"
+                                        placeholder="Numero del Animal">
+                                    <label for="floatingName">Numero del Animal</label>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-4">
+                                <button type="button" class="btn btn-info"><i class="bi bi-qr-code"
+                                        style="font-size: 1.6em;"></i></button>
+                            </div>
+                            <div class="col-md-5 col-7">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="TipoRebaño" placeholder="Rebaño">
+                                    <label for="Rebaño">Tipo de Rebaño</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-5">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="Color" placeholder="Color">
+                                    <label for="Color">Color</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-5">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="Lote" placeholder="Lote">
+                                    <label for="Lote">Lote</label>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2 col-2">
+                                <button type="button" class="btn btn-info" style="font-size: 1.6em;"><i
+                                        class="bi bi-search"></i></button>
+                            </div>
+                            <div class="col-md-3 col-5">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="Partos" placeholder="Partos">
+                                    <label for="Partos">Partos</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-4">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="Peso" placeholder="Peso">
+                                    <label for="Peso">Peso</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-4">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="selectraza" aria-label="Raza">
+                                        <option value="0" disabled selected hidden>Raza</option>
+
+                                    </select>
+                                    <label for="Raza">Raza</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-4">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="floatingSelect" aria-label="Sexo">
+                                        <option selected>Sexo</option>
+                                        <option value="1">Hembra</option>
+                                        <option value="2">Macho</option>
+                                    </select>
+                                    <label for="Sexo">Sexo</label>
+                                </div>
+                            </div>
+
+
+                        </form>
+                        <!-- FIN Cuerpo del formulario -->
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-success"><i class="bi bi-check2-circle"></i>
+                            Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  fin Modal Nuevo -------------------------------------- -->
         <!-- Modal Editar -------------------------------------- -->
         <div class="modal fade" id="ModalEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -157,10 +243,9 @@
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" id="floatingSelect" aria-label="Raza">
-                                        <option selected>Raza</option>
-                                        <option value="1">Oregon</option>
-                                        <option value="2" >DC</option>
+                                    <select class="form-select" id="selectraza" aria-label="Raza">
+                                        <option value="0" selected>Raza</option>
+
                                     </select>
                                     <label for="Raza">Raza</label>
                                 </div>
@@ -188,23 +273,14 @@
                 </div>
             </div>
         </div>
-<!--  fin Modal Editar -------------------------------------- -->
+        <!--  fin Modal Editar -------------------------------------- -->
 
     </main><!-- End #main -->
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; AGROTECH <strong><span>2023</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-
-            Design by: Marvin Chaviel, Jose Lopez, Cesar Sanchez</a>
-        </div>
-    </footer><!-- End Footer -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <!-- Pie de pagina---- -->
+    <?php 
+    include('./Pie_De_Pagina.php');
+    ?>
 
     <!-- Vendor JS Files -->
 
@@ -263,7 +339,7 @@
             ],
 
             language: {
-                url: 'https://cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json'
+                url: './assets/es-ES.json'
             },
             lengthMenu: [
                 [10, 25, 50, 100, 200, -1],
@@ -276,8 +352,28 @@
     </script>
 
     <!-- Rellenar datatables con datos mediante ajax -->
+    <!-- Obtener Raza -->
+    <script>
+    $(document).ready(function() {
+                $.ajax({
+                        url: './BackEnd/Consultar_Raza.php',
+                        type: 'GET',
+                        success: function(respuesta) {
+                            let json = JSON.parse(respuesta);
+                            var len = json.length;
 
-
+                            // $("#selectraza").empty();
+                            for (var i = 0; i < len; i++) {
+                                var raza = json[i]['Nombre_Raza'];
+                                
+                                $("#selectraza").append("<option value='0'>"+raza+"</option>");
+                            }
+                        }
+                            
+                        })
+                });
+    </script>
+    <!-- Obtener Raza -->
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/principal.js"></script>

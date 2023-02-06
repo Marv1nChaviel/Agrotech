@@ -71,7 +71,7 @@
                                             <i class="bi bi-piggy-bank"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>145</h6>
+                                            <h6 id="cantganado"></h6>
 
 
                                         </div>
@@ -139,7 +139,7 @@
                                             <i class="bi bi-people"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>1244</h6>
+                                            <h6 id="canttrabajadores"></h6>
 
                                         </div>
                                     </div>
@@ -255,19 +255,10 @@
 
     </main><!-- End #main -->
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; AGROTECH <strong><span>2023</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-
-            Design by: Marvin Chaviel, Jose Lopez, Cesar Sanchez</a>
-        </div>
-    </footer><!-- End Footer -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <!-- Pie de pagina---- -->
+    <?php 
+    include('./Pie_De_Pagina.php');
+    ?>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -280,6 +271,20 @@
 
     <!-- Cargador de la pagina -->
     <script src="assets/js/principal.js"></script>
+    <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: './BackEnd/Consulta_datos_panel_principal.php',
+            type: 'GET',
+            success: function(respuesta) {
+                let json = JSON.parse(respuesta); 
+                console.log(json[0]['cantidad_rebaño']);
+                $('#cantganado').text(json[0]['cantidad_rebaño']);
+                $('#canttrabajadores').text(json[0]['cantidad_trabajadores']);
+            }
+        })
+    });
+    </script>
 </body>
 
 </html>

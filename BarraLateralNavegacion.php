@@ -173,21 +173,21 @@
   </li><!-- End F.A.Q Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-contact.html">
+    <a class="nav-link collapsed" href="./Maquinaria.php">
       <i class="fa-solid fa-gears"></i>
       <span>Maquinaria</span>
     </a>
   </li><!-- End Contact Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-register.html">
+    <a class="nav-link collapsed" href="./BackEnd/Notificacion.php">
       <i class="fa-solid fa-list-check"></i>
       <span>Inventario General</span>
     </a>
   </li><!-- End Register Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-login.html">
+    <a class="nav-link collapsed" href="./Instalaciones.php">
       <i class="fa-solid fa-industry"></i>
       <span>Instalaciones</span>
     </a>

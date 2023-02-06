@@ -42,11 +42,11 @@
 
         <!--=======Texto de la tabla interna =======   -->
         <div class="pagetitle">
-            <h1>Trabajadores Datos</h1>
+            <h1>Maquinaria Registro</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">Inicio</li>
-                    <li class="breadcrumb-item active">Trabajadores Datos</li>
+                    <li class="breadcrumb-item active">Maquinaria Registro</li>
                 </ol>
             </nav>
         </div>
@@ -56,41 +56,31 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Cedula</th>
-                    <th>Fecha Entrada</th>
-                    <th>Salida_permiso</th>
-                    <th>Sueldo_trabajadores</th>
-                    <th>Cargo</th>
-                    <th>Telefono</th>
+                    <th>ID_Maquinaria</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Color</th>
+                    <th>Año</th>
+                    <th>Horas Uso</th>
+                    <th>Trabajador a cargo</th>
+                    <th>Demas</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
 
-                <tr>
-                    <td>1</td>
-                    <td>256</td>
-                    <td>xxxxx</td>
-                    <td>2011-04-25</td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>265kg</td>
-                    <td>
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                            data-bs-target="#ModalEditar"><i class="bi bi-pencil"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                    </td>
-                </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <th>#</th>
-                    <th>Cedula</th>
-                    <th>Fecha Entrada</th>
-                    <th>Salida_permiso</th>
-                    <th>Sueldo_trabajadores</th>
-                    <th>Cargo</th>
-                    <th>Telefono</th>
+                <th>#</th>
+                    <th>ID_Maquinaria</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Color</th>
+                    <th>Año</th>
+                    <th>Horas Uso</th>
+                    <th>Trabajador a cargo</th>
+                    <th>Demas</th>
                     <th>Opciones</th>
                 </tr>
             </tfoot>
@@ -113,17 +103,17 @@
                         <form>
                             <!-- Columna izquierda -->
                             <div class="row">
-                                <div class="col-md-4 col-12 ">
+                                <div class="col-md-4 col-4">
                                     <div class="row"></div>
                                     <div class="row">
-                                        <div class="col-md-3 col-8 ">
+                                        <div class="col-md-3 col-8">
                                             <img src="./assets/img/soporte.png" alt="" width="130" height="130">
                                         </div>
                                     </div>
                                     <div class="row"></div>
                                 </div>
                                 <!-- fin Columna izquierda -->
-                                <div class="col-md-8 col-12">
+                                <div class="col-md-8 col-8">
                                 <div class="row g-3">
                                 <div class="col-md-6 col-6">
                                     <div class="form-floating">
@@ -192,8 +182,8 @@
                 url: './assets/es-ES.json'
             },
             lengthMenu: [
-                [10, 25, 50, 100, 200, -1],
-                ['10 Filas', '25 Filas', '50 Filas', '100 Filas', '200 Filas', 'Todas']
+                [5, 10, 15, 20, 25],
+                ['5 Filas', '10 Filas', '15 Filas', '20 Filas', '25 Filas']
             ],
         });
 
