@@ -77,7 +77,7 @@
 
             </tbody>
             <tfoot>
-                
+
             </tfoot>
         </table>
         <!--======= Final TABLA--------------------------------------------------- =======   -->
@@ -94,13 +94,14 @@
                             <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
                         </button>
                     </div>
+
                     <div class="modal-body">
                         <!-- Cuerpo del formulario------ -->
-                        <form class="row g-3">
+                        <form class="row g-3" id="FormularioEnviar">
                             <div class="col-md-5 col-8">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="NumeroAnimal"
-                                        placeholder="Numero del Animal">
+                                    <input type="number" class="form-control" id="N_NumeroAnimal" name="N_NumeroAnimal"
+                                        placeholder="Numero del Animal" required>
                                     <label for="floatingName">Numero del Animal</label>
                                 </div>
                             </div>
@@ -110,21 +111,24 @@
                             </div>
                             <div class="col-md-5 col-7">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="TipoRebaño" placeholder="Rebaño">
+                                    <input type="text" class="form-control" id="N_TipoRebaño" name="N_TipoRebaño"
+                                        placeholder="Rebaño" required>
                                     <label for="Rebaño">Tipo de Rebaño</label>
                                 </div>
                             </div>
 
                             <div class="col-md-3 col-5">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="Color" placeholder="Color">
+                                    <input type="text" class="form-control" id="N_Color" name="N_Color"
+                                        placeholder="Color" required>
                                     <label for="Color">Color</label>
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-5">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="Lote" placeholder="Lote">
+                                    <input type="number" class="form-control" id="N_Lote" name="N_Lote"
+                                        placeholder="Lote" required>
                                     <label for="Lote">Lote</label>
                                 </div>
 
@@ -135,19 +139,22 @@
                             </div>
                             <div class="col-md-3 col-5">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="Partos" placeholder="Partos">
+                                    <input type="number" class="form-control" id="N_Partos" name="N_Partos"
+                                        placeholder="Partos" required>
                                     <label for="Partos">Partos</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="Peso" placeholder="Peso">
+                                    <input type="number" class="form-control" id="N_Peso" name="N_Peso"
+                                        placeholder="Peso" required>
                                     <label for="Peso">Peso</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" id="selectraza" aria-label="Raza">
+                                    <select class="form-select" id="N_selectraza" name="N_selectraza" aria-label="Raza"
+                                        required>
                                         <option value="0" disabled selected hidden>Raza</option>
 
                                     </select>
@@ -156,7 +163,8 @@
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" id="floatingSelect" aria-label="Sexo">
+                                    <select class="form-select" id="N_selectsexo" name="N_selectsexo" aria-label="Sexo"
+                                        required>
                                         <option selected>Sexo</option>
                                         <option value="1">Hembra</option>
                                         <option value="2">Macho</option>
@@ -166,14 +174,14 @@
                             </div>
 
 
-                        </form>
-                        <!-- FIN Cuerpo del formulario -->
+                            <!-- FIN Cuerpo del formulario -->
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-success"><i class="bi bi-check2-circle"></i>
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
                             Guardar</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -206,7 +214,8 @@
                             </div>
                             <div class="col-md-5 col-7">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="TipoRebaño" placeholder="Rebaño">
+                                    <input type="text" class="form-control" id="TipoRebaño" placeholder="Rebaño"
+                                        required>
                                     <label for="Rebaño">Tipo de Rebaño</label>
                                 </div>
                             </div>
@@ -254,8 +263,8 @@
                                 <div class="form-floating mb-3">
                                     <select class="form-select" id="floatingSelect" aria-label="Sexo">
                                         <option selected>Sexo</option>
-                                        <option value="1">Hembra</option>
-                                        <option value="2">Macho</option>
+                                        <option value="H">Hembra</option>
+                                        <option value="M">Macho</option>
                                     </select>
                                     <label for="Sexo">Sexo</label>
                                 </div>
@@ -267,7 +276,7 @@
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-success"><i class="bi bi-check2-circle"></i>
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
                             Guardar</button>
                     </div>
                 </div>
@@ -300,6 +309,13 @@
                 url: 'BackEnd/Consulta_Inventario_Rebaño.php',
                 dataSrc: '',
             },
+            // Aqui definimos caracteristicas de la tabla y 
+            // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
+            columnDefs: [{
+                targets: [0, 10],
+                searchable: false,
+                orderable: false
+            }, ],
             columns: [{
                     data: 'ID_animal'
                 },
@@ -355,25 +371,56 @@
     <!-- Obtener Raza -->
     <script>
     $(document).ready(function() {
-                $.ajax({
-                        url: './BackEnd/Consultar_Raza.php',
-                        type: 'GET',
-                        success: function(respuesta) {
-                            let json = JSON.parse(respuesta);
-                            var len = json.length;
+        $.ajax({
+            url: './BackEnd/Consultar_Raza.php',
+            type: 'GET',
+            success: function(respuesta) {
+                let json = JSON.parse(respuesta);
+                var len = json.length;
 
-                            // $("#selectraza").empty();
-                            for (var i = 0; i < len; i++) {
-                                var raza = json[i]['Nombre_Raza'];
-                                
-                                $("#selectraza").append("<option value='0'>"+raza+"</option>");
-                            }
-                        }
-                            
-                        })
-                });
+                // $("#selectraza").empty();
+                for (var i = 0; i < len; i++) {
+                    var id_raza = json[i]['ID_raza'];
+                    var raza = json[i]['Nombre_Raza'];
+
+                    console.log('Raza id de la misma es '+id_raza);
+
+                    $("#selectraza").append("<option value='"+id_raza+"'>" + raza + "</option>");
+                    $("#N_selectraza").append("<option value='"+id_raza+"'>" + raza + "</option>");
+                }
+            }
+
+        })
+    });
     </script>
     <!-- Obtener Raza -->
+    <!-- Formulario crear nuevo  -->
+    <script>
+    $('#FormularioEnviar').submit(function(e) {
+        e.preventDefault();
+        //  var N_NumeroAnimal = $('N_NumeroAnimal').val();
+        // var N_TipoRebaño = $("#N_TipoRebaño").val();
+        // var N_Color = $("N_Color").val();
+        // var N_Lote = $("N_Lote").val();
+        // var N_Partos = $("N_Partos").val();
+        // var N_Peso = $("N_Peso").val();
+        // var N_selectraza = $("N_selectraza").val();
+        // var N_selectsexo = $("N_selectsexo").val();
+
+        const Datos = {
+            N_NumeroAnimal: $('#N_NumeroAnimal').val(),
+            N_TipoRebaño : $("#N_TipoRebaño").val(),
+            N_Color : $("#N_Color").val(),
+            N_Lote : $("#N_Lote").val(),
+            N_Partos : $("#N_Partos").val(),
+            N_Peso : $("#N_Peso").val(),
+            N_selectraza : $("#N_selectraza").val(),
+            N_selectsexo : $("#N_selectsexo").val(),
+        };
+        console.log(Datos);
+
+    });
+    </script>
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/principal.js"></script>

@@ -194,28 +194,28 @@
   </li><!-- End Login Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-error-404.html">
+    <a class="nav-link collapsed" href="./Campo-Potrero.php">
       <i class="fa-solid fa-tree"></i>
       <span>Campo/Potrero</span>
     </a>
   </li><!-- End Error 404 Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-blank.html">
+    <a class="nav-link collapsed" href="./BackEnd/Notificacion.php">
       <i class="fa-solid fa-drumstick-bite"></i>
       <span>Produccion</span>
     </a>
   </li><!-- End Blank Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-blank.html">
+    <a class="nav-link collapsed" href="./BackEnd/Notificacion.php">
       <i class="fa-solid fa-dollar-sign"></i>
       <span>Ingresos</span>
     </a>
   </li><!-- End Blank Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-blank.html">
+    <a class="nav-link collapsed" href="./BackEnd/Notificacion.php">
       <i class="fa-solid fa-dollar-sign"></i>
       <span>Gastos</span>
     </a>

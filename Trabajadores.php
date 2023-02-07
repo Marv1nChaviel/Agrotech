@@ -52,7 +52,7 @@
         </div>
         <!--=======Final Texto de la tabla interna =======   -->
         <!--=======Inicio TABLA--------------------------------------------------- =======   -->
-        <table id="Inventario" class="responsive nowrap display" style="width:100%">
+        <table id="InventarioTrabajadores" class="responsive nowrap display" style="width:100%">
             <thead>
                 <tr>
                     <th>#</th>
@@ -66,33 +66,9 @@
                 </tr>
             </thead>
             <tbody>
-
-                <tr>
-                    <td>1</td>
-                    <td>256</td>
-                    <td>xxxxx</td>
-                    <td>2011-04-25</td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>265kg</td>
-                    <td>
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                            data-bs-target="#ModalEditar"><i class="bi bi-pencil"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                    </td>
-                </tr>
             </tbody>
             <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Cedula</th>
-                    <th>Fecha Entrada</th>
-                    <th>Salida_permiso</th>
-                    <th>Sueldo_trabajadores</th>
-                    <th>Cargo</th>
-                    <th>Telefono</th>
-                    <th>Opciones</th>
-                </tr>
+                
             </tfoot>
         </table>
 
@@ -124,38 +100,39 @@
                                 </div>
                                 <!-- fin Columna izquierda -->
                                 <div class="col-md-8 col-12">
-                                <div class="row g-3">
-                                <div class="col-md-6 col-6">
-                                    <div class="form-floating">
-                                        <input type="number" class="form-control" id="Cedula" placeholder="Cedula">
-                                        <label for="Cedula">Cedula</label>
+                                    <div class="row g-3">
+                                        <div class="col-md-6 col-6">
+                                            <div class="form-floating">
+                                                <input type="number" class="form-control" id="Cedula"
+                                                    placeholder="Cedula">
+                                                <label for="Cedula">Cedula</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Cargo" placeholder="Cargo">
+                                                <label for="Cargo">Cargo</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Fecha_Entrada"
+                                                    placeholder="Fecha Entrada">
+                                                <label for="Fecha Entrada">Fecha Entrada</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Fecha_de_Permiso"
+                                                    placeholder="Fecha de Permiso">
+                                                <label for="Fecha de Permiso">Fecha de Permiso</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 col-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="Cargo" placeholder="Cargo">
-                                        <label for="Cargo">Cargo</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 col-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="Fecha_Entrada"
-                                            placeholder="Fecha Entrada">
-                                        <label for="Fecha Entrada">Fecha Entrada</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="Fecha_de_Permiso"
-                                            placeholder="Fecha de Permiso">
-                                        <label for="Fecha de Permiso">Fecha de Permiso</label>
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                                
                             </div>
                         </form>
                         <!-- FIN Cuerpo del formulario -->
@@ -171,7 +148,7 @@
         <!--  fin Modal Editar -------------------------------------- -->
         <!--======= Final TABLA--------------------------------------------------- =======   -->
     </main><!-- End #main -->
-<!-- Pie de pagina---- -->
+    <!-- Pie de pagina---- -->
     <?php 
     include('./Pie_De_Pagina.php');
     ?>
@@ -187,18 +164,58 @@
 
     <script>
     $(document).ready(function() {
-        $('#Inventario').DataTable({
+        $('#InventarioTrabajadores').DataTable({
+            ajax: {
+                url: 'BackEnd/Consulta_Trabajadores.php',
+                dataSrc: '',
+            },
+            // Aqui definimos caracteristicas de la tabla y 
+            // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
+            columnDefs: [{
+                targets: [0, 5],
+                searchable: false,
+                orderable: false
+            }, ],
+            columns: [{
+                    data: 'ID_trabajador'
+                },
+                {
+                    data: 'Ci'
+                },
+                {
+                    data: 'Fecha_entrada'
+                },
+                {
+                    data: 'Salida_permiso'
+                },
+                {
+                    data: 'Sueldo_trabajadores'
+                },
+                {
+                    data: 'Cargo'
+                },
+                {
+                    data: 'Telefono'
+                },
+                {
+                    data: 'Opciones'
+                },
+            ],
+
             language: {
                 url: './assets/es-ES.json'
             },
             lengthMenu: [
                 [10, 25, 50, 100, 200, -1],
                 ['10 Filas', '25 Filas', '50 Filas', '100 Filas', '200 Filas', 'Todas']
-            ],
+            ]
+
         });
 
     });
     </script>
+
+    <!-- Rellenar datatables con datos mediante ajax -->
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
