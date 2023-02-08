@@ -54,6 +54,12 @@
             <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
                     class="bi bi-file-earmark-plus"></i>
                 Nuevo Registro</button>
+            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#"><i
+                    class="bi bi-infinity"></i>
+                Registros Grandes</button>
+            <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#"><i
+                    class="bi bi-qr-code-scan"></i>
+                Busqueda Qr</button>
         </div>
         <!--=======Final Texto de la tabla interna =======   -->
         <!--=======Inicio TABLA--------------------------------------------------- =======   -->
@@ -110,14 +116,17 @@
                                         style="font-size: 1.6em;"></i></button>
                             </div>
                             <div class="col-md-5 col-7">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="N_TipoRebaño" name="N_TipoRebaño"
-                                        placeholder="Rebaño" required>
-                                    <label for="Rebaño">Tipo de Rebaño</label>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="N_TipoRebaño" name="N_TipoRebaño"
+                                        aria-label="Tipo de Rebaño" required>
+                                        <option value="0" disabled selected hidden>Tipo de Rebaño</option>
+
+                                    </select>
+                                    <label for="Raza">Tipo de Rebaño</label>
                                 </div>
                             </div>
 
-                            <div class="col-md-3 col-5">
+                            <div class="col-md-4 col-5">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="N_Color" name="N_Color"
                                         placeholder="Color" required>
@@ -126,16 +135,12 @@
                             </div>
 
                             <div class="col-md-4 col-5">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="N_Lote" name="N_Lote"
-                                        placeholder="Lote" required>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="N_Lote" name="N_Lote" aria-label="Lote" required>
+                                        <option value="0" disabled selected hidden>Lote</option>
+                                    </select>
                                     <label for="Lote">Lote</label>
                                 </div>
-
-                            </div>
-                            <div class="col-md-2 col-2">
-                                <button type="button" class="btn btn-info" style="font-size: 1.6em;"><i
-                                        class="bi bi-search"></i></button>
                             </div>
                             <div class="col-md-3 col-5">
                                 <div class="form-floating">
@@ -165,11 +170,22 @@
                                 <div class="form-floating mb-3">
                                     <select class="form-select" id="N_selectsexo" name="N_selectsexo" aria-label="Sexo"
                                         required>
-                                        <option selected>Sexo</option>
-                                        <option value="1">Hembra</option>
-                                        <option value="2">Macho</option>
+                                        <option disabled selected hidden>Sexo</option>
+                                        <option value="H">Hembra</option>
+                                        <option value="M">Macho</option>
                                     </select>
                                     <label for="Sexo">Sexo</label>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 col-4">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="N_Clasificacion" name="N_Clasificacion"
+                                        aria-label="Clasificacion" required>
+                                        <option value="0" disabled selected hidden>Clasificacion</option>
+
+                                    </select>
+                                    <label for="Raza">Clasificacion</label>
                                 </div>
                             </div>
 
@@ -220,7 +236,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3 col-5">
+                            <div class="col-md-4 col-5">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="Color" placeholder="Color">
                                     <label for="Color">Color</label>
@@ -228,16 +244,14 @@
                             </div>
 
                             <div class="col-md-4 col-5">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="Lote" placeholder="Lote">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="Lote" name="Lote" aria-label="Lote" required>
+                                        <option value="0" disabled selected hidden>Lote</option>
+                                    </select>
                                     <label for="Lote">Lote</label>
                                 </div>
+                            </div>
 
-                            </div>
-                            <div class="col-md-2 col-2">
-                                <button type="button" class="btn btn-info" style="font-size: 1.6em;"><i
-                                        class="bi bi-search"></i></button>
-                            </div>
                             <div class="col-md-3 col-5">
                                 <div class="form-floating">
                                     <input type="number" class="form-control" id="Partos" placeholder="Partos">
@@ -269,6 +283,16 @@
                                     <label for="Sexo">Sexo</label>
                                 </div>
                             </div>
+                            <div class="col-md-4 col-4">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="Clasificacion" name="Clasificacion"
+                                        aria-label="Clasificacion" required>
+                                        <option value="0" disabled selected hidden>Clasificacion</option>
+
+                                    </select>
+                                    <label for="Raza">Clasificacion</label>
+                                </div>
+                            </div>
 
 
                         </form>
@@ -298,8 +322,12 @@
 
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.responsive.min.js"></script>
-
-    <!-- Imagen de carga de la pagina -->
+    <!-- Consultas de los modales en este script -->
+    <script src="./assets/js/Consultar_Datos_Modal.js"></script>
+    <!-- otros js -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/principal.js"></script>
+    <script src="assets/js/sweetalert2.all.min.js"></script>
 
     <!-- Configuracion basica datatables  -->
     <script>
@@ -368,32 +396,7 @@
     </script>
 
     <!-- Rellenar datatables con datos mediante ajax -->
-    <!-- Obtener Raza -->
-    <script>
-    $(document).ready(function() {
-        $.ajax({
-            url: './BackEnd/Consultar_Raza.php',
-            type: 'GET',
-            success: function(respuesta) {
-                let json = JSON.parse(respuesta);
-                var len = json.length;
 
-                // $("#selectraza").empty();
-                for (var i = 0; i < len; i++) {
-                    var id_raza = json[i]['ID_raza'];
-                    var raza = json[i]['Nombre_Raza'];
-
-                    console.log('Raza id de la misma es '+id_raza);
-
-                    $("#selectraza").append("<option value='"+id_raza+"'>" + raza + "</option>");
-                    $("#N_selectraza").append("<option value='"+id_raza+"'>" + raza + "</option>");
-                }
-            }
-
-        })
-    });
-    </script>
-    <!-- Obtener Raza -->
     <!-- Formulario crear nuevo  -->
     <script>
     $('#FormularioEnviar').submit(function(e) {
@@ -409,22 +412,44 @@
 
         const Datos = {
             N_NumeroAnimal: $('#N_NumeroAnimal').val(),
-            N_TipoRebaño : $("#N_TipoRebaño").val(),
-            N_Color : $("#N_Color").val(),
-            N_Lote : $("#N_Lote").val(),
-            N_Partos : $("#N_Partos").val(),
-            N_Peso : $("#N_Peso").val(),
-            N_selectraza : $("#N_selectraza").val(),
-            N_selectsexo : $("#N_selectsexo").val(),
+            N_TipoRebaño: $("#N_TipoRebaño").val(),
+            N_Color: $("#N_Color").val(),
+            N_Lote: $("#N_Lote").val(),
+            N_Partos: $("#N_Partos").val(),
+            N_Peso: $("#N_Peso").val(),
+            N_selectraza: $("#N_selectraza").val(),
+            N_selectsexo: $("#N_selectsexo").val(),
+            N_Clasificacion: $("#N_Clasificacion").val(),
         };
-        console.log(Datos);
+
+        $.post('./BackEnd/Agregar_Inventario_Rebaño.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
+
+            //   console.log(Datos);
+            //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
+            
+            if (respuesta = "Ejecutado") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro Guardado',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $("#ModalNuevo").modal('hide');
+                
+                //DataTable.ajax.reload();
+            } else {
+
+            }
+
+            
+
+        });
 
     });
     </script>
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/principal.js"></script>
-    <script src="assets/js/sweetalert2.all.min.js"></script>
+
 </body>
 
 </html>

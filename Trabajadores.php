@@ -49,7 +49,14 @@
                     <li class="breadcrumb-item active">Trabajadores Datos</li>
                 </ol>
             </nav>
+            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
+                    class="bi bi-person-add"></i>
+                Nuevo Trabajador</button>
+                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
+                    class="bi bi-person-fill-exclamation"></i>
+                Agregar Salida Permiso</button>
         </div>
+        
         <!--=======Final Texto de la tabla interna =======   -->
         <!--=======Inicio TABLA--------------------------------------------------- =======   -->
         <table id="InventarioTrabajadores" class="responsive nowrap display" style="width:100%">
