@@ -54,11 +54,11 @@
             <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
                     class="bi bi-file-earmark-plus"></i>
                 Nuevo Registro</button>
-            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#"><i
+            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalRegistrosGrandes"><i
                     class="bi bi-infinity"></i>
                 Registros Grandes</button>
-            <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#"><i
-                    class="bi bi-qr-code-scan"></i>
+            <button type="button" class="btn btn-primary " onclick="QR()" data-bs-toggle="modal"
+                data-bs-target="#ModalQR"><i class="bi bi-qr-code-scan"></i>
                 Busqueda Qr</button>
         </div>
         <!--=======Final Texto de la tabla interna =======   -->
@@ -82,7 +82,7 @@
             <tbody>
 
             </tbody>
-            <tfoot>
+            <tfoot id="Inventario_Rebaño_foot">
 
             </tfoot>
         </table>
@@ -91,7 +91,7 @@
         <!-- Modal Nuevo -------------------------------------- -->
         <div class="modal fade" id="ModalNuevo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="Titulo">Nuevo Registro</h1>
@@ -205,7 +205,7 @@
         <!-- Modal Editar -------------------------------------- -->
         <div class="modal fade" id="ModalEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="Titulo">Editar Inventario Rebaño</h1>
@@ -307,6 +307,35 @@
             </div>
         </div>
         <!--  fin Modal Editar -------------------------------------- -->
+        <?php 
+    include('./Modal/Modal_QR.php');
+    ?>
+
+
+<!-- Modal Registros Grandes------------------------- -->
+<div class="modal fade" id="ModalRegistrosGrandes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Titulo">Cantidad De Registros</h1>
+
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                            <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <input class="form-control form-control-lg" type="number" placeholder="Cantidad">
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
+                            Generar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Fin Modal Registros Grande---------------------- -->
 
     </main><!-- End #main -->
 
@@ -332,7 +361,8 @@
     <!-- Configuracion basica datatables  -->
     <script>
     $(document).ready(function() {
-        $('#Inventario_Rebaño').DataTable({
+    $('#Inventario_Rebaño').DataTable({
+      
             ajax: {
                 url: 'BackEnd/Consulta_Inventario_Rebaño.php',
                 dataSrc: '',
@@ -389,8 +419,11 @@
                 [10, 25, 50, 100, 200, -1],
                 ['10 Filas', '25 Filas', '50 Filas', '100 Filas', '200 Filas', 'Todas']
             ]
+            
 
         });
+        
+        
 
     });
     </script>
@@ -427,7 +460,7 @@
 
             //   console.log(Datos);
             //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
-            
+
             if (respuesta = "Ejecutado") {
                 Swal.fire({
                     position: 'center',
@@ -437,19 +470,80 @@
                     timer: 1500
                 })
                 $("#ModalNuevo").modal('hide');
-                
+
                 //DataTable.ajax.reload();
             } else {
 
             }
 
-            
+
 
         });
 
     });
     </script>
 
+    <!-- QR IMPLEMENTACION EN BOTON QR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js"
+        integrity="sha512-k/KAe4Yff9EUdYI5/IAHlwUswqeipP+Cp5qnrsUjTPCgl51La2/JhyyjNciztD7mWNKLSXci48m7cctATKfLlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+    function QR() {
+        const scanner = new Html5QrcodeScanner('reader', {
+            // Scanner will be initialized in DOM inside element with id of 'reader'
+            qrbox: {
+                width: 250,
+                height: 250,
+            }, // Sets dimensions of scanning box (set relative to reader element width)
+            fps: 10, // Frames per second to attempt a scan
+        });
+        scanner.render(success, error);
+        // Starts scanner
+
+
+
+
+        function success(result) {
+
+            console.log(result);
+            // Prints result as a link inside result element
+
+            scanner.clear();
+
+            // Clears scanning instance
+
+            // document.getElementById('reader').remove();
+            // Removes reader element from DOM since no longer needed
+
+            $('#ModalQR').modal('hide');
+            BuscarQr(result);
+
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'QR',
+                showConfirmButton: false,
+                timer: 1000
+            })
+
+        }
+
+        function error(err) {
+            console.error(err);
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1000
+            })
+        }
+    }
+    </script>
+
+    <script>
+        
+    </script>
 </body>
 
 </html>

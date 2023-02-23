@@ -5,6 +5,9 @@ $sql = "SELECT * FROM inventario_rebaño";
 $resultado = $conexion->prepare($sql);
 $resultado->execute();
 $datos=$resultado->fetch(PDO::FETCH_ASSOC);
+
+while($datos = $resultado->fetch()){
+  
 // almacenano datos en variables para obtener datos mediante relacion
 $raza = $datos['ID_raza'];
 $clasificacion = $datos['ID_clasificacion'];
@@ -51,10 +54,11 @@ $json[] = array(
     <button type="button" class="btn btn-danger" onclick="EliminarBotonTabla();"><i class="bi bi-trash3"></i></button>'
     
   );
+}
 
  echo json_encode($json, JSON_UNESCAPED_UNICODE);
  
-
+ 
     $conexion=null;
 
 

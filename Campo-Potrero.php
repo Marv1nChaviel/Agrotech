@@ -89,9 +89,9 @@
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <link rel="stylesheet" href="./assets/css/Mapas/tamaño_mapa.css">
     <script>
-    var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
-    // var marker = L.marker([10.688453, -71.680253]).addTo(map); //colocar flecha de indicacion 
-    // marker.bindPopup("<b>Tu ubicacion</b>").openPopup();
+     //var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
+     // var marker = L.marker([10.688453, -71.680253]).addTo(map); //colocar flecha de indicacion 
+     marker.bindPopup("<b>Tu ubicacion</b>").openPopup();
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
