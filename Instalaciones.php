@@ -62,7 +62,9 @@
                 </div>
             </div>
         <hr>
+        <!-- Mapa -->
         <div id="map"></div>
+        <!-- End Mapa -->
 
     </main><!-- End #main -->
     <!-- Pie de pagina---- -->
