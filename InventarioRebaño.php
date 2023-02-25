@@ -357,11 +357,13 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/principal.js"></script>
     <script src="assets/js/sweetalert2.all.min.js"></script>
+<!-- Iconos -->
+    <script src="https://kit.fontawesome.com/76b5f911f3.js" crossorigin="anonymous"></script>
 
     <!-- Configuracion basica datatables  -->
     <script>
     $(document).ready(function() {
-    $('#Inventario_Rebaño').DataTable({
+    var tabla = $('#Inventario_Rebaño').DataTable({
       
             ajax: {
                 url: 'BackEnd/Consulta_Inventario_Rebaño.php',
@@ -423,15 +425,12 @@
 
         });
         
-        
+        setInterval( function () {
+    tabla.ajax.reload( null, false ); // user paging is not reset on reload
+}, 5000 );
 
     });
-    </script>
-
-    <!-- Rellenar datatables con datos mediante ajax -->
-
-    <!-- Formulario crear nuevo  -->
-    <script>
+// Rellenar datatables con datos mediante ajax---------------
     $('#FormularioEnviar').submit(function(e) {
         e.preventDefault();
         //  var N_NumeroAnimal = $('N_NumeroAnimal').val();
@@ -472,6 +471,7 @@
                 $("#ModalNuevo").modal('hide');
 
                 //DataTable.ajax.reload();
+                RecargarDataTable();
             } else {
 
             }
@@ -483,10 +483,13 @@
     });
     </script>
 
+    <!--  -->
+
     <!-- QR IMPLEMENTACION EN BOTON QR -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js"
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js"
         integrity="sha512-k/KAe4Yff9EUdYI5/IAHlwUswqeipP+Cp5qnrsUjTPCgl51La2/JhyyjNciztD7mWNKLSXci48m7cctATKfLlQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <script src="./assets/js/html5-qrcode.min.js"></script>
     <script>
     function QR() {
         const scanner = new Html5QrcodeScanner('reader', {
@@ -507,7 +510,13 @@
 
             console.log(result);
             // Prints result as a link inside result element
-
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Exito!',
+                showConfirmButton: false,
+                timer: 1000
+            })
             scanner.clear();
 
             // Clears scanning instance
@@ -518,13 +527,7 @@
             $('#ModalQR').modal('hide');
             BuscarQr(result);
 
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'QR',
-                showConfirmButton: false,
-                timer: 1000
-            })
+           
 
         }
 

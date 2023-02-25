@@ -1,9 +1,18 @@
+<?php 
+session_start();
+//Se verifica si la seccion existe actualmente de ser verdadero se muestra la pantalla si no se palsa al else ultimo
+//Esto se coloca en la barra de navegacion vertical ya que es un elemento que siempre se mostrara en todas las pantallas de la app
+
+if(isset($_SESSION['Seccion'])){
+$nombre_dueño = $_SESSION['Nombre_Usuario'];
+echo $nombre_dueño;
+?>
 <div class="cargando" id="cargando"></div>
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
 
 <div class="d-flex align-items-center justify-content-between">
-    <a href="index.html" class="logo d-flex align-items-center">
+    <a href="./Login.php" class="logo d-flex align-items-center">
         <img src="assets/img/AgroTech_icono_pequeño.png" alt="">
         <span class="d-none d-lg-block">AgroTech</span>
     </a>
@@ -96,9 +105,9 @@
 
         <li class="nav-item dropdown pe-3">
 
-            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <a class="nav-link nav-profile d-flex align-items-center pe-0"  data-bs-toggle="dropdown">
 
-                <span class="d-none d-md-block dropdown-toggle ps-2">Usuario Nombre</span>
+                <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $nombre_dueño; ?></span>
             </a><!-- End Profile Iamge Icon -->
 
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -131,7 +140,7 @@
                 </li>
 
                 <li>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
+                    <a class="dropdown-item d-flex align-items-center" href="./BackEnd/Cerrar_Seccion.php">
                         <i class="bi bi-box-arrow-right"></i>
                         <span>Cerrar Cuenta</span>
                     </a>
@@ -210,17 +219,19 @@
   <li class="nav-item">
     <a class="nav-link collapsed" href="./BackEnd/Notificacion.php">
       <i class="fa-solid fa-dollar-sign"></i>
-      <span>Ingresos</span>
-    </a>
-  </li><!-- End Blank Page Nav -->
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="./BackEnd/Notificacion.php">
-      <i class="fa-solid fa-dollar-sign"></i>
-      <span>Gastos</span>
+      <span>Ingresos y Gastos</span>
     </a>
   </li><!-- End Blank Page Nav -->
 
 </ul>
 
 </aside><!--=======Final Barra Lateral de Navegacion =======   -->
+
+<?php 
+}else{
+    //si la seccion no existe se manda a otra localizacion en este caso login de nuevo 
+    header('Location: ../Login.php');
+   exit;
+} 
+
+?>
