@@ -78,7 +78,80 @@
                 
             </tfoot>
         </table>
+<!-- Modal Nuevo -------------------------------------- -->
+<div class="modal fade" id="ModalNuevo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Titulo">Agregar Trabajadores</h1>
 
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                            <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Cuerpo del formulario------ -->
+                        <form>
+                            <!-- Columna izquierda -->
+                            <div class="row">
+                                <div class="col-md-4 col-12 ">
+                                    <div class="row"></div>
+                                    <div class="row">
+                                        <div class="col-md-3 col-8 ">
+                                            <img src="./assets/img/soporte.png" alt="" width="130" height="130">
+                                        </div>
+                                    </div>
+                                    <div class="row"></div>
+                                </div>
+                                <!-- fin Columna izquierda -->
+                                <div class="col-md-8 col-12">
+                                    <div class="row g-3">
+                                        <div class="col-md-6 col-6">
+                                            <div class="form-floating">
+                                                <input type="number" class="form-control" id="Cedula"
+                                                    placeholder="Cedula">
+                                                <label for="Cedula">Cedula</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Cargo" placeholder="Cargo">
+                                                <label for="Cargo">Cargo</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Fecha_Entrada"
+                                                    placeholder="Fecha Entrada">
+                                                <label for="Fecha Entrada">Fecha Entrada</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Fecha_de_Permiso"
+                                                    placeholder="Fecha de Permiso">
+                                                <label for="Fecha de Permiso">Fecha de Permiso</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                        <!-- FIN Cuerpo del formulario -->
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-success"><i class="bi bi-check2-circle"></i>
+                            Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  fin Modal Nuevo -------------------------------------- -->
         <!-- Modal Editar -------------------------------------- -->
         <div class="modal fade" id="ModalEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">

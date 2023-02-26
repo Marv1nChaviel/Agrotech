@@ -66,7 +66,7 @@
         <table id="Inventario_Rebaño" class="responsive nowrap display" style="width:100%">
             <thead>
                 <tr>
-                    <th>#</th>
+                  
                     <th>N° Animal</th>
                     <th>Tipo Rebaño</th>
                     <th>Color</th>
@@ -372,13 +372,11 @@
             // Aqui definimos caracteristicas de la tabla y 
             // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
             columnDefs: [{
-                targets: [0, 10],
+                targets: [0, 9],
                 searchable: false,
                 orderable: false
             }, ],
-            columns: [{
-                    data: 'ID_animal'
-                },
+            columns: [
                 {
                     data: 'Nro_animal'
                 },
@@ -425,11 +423,10 @@
 
         });
         
-        setInterval( function () {
-    tabla.ajax.reload( null, false ); // user paging is not reset on reload
-}, 5000 );
 
     });
+
+    
 // Rellenar datatables con datos mediante ajax---------------
     $('#FormularioEnviar').submit(function(e) {
         e.preventDefault();
@@ -471,7 +468,8 @@
                 $("#ModalNuevo").modal('hide');
 
                 //DataTable.ajax.reload();
-                RecargarDataTable();
+                tabla.ajax.reload( null, false );
+                DataTable.ajax.reload();
             } else {
 
             }

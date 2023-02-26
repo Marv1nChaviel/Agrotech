@@ -14,7 +14,6 @@ while($datos = $resultado->fetch()){
 
   
     $json[] = array( 
-      'ID_animal' => $datos['ID_animal'],
       'Nro_animal' => $datos['Nro_animal'],
       'Color' => $datos['Color'],
       'Partos' => $datos['Partos'],

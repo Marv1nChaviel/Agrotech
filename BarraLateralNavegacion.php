@@ -13,7 +13,7 @@ echo $nombre_dueño;
 
 <div class="d-flex align-items-center justify-content-between">
     <a href="./Login.php" class="logo d-flex align-items-center">
-        <img src="assets/img/AgroTech_icono_pequeño.png" alt="">
+        <img src="assets/img/icon.png" alt="">
         <span class="d-none d-lg-block">AgroTech</span>
     </a>
     <i class="bi bi-list toggle-sidebar-btn"></i>

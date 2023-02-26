@@ -35,7 +35,7 @@ if(isset($_SESSION['Seccion'])){
 
                     <h2 class="card-heading">
                         AgroTech
-                        <img class="logo" src="./assets/img/vaca.png" width="70px" alt="">
+                        <img class="logo" src="./assets/img/icon.png" width="70px" alt="">
                     </h2>
                 </div>
                 <form class="card-form" method="POST" action="./BackEnd/Verificacion_Datos_Login.php">

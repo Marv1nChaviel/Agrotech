@@ -15,9 +15,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -54,13 +52,13 @@
         </div>
         <!--=======Final Texto de la tabla interna =======   -->
         <!-- Mapa iniciador -->
-            <div class="col-md-6 col-12">
-                <div class="btn-group" role="group" aria-label="Second group">
-                    <button type="button" class="btn btn-success">Agregar Zona</button>
-                    <button type="button" class="btn btn-warning">Eliminar Zona</button>
-                    <button type="button" class="btn btn-primary">Obtener ubicacion</button>
-                </div>
+        <div class="col-md-6 col-12">
+            <div class="btn-group" role="group" aria-label="Second group">
+                <button type="button" class="btn btn-success">Agregar Zona</button>
+                <button type="button" class="btn btn-warning">Eliminar Zona</button>
+                <button type="button" class="btn btn-primary">Obtener ubicacion</button>
             </div>
+        </div>
         <hr>
         <!-- Mapa -->
         <div id="map"></div>
@@ -68,7 +66,7 @@
 
     </main><!-- End #main -->
     <!-- Pie de pagina---- -->
-    <?php 
+    <?php
     include('./Pie_De_Pagina.php');
     ?>
 
@@ -85,20 +83,22 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/principal.js"></script>
     <!-- Mapa para instalaciones -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <link rel="stylesheet" href="./assets/css/Mapas/tamaño_mapa.css">
     <script>
-    var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
-    // var marker = L.marker([10.688453, -71.680253]).addTo(map); //colocar flecha de indicacion 
-    // marker.bindPopup("<b>Tu ubicacion</b>").openPopup();
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-    navigator.geolocation.getCurrentPosition((data) => console.table(data), (err) => console.error(err))
+        var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
+        // var marker = L.marker([10.688453, -71.680253]).addTo(map); //colocar flecha de indicacion 
+        // marker.bindPopup("<b>Tu ubicacion</b>").openPopup();
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        map.pm.addControls({
+            position: 'topleft',
+            drawCircle: false,
+        });
+        navigator.geolocation.getCurrentPosition((data) => console.table(data), (err) => console.error(err))
     </script>
     <!-- Mapa para instalaciones -->
 </body>
