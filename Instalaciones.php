@@ -15,7 +15,9 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -61,7 +63,7 @@
         </div>
         <hr>
         <!-- Mapa -->
-        <div id="map"></div>
+        <div id="map" style="width: 150vh; height: 60vh;"></div>
         <!-- End Mapa -->
 
     </main><!-- End #main -->
@@ -83,22 +85,42 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/principal.js"></script>
     <!-- Mapa para instalaciones -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <link rel="stylesheet" href="./assets/css/Mapas/tamaño_mapa.css">
     <script>
-        var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
-        // var marker = L.marker([10.688453, -71.680253]).addTo(map); //colocar flecha de indicacion 
-        // marker.bindPopup("<b>Tu ubicacion</b>").openPopup();
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-        map.pm.addControls({
-            position: 'topleft',
-            drawCircle: false,
-        });
-        navigator.geolocation.getCurrentPosition((data) => console.table(data), (err) => console.error(err))
+    var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
+    // var marker = L.marker([10.688453, -71.680253]).addTo(map); //colocar flecha de indicacion 
+    // marker.bindPopup("<b>Tu ubicacion</b>").openPopup();
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    
+    // Poligono de ubicacion
+    var polygon = L.polygon([
+        [10.688250, -71.681130],
+        [10.688866, -71.682316],
+        [10.689349, -71.682082],
+        [10.688884, -71.680823],
+    ]).addTo(map);
+    // Fin poligono ubicacion
+
+    navigator.geolocation.getCurrentPosition((data) => console.table(data), (err) => console.error(err))
+
+    // Agrega notificacion con la ubicacion donde se le da click
+    var popup = L.popup();
+
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent("You clicked the map at " + e.latlng.toString())
+            .openOn(map);
+    }
+
+    map.on('click', onMapClick);
     </script>
     <!-- Mapa para instalaciones -->
 </body>

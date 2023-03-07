@@ -49,21 +49,23 @@
                     <li class="breadcrumb-item active">Maquinaria Registro</li>
                 </ol>
             </nav>
+            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
+                    class="bi bi-file-earmark-plus"></i>
+                Agregar Maquina</button>
         </div>
         <!--=======Final Texto de la tabla interna =======   -->
         <!--=======Inicio TABLA--------------------------------------------------- =======   -->
         <table id="Inventario" class="responsive nowrap display" style="width:100%">
             <thead>
                 <tr>
-                    <th>#</th>
                     <th>ID_Maquinaria</th>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Color</th>
                     <th>Año</th>
+                    <th>Extra</th>
                     <th>Horas Uso</th>
-                    <th>Trabajador a cargo</th>
-                    <th>Demas</th>
+                    <th>Trabajador a cargo Ci</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
@@ -71,18 +73,7 @@
 
             </tbody>
             <tfoot>
-                <tr>
-                <th>#</th>
-                    <th>ID_Maquinaria</th>
-                    <th>Marca</th>
-                    <th>Modelo</th>
-                    <th>Color</th>
-                    <th>Año</th>
-                    <th>Horas Uso</th>
-                    <th>Trabajador a cargo</th>
-                    <th>Demas</th>
-                    <th>Opciones</th>
-                </tr>
+                
             </tfoot>
         </table>
 
@@ -178,6 +169,45 @@
     <script>
     $(document).ready(function() {
         $('#Inventario').DataTable({
+            ajax: {
+                url: 'BackEnd/Consulta_Maquinaria.php',
+                dataSrc: '',
+            },
+            // Aqui definimos caracteristicas de la tabla y 
+            // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
+            columnDefs: [{
+                targets: [0, 6],
+                searchable: false,
+                orderable: false
+            }, ],
+            columns: [{
+                    data: 'ID_maquinaria'
+                },
+                {
+                    data: 'Marca'
+                },
+                {
+                    data: 'Modelo'
+                },
+                {
+                    data: 'Color'
+                },
+                {
+                    data: 'Año'
+                },
+                {
+                    data: 'Extras'
+                },
+                {
+                    data: 'Horas_uso'
+                },
+                {
+                    data: 'Trabajadores_ID_trabajador'
+                },
+                {
+                    data: 'Opciones'
+                },
+            ],
             language: {
                 url: './assets/es-ES.json'
             },

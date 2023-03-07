@@ -11,7 +11,6 @@ $resultado->execute();
 // $datos=$resultado->fetch(PDO::FETCH_ASSOC);
 
 while($datos = $resultado->fetch()){
-
   
     $json[] = array( 
       'Nro_animal' => $datos['Nro_animal'],

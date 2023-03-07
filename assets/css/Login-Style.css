@@ -15,7 +15,7 @@
     position: fixed;
     width: 55%;
     height: 100%;
-    background-image: url(/assets/img/campo.jpeg);
+    background-image: url(../img/campo.jpeg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

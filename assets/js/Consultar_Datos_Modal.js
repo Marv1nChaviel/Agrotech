@@ -67,6 +67,7 @@
 
                     $("#N_Clasificacion").append("<option value='"+id_clasificacion+"'>" + clasificacion + "</option>");
                     $("#Clasificacion").append("<option value='"+id_clasificacion+"'>" + clasificacion + "</option>");
+                    $("#N_Clasificacion_G").append("<option value='"+id_clasificacion+"'>" + clasificacion + "</option>");
                 }
             }
 
@@ -92,6 +93,7 @@
 
                     $("#N_Lote").append("<option value='"+id_lote+"'>" + lote + "</option>");
                     $("#Lote").append("<option value='"+id_lote+"'>" + lote + "</option>");
+                    $("#N_Lote_G").append("<option value='"+id_lote+"'>" + lote + "</option>");
                 }
             }
 

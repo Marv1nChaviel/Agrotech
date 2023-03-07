@@ -95,7 +95,7 @@
                                             <i class="bi bi-currency-dollar"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>$3,264</h6>
+                                            <h6>$954,3</h6>
 
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                                             <i class="bi bi-currency-dollar"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>145</h6>
+                                            <h6>$356,8</h6>
 
                                         </div>
                                     </div>

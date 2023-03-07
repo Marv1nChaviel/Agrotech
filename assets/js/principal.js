@@ -8,10 +8,11 @@ window.addEventListener('load', function() {
     document.getElementById("cargando").classList.toggle("cargando2")
   }
 
-  function EliminarBotonTabla(){
+  // Boton eliminar trabajadores -------------------------------------
+  function EliminarRegistroTablaTrabajadores(Cedula){
     Swal.fire({
       title: 'Estas Seguro?',
-      text: "Estas a punto de eliminar este registro!",
+      text: "Estas a punto de eliminar este Trabajador?!",
       icon: 'error',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -19,12 +20,33 @@ window.addEventListener('load', function() {
       confirmButtonText: 'Si, eliminar',
       cancelButtonText: 'Cancelar',
     }).then((result) => {
+
       if (result.isConfirmed) {
-        Swal.fire(
-          'Eliminado!',
-          'El registro se elimino por completo.',
-          'success'
-        )
+
+        const Datos = {
+        Cedula: Cedula
+      };
+      $.post('../BackEnd/EliminarTrabajador.php', Datos, function(respuesta) { // metodo post del query igualmente funcional que el anterior
+          console.log(respuesta);
+          if (respuesta == "ejecutado") {
+            Swal.fire(
+              'Eliminado!',
+              'El Trabajador fue eliminado de la Base de Datos por completo.',
+              'success'
+            )
+          }else{
+              Swal.fire(
+                  'ERROR!',
+                  'El registro no se elimino.',
+                  'error'
+              )
+          }
+
+
+
+      });
+
+        
       }
     })
   }

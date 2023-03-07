@@ -54,17 +54,17 @@
         </div>
         <!--=======Final Texto de la tabla interna =======   -->
         <!-- Mapa iniciador -->
-            <div class="col-md-6 col-12">
-                <div class="btn-group" role="group" aria-label="Second group">
-                    <button type="button" class="btn btn-success">Agregar Zona</button>
-                    <button type="button" class="btn btn-warning">Eliminar Zona</button>
-                    <button type="button" class="btn btn-primary">Obtener ubicacion</button>
-                </div>
+        <div class="col-md-6 col-12">
+            <div class="btn-group" role="group" aria-label="Second group">
+                <button type="button" class="btn btn-success">Agregar Zona</button>
+                <button type="button" class="btn btn-warning">Eliminar Zona</button>
+                <button type="button" class="btn btn-primary">Obtener ubicacion</button>
             </div>
+        </div>
         <hr>
         <!-- Mapa  -->
-        <div id="map"></div>
-       <!-- End Mapa  -->
+        <div id="map" style="width: 150vh; height: 60vh;"></div>
+        <!-- End Mapa  -->
     </main><!-- End #main -->
     <!-- Pie de pagina---- -->
     <?php 
@@ -78,6 +78,8 @@
 
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.responsive.min.js"></script>
+    <!-- Iconos -->
+    <script src="https://kit.fontawesome.com/76b5f911f3.js" crossorigin="anonymous"></script>
 
 
     <!-- Template Main JS File -->
@@ -90,14 +92,40 @@
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <link rel="stylesheet" href="./assets/css/Mapas/tamaño_mapa.css">
     <script>
-     //var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
-     // var marker = L.marker([10.688453, -71.680253]).addTo(map); //colocar flecha de indicacion 
-     marker.bindPopup("<b>Tu ubicacion</b>").openPopup();
+    var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
+    var marker = L.marker([10.688453, -71.680253]).addTo(map); //colocar flecha de indicacion 
+    marker.bindPopup("<b>Tu ubicacion</b>").openPopup();
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
     navigator.geolocation.getCurrentPosition((data) => console.table(data), (err) => console.error(err))
+
+    // Poligono de ubicacion potrero 1
+    var polygon = L.polygon([
+        [10.688250, -71.681130],
+        [10.688866, -71.682316],
+        [10.689349, -71.682082],
+        [10.688884, -71.680823]
+    ],
+    {color: 'red'}).addTo(map);
+    var marker = L.marker([10.68886, -71.681669]).addTo(map); //colocar flecha de indicacion 
+    marker.bindPopup("<b>Potrero 1</b>").openPopup();
+    // Fin poligono ubicacion
+
+    // Poligono de ubicacion potrero 2
+    var polygon = L.polygon([
+        [10.688931, -71.680764],
+        [10.689394, -71.682046],
+        [10.689996, -71.681831],
+        [10.689146, -71.680608]
+    ],
+    {color: 'green'}).addTo(map);
+    var marker = L.marker([10.689389, -71.681321]).addTo(map); //colocar flecha de indicacion 
+    marker.bindPopup("<b>Potrero 2</b>").openPopup();
+    // Fin poligono ubicacion
+
+    
     </script>
     <!-- Mapa para instalaciones -->
 </body>

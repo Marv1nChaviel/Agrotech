@@ -12,7 +12,7 @@ echo $nombre_dueño;
 <header id="header" class="header fixed-top d-flex align-items-center">
 
 <div class="d-flex align-items-center justify-content-between">
-    <a href="./Login.php" class="logo d-flex align-items-center">
+    <a href="Principal.php" class="logo d-flex align-items-center">
         <img src="assets/img/icon.png" alt="">
         <span class="d-none d-lg-block">AgroTech</span>
     </a>
@@ -30,7 +30,7 @@ echo $nombre_dueño;
 
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                 <i class="bi bi-bell"></i>
-                <span class="badge bg-primary badge-number">4</span>
+                <span class="badge bg-primary badge-number">8</span>
             </a><!-- End Notification Icon -->
 
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
@@ -120,7 +120,7 @@ echo $nombre_dueño;
                 </li>
 
                 <li>
-                    <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                    <a class="dropdown-item d-flex align-items-center" href="./Configuraciones.php">
                         <i class="bi bi-person"></i>
                         <span>Configuraciones</span>
                     </a>
