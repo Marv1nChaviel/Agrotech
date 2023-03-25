@@ -1,6 +1,9 @@
+<?php 
 
+$CioRif = $_SESSION['Seccion'];
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -85,10 +88,6 @@
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Configuraciones</button>
-                </li>
-
-                <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Cambiar Contraseña</button>
                 </li>
 
@@ -97,7 +96,7 @@
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   <h5 class="card-title">Agrotech Software</h5>
-                  <p class="small fst-italic">Somos una empresa dedicada a facilitar la administracion y gestion de todo lo relacionado a una agropecuaria, estamos enfocados en demostrar el potencia que sugiere la implementacion de sistemas informaticos y el crecimiento exponencial que este sugiere en tu hacienda.</p>
+                  <p class="small fst-italic">Somos una empresa dedicada a facilitar la administracion y gestion de todo lo relacionado a una agropecuaria, estamos enfocados en demostrar el potencia que sugiere la implementacion de sistemas informaticos y el crecimiento exponencial que este permite en su hacienda.</p>
 
                   <h5 class="card-title">Informacion General</h5>
 
@@ -176,47 +175,7 @@
 
                 </div>
 
-                <div class="tab-pane fade pt-3" id="profile-settings">
 
-                  <!-- Settings Form -->
-                  <form>
-
-                    <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
-                      <div class="col-md-8 col-lg-9">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="changesMade" checked>
-                          <label class="form-check-label" for="changesMade">
-                            Changes made to your account
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="newProducts" checked>
-                          <label class="form-check-label" for="newProducts">
-                            Information on new products and services
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="proOffers">
-                          <label class="form-check-label" for="proOffers">
-                            Marketing and promo offers
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
-                          <label class="form-check-label" for="securityNotify">
-                            Security alerts
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
-                  </form><!-- End settings Form -->
-
-                </div>
 
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
@@ -276,7 +235,25 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+<script>
+  $(document).ready(function() {
 
+        const Datos = {
+          Usuario: Usuario
+        };
+        $.post('.', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
+            let json = JSON.parse(respuesta); //Almacena el resultado del json en el let json
+            json.forEach(json => { //Se asignan los valores obtendios en json a su respectivo input
+                $('#NumeroAnimal').val(json.ID_animal);
+                $('#TipoRebaño').val(json.Tipo_rebaño_ID_tipo_rebaño);
+            });
+
+
+
+        });
+  });
+</script>
 </body>
 
 </html>

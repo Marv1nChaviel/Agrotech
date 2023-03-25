@@ -8,6 +8,6 @@ $contraseña="";
 
     
     $conexion = new PDO('mysql:host='.$host.';dbname='.$db.'', ''.$usuario.'', ''.$contraseña.'');
-    
+   
 
 ?>

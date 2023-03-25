@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -49,7 +49,7 @@
                     <li class="breadcrumb-item active">Maquinaria Registro</li>
                 </ol>
             </nav>
-            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
                     class="bi bi-file-earmark-plus"></i>
                 Agregar Maquina</button>
         </div>
@@ -58,7 +58,7 @@
         <table id="Inventario" class="responsive nowrap display" style="width:100%">
             <thead>
                 <tr>
-                    <th>ID_Maquinaria</th>
+                    <!-- <th>ID_Maquinaria</th> -->
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Color</th>
@@ -180,9 +180,7 @@
                 searchable: false,
                 orderable: false
             }, ],
-            columns: [{
-                    data: 'ID_maquinaria'
-                },
+            columns: [
                 {
                     data: 'Marca'
                 },

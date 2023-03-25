@@ -5,7 +5,7 @@ session_start();
 
 if(isset($_SESSION['Seccion'])){
 $nombre_dueño = $_SESSION['Nombre_Usuario'];
-echo $nombre_dueño;
+
 ?>
 <div class="cargando" id="cargando"></div>
 <!-- ======= Header ======= -->
@@ -130,7 +130,7 @@ echo $nombre_dueño;
                 </li>
 
                 <li>
-                    <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                    <a class="dropdown-item d-flex align-items-center" href="#">
                         <i class="bi bi-gear"></i>
                         <span>Atencion al cliente</span>
                     </a>
@@ -189,7 +189,7 @@ echo $nombre_dueño;
   </li><!-- End Contact Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="./BackEnd/Notificacion.php">
+    <a class="nav-link collapsed" href="./Inventario-General.php">
       <i class="fa-solid fa-list-check"></i>
       <span>Inventario General</span>
     </a>
@@ -217,7 +217,7 @@ echo $nombre_dueño;
   </li><!-- End Blank Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="./BackEnd/Notificacion.php">
+    <a class="nav-link collapsed" href="./Ingresos-Gastos.php">
       <i class="fa-solid fa-dollar-sign"></i>
       <span>Ingresos y Gastos</span>
     </a>

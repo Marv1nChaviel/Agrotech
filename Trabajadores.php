@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" content="notranslate>
 
     <title>AgroTech</title>
-    <meta content="" name="description">
+    <meta content="" name=" description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
@@ -53,8 +53,8 @@
             <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
                     class="bi bi-person-add"></i>
                 Nuevo Trabajador</button>
-            <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#ModalSalidaPermiso"><i
-                    class="bi bi-person-fill-exclamation"></i>
+            <button type="button" class="btn btn-primary " data-bs-toggle="modal"
+                data-bs-target="#ModalSalidaPermiso"><i class="bi bi-person-fill-exclamation"></i>
                 Agregar Salida Permiso</button>
         </div>
 
@@ -104,7 +104,11 @@
                                             <img src="./assets/img/soporte.png" alt="" width="130" height="130">
                                         </div>
                                     </div>
-                                    <div class="row"></div>
+                                    <div class="row">
+                                        
+                                            <input class="form-control" type="file" id="Foto" name="Foto" accept="image/*">
+                                        
+                                    </div>
                                 </div>
                                 <!-- fin Columna izquierda -->
                                 <div class="col-md-8 col-12">
@@ -127,7 +131,7 @@
 
                                         <div class="col-md-6 col-6">
                                             <div class="input-group date">
-                                                <input type="text" class="form-control" placeholder="Fecha Entrada"
+                                                <input type="date" class="form-control" placeholder="Fecha Entrada"
                                                     id="Fecha_Entrada" name="Fecha_Entrada" required><span
                                                     class="input-group-addon"><i
                                                         class="glyphicon glyphicon-th"></i></span>
@@ -239,8 +243,8 @@
         </div>
         <!--  fin Modal Editar -------------------------------------- -->
         <!-- Modal Agregar Salida Permiso -------------------------------------- -->
-        <div class="modal fade" id="ModalSalidaPermiso" data-bs-backdrop="static" data-bs-keyboard="false"
-            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="ModalSalidaPermiso" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -341,6 +345,8 @@
     $('#FormularioEnviar').submit(function(e) {
         e.preventDefault();
 
+        var Extencion_Foto = $('#Foto').val().split('.').pop().toLowerCase();
+        
         const Datos = {
             N_Cedula: $('#Cedula').val(),
             N_Cargo: $("#Cargo").val(),

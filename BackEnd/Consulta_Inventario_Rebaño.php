@@ -10,10 +10,13 @@ $resultado = $conexion->prepare($sql);
 $resultado->execute();
 // $datos=$resultado->fetch(PDO::FETCH_ASSOC);
 
-while($datos = $resultado->fetch()){
+
+
+
+  while($datos = $resultado->fetch()){
   
     $json[] = array( 
-      'Nro_animal' => $datos['Nro_animal'],
+      'Nro_animal' => $datos['ID_animal'],
       'Color' => $datos['Color'],
       'Partos' => $datos['Partos'],
       'Peso' => $datos['Peso']." KG",
@@ -23,12 +26,15 @@ while($datos = $resultado->fetch()){
       'Lote_ID_lote' => $datos['Nombre_lote'],
       'Tipo_rebaño_ID_tipo_rebaño' => $datos['Nombre_tipo_rebaño'],
       'Opciones'=>'
-      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalEditar"><i class="bi bi-pencil"></i></button>
-      <button type="button" class="btn btn-danger" onclick="EliminarBotonTabla();"><i class="bi bi-trash3"></i></button>'
+      <button type="button" class="btn btn-warning btnEditar" name="btnEditar" id="'.$datos['ID_animal'].'" ><i class="bi bi-pencil"></i></button>
+      <button type="button" class="btn btn-danger" name="borrar" id="'.$datos['ID_animal'].'" onclick="EliminarBotonTabla();"><i class="bi bi-trash3"></i></button>'
       
     );
   
 }
 echo json_encode($json, JSON_UNESCAPED_UNICODE);
+
+
+
 
 ?>

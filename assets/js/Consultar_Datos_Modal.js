@@ -15,7 +15,7 @@
 
                     // console.log('Raza id de la misma es '+id_raza);
 
-                    $("#selectraza").append("<option value='"+id_raza+"'>" + raza + "</option>");
+                    $("#SRaza").append("<option value='"+id_raza+"'>" + raza + "</option>");
                     $("#N_selectraza").append("<option value='"+id_raza+"'>" + raza + "</option>");
                 }
             }
@@ -42,6 +42,7 @@
 
                     $("#N_TipoRebaño").append("<option value='"+id_rebaño+"'>" + tipo_rebaño + "</option>");
                     $("#TipoRebaño").append("<option value='"+id_rebaño+"'>" + tipo_rebaño + "</option>");
+                    $("#N_TipoRebaño_G").append("<option value='"+id_rebaño+"'>" + tipo_rebaño + "</option>");
                 }
             }
 

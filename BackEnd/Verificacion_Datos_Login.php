@@ -22,9 +22,9 @@ if ($count > 0) {
    $consulta2->execute();
    $datos=$consulta2->fetch(PDO::FETCH_ASSOC);
    $_SESSION['Nombre_Usuario'] = $datos['Nombre_propietario'];
+  
       header('Location: ../Principal.php');
    exit;
 } else {
-
    header('Location: Datos_Incorrectos_Login.php');
 }

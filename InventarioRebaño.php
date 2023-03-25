@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" content="notranslate>
 
     <title>AgroTech</title>
-    <meta content="" name="description">
+    <meta content="" name=" description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
@@ -219,7 +219,7 @@
                         <form class="row g-3">
                             <div class="col-md-5 col-8">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="NumeroAnimal"
+                                    <input type="number" class="form-control" id="NumeroAnimal" name="NumeroAnimal"
                                         placeholder="Numero del Animal">
                                     <label for="floatingName">Numero del Animal</label>
                                 </div>
@@ -266,8 +266,8 @@
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" id="selectraza" aria-label="Raza">
-                                        <option value="0" selected>Raza</option>
+                                    <select class="form-select" id="SRaza" aria-label="Raza">
+                                        <option value="0" disabled selected hidden>Raza</option>
 
                                     </select>
                                     <label for="Raza">Raza</label>
@@ -275,7 +275,7 @@
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" id="floatingSelect" aria-label="Sexo">
+                                    <select class="form-select" id="SSexo" aria-label="Sexo">
                                         <option selected>Sexo</option>
                                         <option value="H">Hembra</option>
                                         <option value="M">Macho</option>
@@ -324,60 +324,62 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                        <div class="col-md-3 col-3">
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelect" aria-label="Sexo">
-                                    <option selected>Sexo</option>
-                                    <option value="H">Hembra</option>
-                                    <option value="M">Macho</option>
-                                </select>
-                                <label for="Sexo">Sexo</label>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-5">
-                                <div class="form-floating mb-3">
-                                    <select class="form-select" id="N_TipoRebaño" name="N_TipoRebaño"
-                                        aria-label="Tipo de Rebaño" required>
-                                        <option value="0" disabled selected hidden>Tipo de Rebaño</option>
+                        <form class="row g-3" id="FormularioEnviar">
+                            <div class="row">
+                                <div class="col-md-3 col-3">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="G_Sexo" name="G_Sexo" aria-label="Sexo">
+                                            <option selected>Sexo</option>
+                                            <option value="H">Hembra</option>
+                                            <option value="M">Macho</option>
+                                        </select>
+                                        <label for="Sexo">Sexo</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 col-5">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="N_TipoRebaño_G" name="N_TipoRebaño_G"
+                                            aria-label="Tipo de Rebaño" required>
+                                            <option value="" disabled selected hidden>Tipo de Rebaño</option>
 
-                                    </select>
-                                    <label for="Raza">Tipo de Rebaño</label>
+                                        </select>
+                                        <label for="Raza">Tipo de Rebaño</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4 col-4">
-                                <div class="form-floating mb-3">
-                                    <select class="form-select" id="N_Lote_G" name="N_Lote_G" aria-label="Lote" required>
-                                        <option value="0" disabled selected hidden>Lote</option>
-                                    </select>
-                                    <label for="Lote">Lote</label>
+                                <div class="col-md-4 col-4">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="N_Lote_G" name="N_Lote_G" aria-label="Lote"
+                                            required>
+                                            <option value="" disabled selected hidden>Lote</option>
+                                        </select>
+                                        <label for="Lote">Lote</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-5 col-5">
-                                <div class="form-floating mb-3">
-                                    <select class="form-select" id="N_Clasificacion_G" name="N_Clasificacion_G"
-                                        aria-label="Clasificacion" required>
-                                        <option value="0" disabled selected hidden>Clasificacion</option>
+                                <div class="col-md-5 col-5">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="N_Clasificacion_G" name="N_Clasificacion_G"
+                                            aria-label="Clasificacion" required>
+                                            <option value="" disabled selected hidden>Clasificacion</option>
 
-                                    </select>
-                                    <label for="Raza">Clasificacion</label>
+                                        </select>
+                                        <label for="Raza">Clasificacion</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-6">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control form-control-lg" type="number" id="Cantidad"
+                                            name="Cantidad" placeholder="Cantidad" required>
+                                        <label for="Raza">Cantidad de Registros</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-6">
-                                <div class="form-floating mb-3">
-                                <input class="form-control form-control-lg" type="number" placeholder="Cantidad">
-                                    <label for="Raza">Cantidad de Registros</label>
-                                </div>
-                            </div>
-                        </div>
-                      
-                        
                     </div>
                     <div class="modal-footer">
 
                         <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
                             Generar</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -412,7 +414,7 @@
         var tabla = $('#Inventario_Rebaño').DataTable({
 
             ajax: {
-                url: 'BackEnd/Consulta_Inventario_Rebaño.php',
+                url: './BackEnd/Consulta_Inventario_Rebaño.php',
                 dataSrc: '',
             },
             // Aqui definimos caracteristicas de la tabla y 
@@ -517,6 +519,38 @@
 
     });
     </script>
+    <script>
+    $(document).on('click', '.btnEditar', function() {
+        var id_animal = this.id;
+
+
+        const Datos = {
+            id_animal: id_animal
+        };
+        $.post('./BackEnd/Consulta_Inventario_Rebaño_Modal_Editar.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
+            console.log(id_animal);
+            $('#ModalEditar').modal('show'); //Abre modal
+            let json = JSON.parse(respuesta); //Almacena el resultado del json en el let json
+            json.forEach(json => { //Se asignan los valores obtendios en json a su respectivo input
+                $('#NumeroAnimal').val(json.ID_animal);
+                $('#TipoRebaño').val(json.Tipo_rebaño_ID_tipo_rebaño);
+                $('#Color').val(json.Color);
+                $('#Lote').val(json.Lote_ID_lote);
+                $('#Partos').val(json.Partos);
+                $('#Peso').val(json.Peso);
+                $('#SRaza').val(json.Raza);
+                $('#SSexo').val(json.Sexo);
+                $('#Clasificacion').val(json.ID_clasificacion);
+
+
+            });
+
+
+
+        });
+    });
+    </script>
 
     <!--  -->
 
@@ -536,30 +570,57 @@
         // Starts scanner
         function success(result) {
 
-            console.log(result);
-            // Prints result as a link inside result element
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Exito!',
-                showConfirmButton: false,
-                timer: 1000
-            })
-            scanner.clear();
+            // Opteniendo datos en modal editar
 
-            $('#ModalQR').modal('hide');
-            BuscarQr(result);
+            var id_animal = result;
+
+            const Datos = {
+                id_animal: id_animal
+            };
+            $.post('./BackEnd/Consulta_Inventario_Rebaño_Modal_Editar.php', Datos, function(
+                respuesta) { // metodo post del query igualmente funcional que el anterior
+                // console.log(id_animal);
+                if (respuesta == "No") {
+                    error(respuesta);
+                } else {
+                    $('#ModalEditar').modal('show'); //Abre modal
+                    let json = JSON.parse(respuesta); //Almacena el resultado del json en el let json
+                    json.forEach(json => { //Se asignan los valores obtendios en json a su respectivo input
+                        $('#NumeroAnimal').val(json.ID_animal);
+                        $('#TipoRebaño').val(json.Tipo_rebaño_ID_tipo_rebaño);
+                        $('#Color').val(json.Color);
+                        $('#Lote').val(json.Lote_ID_lote);
+                        $('#Partos').val(json.Partos);
+                        $('#Peso').val(json.Peso);
+                        $('#SRaza').val(json.Raza);
+                        $('#SSexo').val(json.Sexo);
+                        $('#Clasificacion').val(json.ID_clasificacion);
+                    });
+                    $('#ModalQR').modal('hide');
+                    $('#ModalEditar').modal('show');
+                    
+                    scanner.clear();
+                    BuscarQr(result);
+                }
+
+
+
+            });
+            // console.log(result);
+            // Prints result as a link inside result element
+            
+
+
 
         }
 
         function error(err) {
-            console.error(err);
             Swal.fire({
                 position: 'center',
                 icon: 'error',
-                title: 'Error',
-                showConfirmButton: false,
-                timer: 1000
+                title: 'Error QR no Valido',
+                text: "El QR que estas cargando no existe o no lo es. Elige otra por favor!",
+                showConfirmButton: true,
             })
         }
     }

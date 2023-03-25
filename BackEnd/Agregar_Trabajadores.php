@@ -6,12 +6,23 @@ $N_Cargo = $_POST['N_Cargo'];
 $N_Fecha_Entrada = $_POST['N_Fecha_Entrada'];
 $Telefono =  $_POST['N_Telefono'];
 $Sueldo = $_POST['N_Sueldo'];
+$Foto = $_FILES[''];
+
+// #### Foto Trabajador ###################################################################################
+##########################################################################################################//
+
+
+
+// #### Foto Trabajador ###################################################################################
+##########################################################################################################//
 
 // $N_Cedula = "2222";
 // $N_Cargo = "fgfgfd";
 // $N_Fecha_Entrada ="2222/10/02";
 // $Telefono =  "0412451";
 // $Sueldo = "fdsfsdfsf";
+
+
 
 
 $ejecutar = $conexion->prepare("INSERT INTO trabajadores (Ci, Fecha_entrada, Sueldo_trabajadores, 	Cargo, Telefono) 

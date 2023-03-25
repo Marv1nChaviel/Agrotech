@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -60,6 +60,10 @@
                 <button type="button" class="btn btn-warning">Eliminar Zona</button>
                 <button type="button" class="btn btn-primary">Obtener ubicacion</button>
             </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="AgregarSwitch">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Modo Agregar</label>
+            </div>
         </div>
         <hr>
         <!-- Mapa -->
@@ -74,7 +78,7 @@
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery-3.5.1.js"></script>
 
     <script src="assets/js/jquery.dataTables.min.js"></script>
@@ -98,7 +102,7 @@
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
-    
+
     // Poligono de ubicacion
     var polygon = L.polygon([
         [10.688250, -71.681130],
@@ -112,12 +116,21 @@
 
     // Agrega notificacion con la ubicacion donde se le da click
     var popup = L.popup();
-
+        var inicial=0;
     function onMapClick(e) {
-        popup
+        const ModoEditar = document.getElementById('AgregarSwitch');
+        if (ModoEditar.checked){
+            popup
             .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
+            .setContent("Boton chequeado " + e.latlng.toString())
             .openOn(map);
+        }else{
+            var marker = L.marker(e.latlng).addTo(map);
+            marker.bindPopup("<b>Punto N° "+inicial+"</b>").openPopup();
+            inicial += 1;
+        }
+        
+        
     }
 
     map.on('click', onMapClick);
