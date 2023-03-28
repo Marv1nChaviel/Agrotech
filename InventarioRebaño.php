@@ -384,6 +384,53 @@
             </div>
         </div>
         <!-- Fin Modal Registros Grande---------------------- -->
+        <!-- Modal Informacion Adicional------------------------- -->
+        <div class="modal fade" id="ModalInformacionAdicional" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Titulo">Informacion del Animal</h1>
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                            <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row g-3" id="FormularioEnviar">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <label id="NumeroAnimalInformacion"><b>N° del Animal:</b></label>
+                                </div>
+                                <div class="row">
+                                <label for="" id="NumeroAnimalInformacion"><b>Listado de Produccion:</b></label>
+                                    <!--=======Inicio TABLA--------------------------------------------------- =======   -->
+                                    <table id="Tabla_Produccion_Animal" class="responsive nowrap display"
+                                        style="width:100%">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Fecha</th>
+                                                <th>Produccion</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                        <tfoot id="Tabla_Produccion_Animal_foot">
+
+                                        </tfoot>
+                                    </table>
+                                    <!--======= Final TABLA--------------------------------------------------- =======   -->
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Modal Informacion Adicional---------------------- -->
 
     </main><!-- End #main -->
 
@@ -469,6 +516,7 @@
 
 
         });
+        
 
 
     });
@@ -513,13 +561,10 @@
 
             }
 
-
-
         });
 
     });
-    </script>
-    <script>
+
     $(document).on('click', '.btnEditar', function() {
         var id_animal = this.id;
 
@@ -547,9 +592,63 @@
             });
 
 
-
         });
     });
+
+    $(document).on('click', '.btnInformacion', function() {
+
+        
+        var id_animal = this.id;
+        
+            $('#ModalInformacionAdicional').modal('show'); //Abre modal
+
+             $('#NumeroAnimalInformacion').html('<b>N° del Animal: '+id_animal+'</b>');
+            //  document.querySelector('#NumeroAnimalInformacion').innerText = '<b>N° del Animal: ${id_animal}</b>';
+             // Tabala de informacion adicional ---------------------------------------------
+
+             var tabla2 = $('#Tabla_Produccion_Animal').DataTable({
+                    scrollY: '200px',
+                    scrollCollapse: true,
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    destroy: true,
+
+                    ajax: {
+                        url: './BackEnd/Consulta_InformacionAdicional.php',
+                        dataSrc: '',
+                        data: { 'id_animal': id_animal },
+                        type : 'post',
+                    },
+                    // Aqui definimos caracteristicas de la tabla y 
+                    // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
+                    columnDefs: [{
+                        targets: [1],
+                        searchable: false,
+                        orderable: false
+                    }, ],
+                    columns: [{
+                            data: 'Fecha'
+                        },
+                        {
+                            data: 'Tipo_produccion'
+                        },
+                    ],
+
+                    language: {
+                        url: './assets/es-ES.json'
+                    },
+
+
+                });
+                
+                // Fin Tabala de informacion adicional ---------------------------------------------
+
+
+        });
+
+
+
     </script>
 
     <!--  -->
@@ -598,7 +697,7 @@
                     });
                     $('#ModalQR').modal('hide');
                     $('#ModalEditar').modal('show');
-                    
+
                     scanner.clear();
                     BuscarQr(result);
                 }
@@ -608,7 +707,7 @@
             });
             // console.log(result);
             // Prints result as a link inside result element
-            
+
 
 
 

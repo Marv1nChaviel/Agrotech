@@ -60,7 +60,8 @@
                 <div class="btn-ingreso">
 
                     <!-- Botones de Ingreso -->
-                    <a><button class="btn-ingreso-1"><i class="bi bi-plus-circle"></i> Ingresos</button></a>
+                    <a><button class="btn-ingreso-1" data-bs-toggle="modal" data-bs-target="#ModalNuevoIngreso"><i
+                                class="bi bi-plus-circle"></i> Ingresos</button></a>
                     <!---------------------------------->
                     <a><button class="btn-ingreso-2"><i class="bi bi-question-circle"></i></button></a>
 
@@ -258,8 +259,138 @@
             </section>
 
         </div>
+        <!-- Modal Nuevo Ingreso -------------------------------------- -->
+        <div class="modal fade" id="ModalNuevoIngreso" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Titulo">Agregar Ingreso</h1>
 
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                            <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Cuerpo del formulario------ -->
+                        <form id="FormularioEnviar">
+                            <div class="row">
+                                <div class="col-5">
+                                    <label for=""><b>Tipo de Ingreso:</b></label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">Venta de Leche</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">Venta de Carne</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">Venta del Animal</label>
+                                    </div>
+                                </div>
+                                <div class="col-7">
+                                    <center> <label for=""><b>Datos del Animal:</b></label></center>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input type="number" class="form-control" id="Numero_Animal"
+                                                name="Numero_Animal" placeholder="N° Animal" readonly="readonly"
+                                                required>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group date">
+                                                <input type="date" class="form-control" placeholder="Fecha"
+                                                    id="Fecha_Ingreso" name="Fecha_Ingreso" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <input type="text" class="form-control" id="Produccion"
+                                                    name="Produccion" placeholder="Produccion" required>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <a><button class="btn btn-info"
+                                                            data-bs-target="#ModalBuscarProduccion"
+                                                            data-bs-toggle="modal"><i class="bi bi-search"></i>
+                                                            Buscar</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
+                            Guardar</button>
+                    </div>
+                    </form>
+                    <!-- FIN Cuerpo del formulario -->
+                </div>
+            </div>
+        </div>
+        <!--  fin Modal Nuevo Ingreso -------------------------------------- -->
+        <!-- Modal Buscar Produccion -------------------------------------- -->
+        <div class="modal fade" id="ModalBuscarProduccion" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Titulo">Buscar por Produccion</h1>
+
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                            <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Cuerpo del formulario------ -->
+                        <form id="FormularioEnviar">
+                            <div class="container-fluid">
+                                <label for=""><b>Selecciona el registro de Produccion:</b></label>
+                                <div class="row">
+                                <div class="col-4">
+                                <label for="">Fecha:</label>
+                                    <select class="form-select" size="7" aria-label="size 3 select example">
+                                    <!-- <option selected>Selecciona el registro de Produccion</option> -->
+                                    <option value="1">29/10/2022</option>
+                                </select></div>
+                                <div class="col-4">
+                                <label for="">N° Animal:</label>
+                                    <select class="form-select" size="7" aria-label="size 3 select example">
+                                    <!-- <option selected>Selecciona el registro de Produccion</option> -->
+                                    <option value="1">25215235</option>
+                                </select></div>
+                                <div class="col-4">
+                                <label for="">Produccion:</label>
+                                <select class="form-select" size="7" aria-label="size 3 select example">
+                                    <!-- <option selected>Selecciona el registro de Produccion</option> -->
+                                    <option value="1">50 litros</option>
+                                </select></div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i> Seleccionar</button>
+                    </div>
+                    </form>
+                    <!-- FIN Cuerpo del formulario -->
+                </div>
+            </div>
+        </div>
+        <!--  fin Modal Buscar Produccion-------------------------------------- -->
     </main><!-- End #main -->
+
     <!-- Pie de pagina---- -->
     <?php 
     include('./Pie_De_Pagina.php');
@@ -267,7 +398,7 @@
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery-3.5.1.js"></script>
 
     <script src="assets/js/jquery.dataTables.min.js"></script>

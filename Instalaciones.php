@@ -55,15 +55,16 @@
         <!--=======Final Texto de la tabla interna =======   -->
         <!-- Mapa iniciador -->
         <div class="col-md-6 col-12">
+
             <div class="btn-group" role="group" aria-label="Second group">
-                <button type="button" class="btn btn-success">Agregar Zona</button>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" onclick="ModoEditorMensaje();" id="AgregarSwitch">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Modo Editor</label>
+                </div>
                 <button type="button" class="btn btn-warning">Eliminar Zona</button>
                 <button type="button" class="btn btn-primary">Obtener ubicacion</button>
             </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="AgregarSwitch">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Modo Agregar</label>
-            </div>
+
         </div>
         <hr>
         <!-- Mapa -->
@@ -83,6 +84,7 @@
 
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.responsive.min.js"></script>
+    <script src="assets/js/sweetalert2.all.min.js"></script>
 
 
     <!-- Template Main JS File -->
@@ -95,6 +97,35 @@
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <link rel="stylesheet" href="./assets/css/Mapas/tamaño_mapa.css">
     <script>
+    function ModoEditorMensaje() {
+        const ModoEditar = document.getElementById('AgregarSwitch');
+        if (ModoEditar.checked) {
+            Swal.fire(
+                'Modo Edicion Activado',
+                'Ya puede marcar en el mapa!',
+                'success'
+            )
+        } else {
+            // ModoEditar.checked = !confirm('¿Esta seguro que no quiere guardar?');
+            Swal.fire({
+                title: '¿Desea guardar los cambios?',
+                showDenyButton: true,
+                confirmButtonText: 'Guardar',
+                denyButtonText: 'Continuar',
+                denyButtonColor: '#808080',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Guardado', '', 'success')
+                } else if (result.isDenied) {
+                    ModoEditar.checked = true;
+                }
+            })
+        }
+    }
+
+
+
     var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
     // var marker = L.marker([10.688453, -71.680253]).addTo(map); //colocar flecha de indicacion 
     // marker.bindPopup("<b>Tu ubicacion</b>").openPopup();
@@ -112,25 +143,54 @@
     ]).addTo(map);
     // Fin poligono ubicacion
 
-    navigator.geolocation.getCurrentPosition((data) => console.table(data), (err) => console.error(err))
+    // Ubicacon mediante gps
+    function onLocationFound(e) {
+        const radius = e.accuracy / 30;
+
+        const locationMarker = L.marker(e.latlng).addTo(map)
+            .bindPopup(`Ubicacion Estimada`).openPopup();
+
+        const locationCircle = L.circle(e.latlng, radius, {
+            color: 'blue',
+            fillColor: '#f03',
+            fillOpacity: 0.1,
+        }).addTo(map);
+    }
+
+    function onLocationError(e) {
+        alert(e.message);
+    }
+
+    map.on('locationfound', onLocationFound);
+    map.on('locationerror', onLocationError);
+
+    map.locate({
+        setView: true
+    });
+
 
     // Agrega notificacion con la ubicacion donde se le da click
     var popup = L.popup();
-        var inicial=0;
+    var inicial = 0;
+
     function onMapClick(e) {
         const ModoEditar = document.getElementById('AgregarSwitch');
-        if (ModoEditar.checked){
-            popup
-            .setLatLng(e.latlng)
-            .setContent("Boton chequeado " + e.latlng.toString())
-            .openOn(map);
-        }else{
+
+        if (ModoEditar.checked) {
             var marker = L.marker(e.latlng).addTo(map);
-            marker.bindPopup("<b>Punto N° "+inicial+"</b>").openPopup();
+            marker.bindPopup("<b>Punto N° " + inicial + "</b>").openPopup();
             inicial += 1;
+
+        } else {
+
+            popup
+                .setLatLng(e.latlng)
+                .setContent("Boton chequeado " + e.latlng.toString())
+                .openOn(map);
+
         }
-        
-        
+
+
     }
 
     map.on('click', onMapClick);
