@@ -44,6 +44,7 @@
 
         <!--=======Texto de la tabla interna =======   -->
         <div class="pagetitle">
+
             <h1>Inventario General</h1>
             <nav>
                 <ol class="breadcrumb">
@@ -61,11 +62,10 @@
         <table id="Inventario_General" class="responsive nowrap display" style="width:100%">
             <thead>
                 <tr>
-
-                    <th>Codigo</th>
-                    <th>Nombre Objeto</th>
-                    <th>Informacion del Objeto</th>
-                    <th>Cantidad Disponible</th>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Informacion</th>
+                    <th>Disponibilidad</th>
                     <th>Operador</th>
                     <th>Opciones</th>
                 </tr>
@@ -105,11 +105,12 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                    <!-- Boton de subir foto -->
+                                        <!-- Boton de subir foto -->
                                         <div class="file-input">
                                             <input type="file" name="file-input" id="file-input"
                                                 class="file-input__input" />
-                                            <label class="file-input__label" for="file-input"><i class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                            <label class="file-input__label" for="file-input"><i
+                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label>
                                         </div>
                                         <!-- Fin Boton de subir foto -->
                                     </div>
@@ -119,29 +120,31 @@
                                     <div class="row g-3">
                                         <div class="col-md-12 col-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="NombreObjeto" name="NombreObjeto"
-                                                    placeholder="NombreObjeto" required>
+                                                <input type="text" class="form-control" id="NombreObjeto"
+                                                    name="NombreObjeto" placeholder="NombreObjeto" required>
                                                 <label for="NombreObjeto">Nombre del Objeto</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
-                                        <div class="form-floating">
-                                                <input type="number" class="form-control" id="CantDisponible" name="CantDisponible"
-                                                    placeholder="CantDisponible" required>
+                                            <div class="form-floating">
+                                                <input type="number" class="form-control" id="CantDisponible"
+                                                    name="CantDisponible" placeholder="CantDisponible" required>
                                                 <label for="CantDisponible">N° Disponible</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="Operador" name="Operador"
-                                                    placeholder="Operador" required>
-                                                <label for="Operador">Operador</label>
+                                            <div class="form-floating mb-3">
+                                                <select class="form-select" id="Operador" name="Operador"
+                                                    aria-label="Operador" required>
+                                                    <option disabled selected hidden>Operador</option>
+                                                </select>
+                                                <label for="Sexo">Operador</label>
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="InfoObjeto" name="InfoObjeto"
-                                                    placeholder="InfoObjeto" required>
+                                                <input type="text" class="form-control" id="InfoObjeto"
+                                                    name="InfoObjeto" placeholder="InfoObjeto" required>
                                                 <label for="InfoObjeto">Informacion del Objeto</label>
                                             </div>
                                         </div>
@@ -232,6 +235,53 @@
 
 
     });
+
+    // Rellenar datatables con datos mediante ajax---------------
+    $('#FormularioEnviar').submit(function(e) {
+        e.preventDefault();
+
+        const Datos = {
+            N_NombreObjeto: $('#NombreObjeto').val(),
+            N_CantDisponible: $("#CantDisponible").val(),
+            N_Operador: $("#Operador").val(),
+            N_InfoObjeto: $("#InfoObjeto").val(),
+        };
+
+        $.post('./BackEnd/Agregar_Inventario_General.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
+
+            //   console.log(Datos);
+            //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
+
+            if (respuesta = "Ejecutado") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Agregado a inventario!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $("#ModalNuevo").modal('hide');
+
+                //DataTable.ajax.reload();
+                tabla.ajax.reload(null, false);
+                DataTable.ajax.reload();
+            } else {
+
+            }
+
+        });
+
+    });
+
+    //  Boton Eliminar inventario general ------------------------------------------------
+
+    $(document).on('click', '.btnEliminar', function() {
+        var id_inventario = this.id;
+        EliminarRegistroInventarioGeneral(id_inventario);
+    });
+
+    // Fin Boton Eliminar inventario general ------------------------------------------------
     </script>
 
 

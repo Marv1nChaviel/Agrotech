@@ -164,6 +164,7 @@
 
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.responsive.min.js"></script>
+    <script src="assets/js/sweetalert2.all.min.js"></script>
 
 
     <script>
@@ -216,6 +217,15 @@
         });
 
     });
+    //  Boton Eliminar Maquinaria ------------------------------------------------
+
+    $(document).on('click', '.btnEliminar', function() {
+        var id_maquinaria = this.id;
+        
+        EliminarRegistroMaquinaria(id_maquinaria);
+    });
+
+    // Fin Boton Eliminar Maquinaria ------------------------------------------------
     </script>
 
     <!-- Template Main JS File -->

@@ -28,7 +28,7 @@ $resultado->execute();
       'Opciones'=>'
       <button type="button" class="btn btn-warning btnEditar" name="btnEditar" id="'.$datos['ID_animal'].'" ><i class="bi bi-pencil"></i></button>
       <button type="button" class="btn btn-info btnInformacion" name="btnInformacion" id="'.$datos['ID_animal'].'" ><i class="bi bi-list-ul"></i></button>
-      <button type="button" class="btn btn-danger" name="borrar" id="'.$datos['ID_animal'].'" onclick="EliminarBotonTabla();"><i class="bi bi-trash3"></i></button>'
+      <button type="button" class="btn btn-danger btnEliminar" name="borrar" id="'.$datos['ID_animal'].'"><i class="bi bi-trash3"></i></button>'
       
     );
   

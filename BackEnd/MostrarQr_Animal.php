@@ -1,0 +1,29 @@
+<?php 
+include ('../BackEnd/phpqrcode/qrlib.php');
+$Numero_Animal = $_POST['id_animal'];
+$rutaqr="../assets/qr_creados/".$Numero_Animal.".png";
+if(file_exists($rutaqr)){
+
+    echo '<div class="row">
+<div style="text-align: center;"><img src="../assets/qr_creados/'.$Numero_Animal.'.png" />
+<label for="colFormLabel"><h4>Animal Codigo: '.$Numero_Animal.'</h4></label>
+</div>
+</div>';
+
+
+}else{
+    QRcode::png($Numero_Animal,$rutaqr,"Q",6,2);
+
+    echo '<div class="row">
+<div style="text-align: center;"><img src="../assets/qr_creados/'.$Numero_Animal.'.png" />
+<label for="colFormLabel"><h4>Animal Codigo: '.$Numero_Animal.'</h4></label>
+</div>
+</div>';
+}
+
+
+
+
+
+
+?>

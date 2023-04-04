@@ -26,5 +26,5 @@ if ($count > 0) {
       header('Location: ../Principal.php');
    exit;
 } else {
-   header('Location: Datos_Incorrectos_Login.php');
+   header('Location: Error.php');
 }

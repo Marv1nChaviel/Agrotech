@@ -62,7 +62,7 @@
                     <label class="form-check-label" for="flexSwitchCheckDefault">Modo Editor</label>
                 </div>
                 <button type="button" class="btn btn-warning">Eliminar Zona</button>
-                <button type="button" class="btn btn-primary">Obtener ubicacion</button>
+                <button type="button" class="btn btn-primary" onclick="ObtenerUbicacion();">Obtener ubicacion</button>
             </div>
 
         </div>
@@ -96,6 +96,7 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <link rel="stylesheet" href="./assets/css/Mapas/tamaño_mapa.css">
+    
     <script>
     function ModoEditorMensaje() {
         const ModoEditar = document.getElementById('AgregarSwitch');
@@ -143,8 +144,9 @@
     ]).addTo(map);
     // Fin poligono ubicacion
 
-    // Ubicacon mediante gps
-    function onLocationFound(e) {
+    function ObtenerUbicacion(){
+// Ubicacon mediante gps
+function onLocationFound(e) {
         const radius = e.accuracy / 30;
 
         const locationMarker = L.marker(e.latlng).addTo(map)
@@ -167,6 +169,8 @@
     map.locate({
         setView: true
     });
+    }
+    
 
 
     // Agrega notificacion con la ubicacion donde se le da click

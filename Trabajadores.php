@@ -53,9 +53,9 @@
             <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
                     class="bi bi-person-add"></i>
                 Nuevo Trabajador</button>
-            <button type="button" class="btn btn-primary " data-bs-toggle="modal"
+            <!-- <button type="button" class="btn btn-primary " data-bs-toggle="modal"
                 data-bs-target="#ModalSalidaPermiso"><i class="bi bi-person-fill-exclamation"></i>
-                Agregar Salida Permiso</button>
+                Agregar Salida Permiso</button> -->
         </div>
 
         <!--=======Final Texto de la tabla interna =======   -->
@@ -65,13 +65,15 @@
                 <tr>
                     <th>#</th>
                     <th>Cedula</th>
+                    <th>Nombre</th>
                     <th>Fecha Entrada</th>
-                    <th>Salida_permiso</th>
-                    <th>Sueldo_trabajadores</th>
+                    <th>Ultimo Permiso</th>
+                    <th>Sueldo</th>
                     <th>Cargo</th>
                     <th>Telefono</th>
-                    <th>Opciones</th>
                     <th>Foto</th>
+                    <th>Opciones</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -101,18 +103,40 @@
                                     <div class="row"></div>
                                     <div class="row">
                                         <div class="col-md-3 col-8 ">
-                                            <img src="./assets/img/soporte.png" alt="" width="130" height="130">
+                                            <img src="./assets/img/icon-user.png" alt="" width="130" height="130">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        
-                                            <input class="form-control" type="file" id="Foto" name="Foto" accept="image/*">
-                                        
+
+                                        <!-- Boton de subir foto -->
+                                        <div class="file-input">
+                                            <input type="file" name="file-input" id="file-input"
+                                                class="file-input__input" />
+                                            <label class="file-input__label" for="file-input"><i
+                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                        </div>
+                                        <!-- Fin Boton de subir foto -->
+
                                     </div>
                                 </div>
                                 <!-- fin Columna izquierda -->
                                 <div class="col-md-8 col-12">
                                     <div class="row g-3">
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="NombreApellido"
+                                                    name="NombreApellido" placeholder="Sueldo" required>
+                                                <label for="NombreApellido">Nombre y Apellido</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Cargo" name="Cargo"
+                                                    placeholder="Cargo" required>
+                                                <label for="Cargo">Cargo</label>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-6 col-6">
                                             <div class="form-floating">
                                                 <input type="number" class="form-control" id="Cedula" name="Cedula"
@@ -122,18 +146,21 @@
                                         </div>
 
                                         <div class="col-md-6 col-6">
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="Cargo" name="Cargo"
-                                                    placeholder="Cargo" required>
-                                                <label for="Cargo">Cargo</label>
+                                            <div class="input-group mb-3">
+                                                <div class="form-floating">
+                                                    <input type="number" class="form-control" id="Sueldo"
+                                                        placeholder="Username">
+                                                    <label for="Sueldo">Sueldo</label>
+                                                </div>
+                                                <span class="input-group-text"><i
+                                                        class="bi bi-currency-dollar"></i></span>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 col-6">
-                                            <div class="input-group date">
-                                                <input type="date" class="form-control" placeholder="Fecha Entrada"
-                                                    id="Fecha_Entrada" name="Fecha_Entrada" required><span
-                                                    class="input-group-addon"><i
+                                            <div class="input-group date input-fecha-trabajador">
+                                                <input type="date" class="form-control" id="Fecha_Entrada"
+                                                    name="Fecha_Entrada"><span class="input-group-addon"><i
                                                         class="glyphicon glyphicon-th"></i></span>
                                             </div>
                                         </div>
@@ -144,13 +171,7 @@
                                                 <label for="Telefono">Telefono</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 col-12">
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="Sueldo" name="Sueldo"
-                                                    placeholder="Sueldo" required>
-                                                <label for="Sueldo">Sueldo</label>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
 
@@ -213,10 +234,10 @@
                                         </div>
 
                                         <div class="col-md-6 col-6">
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="Fecha_Entrada"
-                                                    placeholder="Fecha Entrada">
-                                                <label for="Fecha Entrada">Fecha Entrada</label>
+                                            <div class="input-group date">
+                                                <input type="text" class="form-control"><span
+                                                    class="input-group-addon"><i
+                                                        class="glyphicon glyphicon-th"></i></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
@@ -255,7 +276,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input class="form-control form-control-lg" type="number" placeholder="Cantidad">
+                        <form id="formularioSalidaPermiso">
+                            <input type="number" class="form-control" id="id_trabajador" name="id_trabajador" hidden>
+                            <div class="input-group date input-fecha-permiso">
+                                <input type="text" class="form-control"><span class="input-group-addon"><i
+                                        class="glyphicon glyphicon-th"></i></span>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
 
@@ -284,6 +311,9 @@
     <script src="assets/js/bootstrap-datepicker.min.js"></script>
     <!-- Iconos  -->
     <script src="https://kit.fontawesome.com/76b5f911f3.js" crossorigin="anonymous"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/principal.js"></script>
 
     <script>
     $(document).ready(function() {
@@ -295,7 +325,7 @@
             // Aqui definimos caracteristicas de la tabla y 
             // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
             columnDefs: [{
-                targets: [0, 6],
+                targets: [0, 7],
                 searchable: false,
                 orderable: false
             }, ],
@@ -304,6 +334,9 @@
                 },
                 {
                     data: 'Ci'
+                },
+                {
+                    data: 'Nombre'
                 },
                 {
                     data: 'Fecha_entrada'
@@ -321,11 +354,12 @@
                     data: 'Telefono'
                 },
                 {
-                    data: 'Opciones'
-                },
-                {
                     data: 'Imagen'
                 },
+                {
+                    data: 'Opciones'
+                },
+
             ],
 
             language: {
@@ -345,15 +379,18 @@
     $('#FormularioEnviar').submit(function(e) {
         e.preventDefault();
 
-        var Extencion_Foto = $('#Foto').val().split('.').pop().toLowerCase();
-        
+
+
         const Datos = {
             N_Cedula: $('#Cedula').val(),
+            N_Nombre: $('#NombreApellido').val(),
             N_Cargo: $("#Cargo").val(),
             N_Fecha_Entrada: $("#Fecha_Entrada").val(),
             N_Telefono: $("#Telefono").val(),
             N_Sueldo: $("#Sueldo").val()
         };
+
+        console.log(Datos);
 
         $.post('./BackEnd/Agregar_Trabajadores.php', Datos, function(
             respuesta) { // metodo post del query igualmente funcional que el anterior
@@ -383,20 +420,75 @@
         });
 
     });
+
+    // Click Boton Agregar Permiso de Salida ------------------
+
+    $(document).on('click', '.btnSalidaPermiso', function() {
+        var id_trabajador = this.id;
+        $('#id_trabajador').val(id_trabajador);
+
+        $('#ModalSalidaPermiso').modal('show'); //Abre modal
+
+    });
+
+    // Insertar Salida Permiso-----------------------------
+    $('#formularioSalidaPermiso').submit(function(e) {
+        e.preventDefault();
+
+        const Datos = {
+            N_TipoRebaño: $("#N_TipoRebaño_G").val(),
+        };
+
+        console.log(Datos);
+        $.post('./BackEnd/Agregar_Inventario_Rebaño_Registros_Grandes.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
+
+            //   console.log(Datos);
+            if (respuesta = "Ejecutado") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro Guardado',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $("#ModalRegistrosGrandes").modal('hide');
+
+                //DataTable.ajax.reload();
+
+            } else {}
+        });
+
+    });
+    //  Boton Eliminar Trabajador ------------------------------------------------
+
+    $(document).on('click', '.btnEliminar', function() {
+        var id_trabajador = this.id;
+        console.log(id_trabajador);
+        EliminarRegistroTablaTrabajadores(id_trabajador);
+    });
+
+    // Fin Boton Eliminar Trabajador ------------------------------------------------
     </script>
 
     <script>
-    $('.input-group.date').datepicker({
-        format: "yyyy/mm/dd",
-        language: "es"
+    $('.input-fecha-trabajador').datepicker({
+        format: "yyyy-mm-dd",
+        language: "es",
+        orientation: "bottom auto",
+        startDate: "2022-07-01"
+    });
+
+    $('.input-fecha-permiso').datepicker({
+        format: "yyyy-mm-dd",
+        language: "es",
+        orientation: "bottom auto"
     });
     </script>
 
     <!-- Rellenar datatables con datos mediante ajax -->
 
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/principal.js"></script>
+
 
 </body>
 

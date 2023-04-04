@@ -1,7 +1,7 @@
 <?php 
 include('./conexion_be.php');
 $NumeroAnimal = $_POST['id_animal'];
-// $NumeroAnimal = "10";
+// $NumeroAnimal = "1";
 // Obteniendo datos de inventario 
 $sql = "SELECT * FROM produccion WHERE Inventario_rebaño_ID_animal='$NumeroAnimal'";
 $resultado = $conexion->prepare($sql);
@@ -20,12 +20,19 @@ if($Columnas_Optenidas <= 0){
 }else{
 
   while($datos = $resultado->fetch()){
+    
+    if($datos['Produccion_leche'] == null){
   
     $json[] = array( 
       'Fecha' => $datos['Fecha'],
-      'Tipo_produccion' => $datos['Produccion_leche']." de Leche",
-      
+      'Tipo_produccion' => $datos['Produccion_carne']." Carne",
     );
+  }else{
+    $json[] = array( 
+      'Fecha' => $datos['Fecha'],
+      'Tipo_produccion' => $datos['Produccion_leche']." de Leche",
+    );
+  }
   
 }
 

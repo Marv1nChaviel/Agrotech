@@ -17,6 +17,7 @@
 
                     $("#SRaza").append("<option value='"+id_raza+"'>" + raza + "</option>");
                     $("#N_selectraza").append("<option value='"+id_raza+"'>" + raza + "</option>");
+                    $("#N_Raza_G").append("<option value='"+id_raza+"'>" + raza + "</option>");
                 }
             }
 
@@ -95,6 +96,30 @@
                     $("#N_Lote").append("<option value='"+id_lote+"'>" + lote + "</option>");
                     $("#Lote").append("<option value='"+id_lote+"'>" + lote + "</option>");
                     $("#N_Lote_G").append("<option value='"+id_lote+"'>" + lote + "</option>");
+                }
+            }
+
+        })
+    });
+
+    // <!-- Consultar Operador -->
+
+    $(document).ready(function() {
+        $.ajax({
+            url: './BackEnd/Consulta_Operador.php',
+            type: 'GET',
+            success: function(respuesta) {
+                let json = JSON.parse(respuesta);
+                var len = json.length;
+
+                // $("#selectraza").empty();
+                for (var i = 0; i < len; i++) {
+                    var id_trabajador = json[i]['ID_trabajador'];
+                    var Nombre = json[i]['Nombre'];
+
+                    // console.log('Raza id de la misma es '+id_rebaño);
+
+                    $("#Operador").append("<option value='"+id_trabajador+"'>" + Nombre + "</option>");
                 }
             }
 

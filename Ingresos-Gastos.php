@@ -275,7 +275,7 @@
                         <!-- Cuerpo del formulario------ -->
                         <form id="FormularioEnviar">
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col-4">
                                     <label for=""><b>Tipo de Ingreso:</b></label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="flexRadioDefault"

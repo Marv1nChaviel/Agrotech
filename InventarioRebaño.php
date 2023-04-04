@@ -104,18 +104,15 @@
                     <div class="modal-body">
                         <!-- Cuerpo del formulario------ -->
                         <form class="row g-3" id="FormularioEnviar">
-                            <div class="col-md-5 col-8">
+                            <div class="col-md-6 col-8">
                                 <div class="form-floating">
                                     <input type="number" class="form-control" id="N_NumeroAnimal" name="N_NumeroAnimal"
                                         placeholder="Numero del Animal" required>
                                     <label for="floatingName">Numero del Animal</label>
                                 </div>
                             </div>
-                            <div class="col-md-2 col-4">
-                                <button type="button" class="btn btn-info"><i class="bi bi-qr-code"
-                                        style="font-size: 1.6em;"></i></button>
-                            </div>
-                            <div class="col-md-5 col-7">
+                            
+                            <div class="col-md-6 col-7">
                                 <div class="form-floating mb-3">
                                     <select class="form-select" id="N_TipoRebaño" name="N_TipoRebaño"
                                         aria-label="Tipo de Rebaño" required>
@@ -142,7 +139,7 @@
                                     <label for="Lote">Lote</label>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-5">
+                            <div class="col-md-4 col-5">
                                 <div class="form-floating">
                                     <input type="number" class="form-control" id="N_Partos" name="N_Partos"
                                         placeholder="Partos" required>
@@ -225,7 +222,7 @@
                                 </div>
                             </div>
                             <div class="col-md-2 col-4">
-                                <button type="button" class="btn btn-info"><i class="bi bi-qr-code"
+                                <button type="button" class="btn btn-info btnMostrarQr"><i class="bi bi-qr-code"
                                         style="font-size: 1.6em;"></i></button>
                             </div>
                             <div class="col-md-5 col-7">
@@ -310,6 +307,32 @@
     include('./Modal/Modal_QR.php');
     ?>
 
+    <!-- Modal Mostrar Qr independiente--------------- -->
+
+    <!-- Modal QR------------------------- -->
+<div class="modal fade" id="ModalQR_Mostrar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Titulo">Qr del Animal</h1>
+
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                            <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                       <div id="Mostrar_Qr_Animal"></div>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Fin Modal QR---------------------- -->
+
+    <!-- Fin Modal Mostrar Qr independiente -------------------- -->
 
         <!-- Modal Registros Grandes------------------------- -->
         <div class="modal fade" id="ModalRegistrosGrandes" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -324,11 +347,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="row g-3" id="FormularioEnviar">
+                        <form class="row g-3" id="FormularioRegistrosGrandes">
                             <div class="row">
                                 <div class="col-md-3 col-3">
                                     <div class="form-floating mb-3">
-                                        <select class="form-select" id="G_Sexo" name="G_Sexo" aria-label="Sexo">
+                                        <select class="form-select" id="N_Sexo_G" name="N_Sexo_G" aria-label="Sexo">
                                             <option selected>Sexo</option>
                                             <option value="H">Hembra</option>
                                             <option value="M">Macho</option>
@@ -355,21 +378,31 @@
                                         <label for="Lote">Lote</label>
                                     </div>
                                 </div>
-                                <div class="col-md-5 col-5">
+                                <div class="col-md-4 col-4">
                                     <div class="form-floating mb-3">
                                         <select class="form-select" id="N_Clasificacion_G" name="N_Clasificacion_G"
                                             aria-label="Clasificacion" required>
                                             <option value="" disabled selected hidden>Clasificacion</option>
 
                                         </select>
-                                        <label for="Raza">Clasificacion</label>
+                                        <label for="vs">Clasificacion</label>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-6">
+                                <div class="col-md-4 col-4">
                                     <div class="form-floating mb-3">
-                                        <input class="form-control form-control-lg" type="number" id="Cantidad"
-                                            name="Cantidad" placeholder="Cantidad" required>
-                                        <label for="Raza">Cantidad de Registros</label>
+                                        <select class="form-select" id="N_Raza_G" name="N_Raza_G" aria-label="Raza"
+                                            required>
+                                            <option value="" disabled selected hidden>Raza</option>
+
+                                        </select>
+                                        <label for="vs">Raza</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-4">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control form-control-lg" type="number" id="N_Cantidad_G"
+                                            name="N_Cantidad_G" placeholder="Cantidad" required>
+                                        <label for="N° Registros">N° Registros</label>
                                     </div>
                                 </div>
                             </div>
@@ -402,7 +435,7 @@
                                     <label id="NumeroAnimalInformacion"><b>N° del Animal:</b></label>
                                 </div>
                                 <div class="row">
-                                <label for="" id="NumeroAnimalInformacion"><b>Listado de Produccion:</b></label>
+                                    <label for="" id="NumeroAnimalInformacion"><b>Listado de Produccion:</b></label>
                                     <!--=======Inicio TABLA--------------------------------------------------- =======   -->
                                     <table id="Tabla_Produccion_Animal" class="responsive nowrap display"
                                         style="width:100%">
@@ -467,7 +500,7 @@
             // Aqui definimos caracteristicas de la tabla y 
             // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
             columnDefs: [{
-                targets: [0, 9],
+                targets: [4, 5, 6, 7, 8, 9],
                 searchable: false,
                 orderable: false
             }, ],
@@ -516,7 +549,7 @@
 
 
         });
-        
+
 
 
     });
@@ -565,6 +598,47 @@
 
     });
 
+    // Insertar Registros Grandes-----------------------------
+    $('#FormularioRegistrosGrandes').submit(function(e) {
+        e.preventDefault();
+
+        const Datos = {
+            N_TipoRebaño: $("#N_TipoRebaño_G").val(),
+            N_Lote: $("#N_Lote_G").val(),
+            N_Raza: $("#N_Raza_G").val(),
+            N_Sexo: $("#N_Sexo_G").val(),
+            N_Clasificacion: $("#N_Clasificacion_G").val(),
+            N_Cantidad: $("#N_Cantidad_G").val(),
+        };
+
+        console.log(Datos);
+        $.post('./BackEnd/Agregar_Inventario_Rebaño_Registros_Grandes.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
+
+            //   console.log(Datos);
+            if (respuesta = "Ejecutado") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro Guardado',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $("#ModalRegistrosGrandes").modal('hide');
+
+                //DataTable.ajax.reload();
+                
+            } else {
+
+            }
+
+        });
+
+    });
+
+
+    // Fin insertar Registros Grandes----------------------------
+
     $(document).on('click', '.btnEditar', function() {
         var id_animal = this.id;
 
@@ -595,61 +669,91 @@
         });
     });
 
+    // Click Boton mostrar Qr de la tabla editar ------------------
+
+    $(document).on('click', '.btnMostrarQr', function() {
+        var id_animal = $('#NumeroAnimal').val();
+        console.log(id_animal);
+        const Datos = {
+            id_animal: id_animal
+        };
+        $.post('./BackEnd/MostrarQr_Animal.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
+
+            $('#ModalQR_Mostrar').modal('show'); //Abre modal
+            $('#ModalEditar').modal('hide'); //Abre modal
+            $('#Mostrar_Qr_Animal').html(respuesta);
+
+        });
+    });
+
+    //--------------------------------------------------------------
+
     $(document).on('click', '.btnInformacion', function() {
-
-        
         var id_animal = this.id;
-        
-            $('#ModalInformacionAdicional').modal('show'); //Abre modal
-
-             $('#NumeroAnimalInformacion').html('<b>N° del Animal: '+id_animal+'</b>');
-            //  document.querySelector('#NumeroAnimalInformacion').innerText = '<b>N° del Animal: ${id_animal}</b>';
-             // Tabala de informacion adicional ---------------------------------------------
-
-             var tabla2 = $('#Tabla_Produccion_Animal').DataTable({
-                    scrollY: '200px',
-                    scrollCollapse: true,
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    destroy: true,
-
-                    ajax: {
-                        url: './BackEnd/Consulta_InformacionAdicional.php',
-                        dataSrc: '',
-                        data: { 'id_animal': id_animal },
-                        type : 'post',
-                    },
-                    // Aqui definimos caracteristicas de la tabla y 
-                    // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
-                    columnDefs: [{
-                        targets: [1],
-                        searchable: false,
-                        orderable: false
-                    }, ],
-                    columns: [{
-                            data: 'Fecha'
-                        },
-                        {
-                            data: 'Tipo_produccion'
-                        },
-                    ],
-
-                    language: {
-                        url: './assets/es-ES.json'
-                    },
 
 
-                });
-                
-                // Fin Tabala de informacion adicional ---------------------------------------------
+
+        $('#NumeroAnimalInformacion').html('<b>N° del Animal: ' + id_animal + '</b>');
+        //  document.querySelector('#NumeroAnimalInformacion').innerText = '<b>N° del Animal: ${id_animal}</b>';
+        // Tabala de informacion adicional ---------------------------------------------
+
+        var tabla2 = $('#Tabla_Produccion_Animal').DataTable({
+            scrollY: '200px',
+            scrollCollapse: true,
+            searching: false,
+            paging: false,
+            info: false,
+            destroy: true,
+
+            ajax: {
+                url: './BackEnd/Consulta_InformacionAdicional.php',
+                dataSrc: '',
+                data: {
+                    'id_animal': id_animal
+                },
+                type: 'post',
+            },
+            // Aqui definimos caracteristicas de la tabla y 
+            // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
+            columnDefs: [{
+                targets: [1],
+                searchable: false,
+                orderable: false
+            }, ],
+            columns: [{
+                    data: 'Fecha'
+                },
+                {
+                    data: 'Tipo_produccion'
+                },
+            ],
+
+            language: {
+                url: './assets/es-ES.json'
+            },
 
 
         });
+        $('#ModalInformacionAdicional').modal('show'); //Abre modal
+
+        // Fin Tabala de informacion adicional ---------------------------------------------
 
 
+    });
 
+    // Boton Eliminar inventario ------------------------------------------------
+
+    $(document).on('click', '.btnEliminar', function() {
+        var id_animal = this.id;
+        console.log(id_animal);
+        EliminarRegistroInventarioRebaño(id_animal);
+    });
+
+    // Fin Boton Eliminar inventario ------------------------------------------------
     </script>
+
+    
 
     <!--  -->
 

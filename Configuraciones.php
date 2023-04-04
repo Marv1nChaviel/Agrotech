@@ -1,6 +1,6 @@
 <?php 
 
-$CioRif = $_SESSION['Seccion'];
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
