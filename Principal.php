@@ -22,6 +22,8 @@
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="assets/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="assets/css/cargando.css">
 
 
@@ -174,32 +176,21 @@
 
                                     <div class="activity">
 
-                                        <div class="activity-item d-flex">
-                                            <div class="activite-label">05-03-2023</div>
-                                            <i
-                                                class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                                            <div class="activity-content">
-                                               <b>Se agregaron al registro 10 nuevos animales</b>
-                                            </div>
-                                        </div><!-- End activity item-->
+                                        <!--=======Inicio TABLA--------------------------------------------------- =======   -->
+                                        <table id="ActividadReciente" class="responsive" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <!-- <th>ID_Maquinaria</th> -->
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
+                                            </tbody>
+                                            <tfoot>
 
-                                        <div class="activity-item d-flex">
-                                            <div class="activite-label">02-03-2023</div>
-                                            <i
-                                                class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                                            <div class="activity-content">
-                                                <b>Se modifico datos de el animal con el codigo "2"</b>
-                                            </div>
-                                        </div><!-- End activity item-->
-
-                                        <div class="activity-item d-flex">
-                                            <div class="activite-label">01-03-2023</div>
-                                            <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                                            <div class="activity-content">
-                                                <b>Faltan terminar Modificaciones en tu perfil</b>
-                                            </div>
-                                        </div><!-- End activity item-->
+                                            </tfoot>
+                                        </table>
 
                                     </div>
 
@@ -230,6 +221,9 @@
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery-3.5.1.js"></script>
 
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.responsive.min.js"></script>
+
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="https://kit.fontawesome.com/76b5f911f3.js" crossorigin="anonymous"></script>
@@ -248,6 +242,35 @@
                 $('#canttrabajadores').text(json[0]['cantidad_trabajadores']);
             }
         })
+    });
+// Tabla de pagina principal de actividad reciente inicialzacion y configuracion
+    $(document).ready(function() {
+        $('#ActividadReciente').DataTable({
+            scrollY: '200px',
+            scrollCollapse: true,
+            searching: false,
+            paging: false,
+            info: false,
+            ajax: {
+                url: '',
+                dataSrc: '',
+            },
+            // Aqui definimos caracteristicas de la tabla y 
+            // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
+            columns: [
+                {
+                    data: 'ActividadReciente'
+                },
+            ],
+            language: {
+                url: './assets/es-ES.json'
+            },
+            lengthMenu: [
+                [10],
+                ['10 Filas']
+            ],
+        });
+
     });
     </script>
 </body>
