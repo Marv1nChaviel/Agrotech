@@ -23,7 +23,7 @@
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="assets/css/responsive.dataTables.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/responsive.dataTables.min.css"> -->
     <link rel="stylesheet" href="assets/css/cargando.css">
 
 
@@ -172,12 +172,12 @@
                                 </div> -->
 
                                 <div class="card-body">
-                                    <h5 class="card-title">Actividad Reciente <span>| Hoy</span></h5>
+                                    <h5 class="card-title">Actividad Reciente <span>| Ultimos 10 cambios</span></h5>
 
                                     <div class="activity">
 
                                         <!--=======Inicio TABLA--------------------------------------------------- =======   -->
-                                        <table id="ActividadReciente" class="responsive" style="width:100%">
+                                        <table id="ActividadReciente" class="" style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <!-- <th>ID_Maquinaria</th> -->
@@ -251,15 +251,21 @@
             searching: false,
             paging: false,
             info: false,
+           
             ajax: {
-                url: '',
+                url: './BackEnd/Consulta_Actividad_Reciente.php',
                 dataSrc: '',
             },
             // Aqui definimos caracteristicas de la tabla y 
             // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
+            columnDefs: [{
+                targets: [0],
+                searchable: false,
+                orderable: true
+            }, ],
             columns: [
                 {
-                    data: 'ActividadReciente'
+                    data: 'Datos'
                 },
             ],
             language: {

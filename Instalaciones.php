@@ -155,7 +155,7 @@ function onLocationFound(e) {
         const locationCircle = L.circle(e.latlng, radius, {
             color: 'blue',
             fillColor: '#f03',
-            fillOpacity: 0.1,
+            fillOpacity: 0,
         }).addTo(map);
     }
 

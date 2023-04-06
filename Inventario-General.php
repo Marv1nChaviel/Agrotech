@@ -15,9 +15,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -52,8 +50,7 @@
                     <li class="breadcrumb-item active">Inventario General</li>
                 </ol>
             </nav>
-            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
-                    class="bi bi-file-earmark-plus"></i>
+            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i class="bi bi-file-earmark-plus"></i>
                 Agregar Inventario</button>
 
         </div>
@@ -80,8 +77,7 @@
         <!--======= Final TABLA--------------------------------------------------- =======   -->
 
         <!-- Modal Nuevo -------------------------------------- -->
-        <div class="modal fade" id="ModalNuevo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="ModalNuevo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -100,17 +96,14 @@
                                     <div class="row"></div>
                                     <div class="row">
                                         <div class="col-md-3 col-8 ">
-                                            <img src="./assets/img/inventario_icono.png" alt="" width="130"
-                                                height="130">
+                                            <img src="./assets/img/inventario_icono.png" alt="" width="130" height="130">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <!-- Boton de subir foto -->
                                         <div class="file-input">
-                                            <input type="file" name="file-input" id="file-input"
-                                                class="file-input__input" />
-                                            <label class="file-input__label" for="file-input"><i
-                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                            <input type="file" name="file-input" id="file-input" class="file-input__input" />
+                                            <label class="file-input__label" for="file-input"><i class="bi bi-upload"></i><span>-Subir Foto</span></label>
                                         </div>
                                         <!-- Fin Boton de subir foto -->
                                     </div>
@@ -120,22 +113,19 @@
                                     <div class="row g-3">
                                         <div class="col-md-12 col-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="NombreObjeto"
-                                                    name="NombreObjeto" placeholder="NombreObjeto" required>
+                                                <input type="text" class="form-control" id="NombreObjeto" name="NombreObjeto" placeholder="NombreObjeto" required>
                                                 <label for="NombreObjeto">Nombre del Objeto</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
                                             <div class="form-floating">
-                                                <input type="number" class="form-control" id="CantDisponible"
-                                                    name="CantDisponible" placeholder="CantDisponible" required>
+                                                <input type="number" class="form-control" id="CantDisponible" name="CantDisponible" placeholder="CantDisponible" required>
                                                 <label for="CantDisponible">N° Disponible</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
                                             <div class="form-floating mb-3">
-                                                <select class="form-select" id="Operador" name="Operador"
-                                                    aria-label="Operador" required>
+                                                <select class="form-select" id="Operador" name="Operador" aria-label="Operador" required>
                                                     <option disabled selected hidden>Operador</option>
                                                 </select>
                                                 <label for="Sexo">Operador</label>
@@ -143,8 +133,7 @@
                                         </div>
                                         <div class="col-md-12 col-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="InfoObjeto"
-                                                    name="InfoObjeto" placeholder="InfoObjeto" required>
+                                                <input type="text" class="form-control" id="InfoObjeto" name="InfoObjeto" placeholder="InfoObjeto" required>
                                                 <label for="InfoObjeto">Informacion del Objeto</label>
                                             </div>
                                         </div>
@@ -170,7 +159,7 @@
     </main><!-- End #main -->
 
     <!-- Pie de pagina---- -->
-    <?php 
+    <?php
     include('./Pie_De_Pagina.php');
     ?>
 
@@ -192,96 +181,96 @@
 
     <!-- Configuracion basica datatables  -->
     <script>
-    $(document).ready(function() {
-        var tabla = $('#Inventario_General').DataTable({
+        $(document).ready(function() {
+            var tabla = $('#Inventario_General').DataTable({
 
-            ajax: {
-                url: './BackEnd/Consulta_Inventario_General.php',
-                dataSrc: '',
-            },
-            columns: [{
-                    data: 'id_Inventario'
+                ajax: {
+                    url: './BackEnd/Consulta_Inventario_General.php',
+                    dataSrc: '',
                 },
-                {
-                    data: 'Nombre_item'
-                },
-                {
-                    data: 'Info_item'
-                },
-                {
-                    data: 'Stock'
-                },
-                {
-                    data: 'Trabajador'
-                },
-                {
-                    data: 'Opciones'
-                },
+                columns: [{
+                        data: 'id_Inventario'
+                    },
+                    {
+                        data: 'Nombre_item'
+                    },
+                    {
+                        data: 'Info_item'
+                    },
+                    {
+                        data: 'Stock'
+                    },
+                    {
+                        data: 'Trabajador'
+                    },
+                    {
+                        data: 'Opciones'
+                    },
 
 
 
-            ],
+                ],
 
-            language: {
-                url: './assets/es-ES.json'
-            },
-            lengthMenu: [
-                [10, 25, 50, 100, 200, -1],
-                ['10 Filas', '25 Filas', '50 Filas', '100 Filas', '200 Filas', 'Todas']
-            ]
+                language: {
+                    url: './assets/es-ES.json'
+                },
+                lengthMenu: [
+                    [10, 25, 50, 100, 200, -1],
+                    ['10 Filas', '25 Filas', '50 Filas', '100 Filas', '200 Filas', 'Todas']
+                ]
+
+
+            });
 
 
         });
 
+        // Rellenar datatables con datos mediante ajax---------------
+        $('#FormularioEnviar').submit(function(e) {
+            e.preventDefault();
 
-    });
+            const Datos = {
+                N_NombreObjeto: $('#NombreObjeto').val(),
+                N_CantDisponible: $("#CantDisponible").val(),
+                N_Operador: $("#Operador").val(),
+                N_InfoObjeto: $("#InfoObjeto").val(),
+            };
 
-    // Rellenar datatables con datos mediante ajax---------------
-    $('#FormularioEnviar').submit(function(e) {
-        e.preventDefault();
+            $.post('./BackEnd/Agregar_Inventario_General.php', Datos, function(
+                respuesta) { // metodo post del query igualmente funcional que el anterior
 
-        const Datos = {
-            N_NombreObjeto: $('#NombreObjeto').val(),
-            N_CantDisponible: $("#CantDisponible").val(),
-            N_Operador: $("#Operador").val(),
-            N_InfoObjeto: $("#InfoObjeto").val(),
-        };
+                //   console.log(Datos);
+                //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
 
-        $.post('./BackEnd/Agregar_Inventario_General.php', Datos, function(
-            respuesta) { // metodo post del query igualmente funcional que el anterior
+                if (respuesta = "Ejecutado") {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Agregado a inventario!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    $("#ModalNuevo").modal('hide');
 
-            //   console.log(Datos);
-            //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
+                    //DataTable.ajax.reload();
+                    tabla.ajax.reload(null, false);
+                    DataTable.ajax.reload();
+                } else {
 
-            if (respuesta = "Ejecutado") {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Agregado a inventario!',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                $("#ModalNuevo").modal('hide');
+                }
 
-                //DataTable.ajax.reload();
-                tabla.ajax.reload(null, false);
-                DataTable.ajax.reload();
-            } else {
-
-            }
+            });
 
         });
 
-    });
+        //  Boton Eliminar inventario general ------------------------------------------------
 
-    //  Boton Eliminar inventario general ------------------------------------------------
+        $(document).on('click', '.btnEliminar', function() {
+            var id_inventario = this.id;
+            EliminarRegistroInventarioGeneral(id_inventario);
+        });
 
-    $(document).on('click', '.btnEliminar', function() {
-        var id_inventario = this.id;
-        EliminarRegistroInventarioGeneral(id_inventario);
-    });
-
-    // Fin Boton Eliminar inventario general ------------------------------------------------
+        // Fin Boton Eliminar inventario general ------------------------------------------------
     </script>
 
 

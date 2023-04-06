@@ -40,7 +40,8 @@ window.addEventListener('load', function() {
               'El Trabajador fue eliminado de la Base de Datos por completo.',
               'success'
             )
-            
+             // Busca la tabla trabajadores y la recarga
+             $('#InventarioTrabajadores').DataTable().ajax.reload();
           }else{
               Swal.fire(
                   'ERROR!',
@@ -82,6 +83,8 @@ window.addEventListener('load', function() {
               'El Animal fue eliminado de la Base de Datos por completo.',
               'success'
             )
+            // Busca la tabla Inventario Rebaño y la recarga
+            $('#Inventario_Rebaño').DataTable().ajax.reload();
           }else{
               Swal.fire(
                   'ERROR!',
@@ -124,6 +127,8 @@ window.addEventListener('load', function() {
                 'La Maquinaria fue eliminado de la Base de Datos por completo.',
                 'success'
               )
+                // Busca la tabla Maquinaria y la recarga
+            $('#Inventario').DataTable().ajax.reload();
             }else{
                 Swal.fire(
                     'ERROR!',
@@ -166,6 +171,8 @@ window.addEventListener('load', function() {
                 'Eliminado de la Base de Datos por completo.',
                 'success'
               )
+                // Busca la tabla inventario general y la recarga
+            $('#Inventario_General').DataTable().ajax.reload();
             }else{
                 Swal.fire(
                     'ERROR!',

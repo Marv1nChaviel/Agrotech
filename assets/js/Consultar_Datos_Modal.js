@@ -120,6 +120,7 @@
                     // console.log('Raza id de la misma es '+id_rebaño);
 
                     $("#Operador").append("<option value='"+id_trabajador+"'>" + Nombre + "</option>");
+                    $("#Trabajador").append("<option value='"+id_trabajador+"'>" + Nombre + "</option>");
                 }
             }
 

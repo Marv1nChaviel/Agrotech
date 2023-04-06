@@ -77,13 +77,12 @@
             </tfoot>
         </table>
 
-        <!-- Modal Editar -------------------------------------- -->
-        <div class="modal fade" id="ModalEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <!-- Modal Nuevo -------------------------------------- -->
+        <div class="modal fade" id="ModalNuevo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="Titulo">Editar Datos Trabajadores</h1>
+                        <h1 class="modal-title fs-5" id="Titulo">Agregar Inventario</h1>
 
                         <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
                             <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
@@ -91,65 +90,90 @@
                     </div>
                     <div class="modal-body">
                         <!-- Cuerpo del formulario------ -->
-                        <form>
+                        <form id="FormularioEnviar">
                             <!-- Columna izquierda -->
                             <div class="row">
-                                <div class="col-md-4 col-4">
+                                <div class="col-md-4 col-12 ">
                                     <div class="row"></div>
                                     <div class="row">
-                                        <div class="col-md-3 col-8">
-                                            <img src="./assets/img/soporte.png" alt="" width="130" height="130">
+                                        <div class="col-md-3 col-8 ">
+                                            <img src="./assets/img/tractor_icono.png" alt="" width="130" height="130">
                                         </div>
                                     </div>
-                                    <div class="row"></div>
+                                    <div class="row">
+                                        <!-- Boton de subir foto -->
+                                        <div class="file-input">
+                                            <input type="file" name="file-input" id="file-input" class="file-input__input" />
+                                            <label class="file-input__label" for="file-input"><i class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                        </div>
+                                        <!-- Fin Boton de subir foto -->
+                                    </div>
                                 </div>
                                 <!-- fin Columna izquierda -->
-                                <div class="col-md-8 col-8">
-                                <div class="row g-3">
-                                <div class="col-md-6 col-6">
-                                    <div class="form-floating">
-                                        <input type="number" class="form-control" id="Cedula" placeholder="Cedula">
-                                        <label for="Cedula">Cedula</label>
+                                <div class="col-md-8 col-12">
+                                    <div class="row g-3">
+                                        <div class="col-md-6 col-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Marca" name="Marca" placeholder="Marca" required>
+                                                <label for="Marca">Marca</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-6">
+                                        <div class="form-floating">
+                                                <input type="text" class="form-control" id="Modelo" name="Modelo" placeholder="Modelo" required>
+                                                <label for="Modelo">Modelo</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-6">
+                                        <div class="form-floating">
+                                                <input type="text" class="form-control" id="Color" name="Color" placeholder="Color" required>
+                                                <label for="Color">Color</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-6">
+                                        <div class="form-floating">
+                                                <input type="number" class="form-control" id="HorasdeUso" name="HorasdeUso" placeholder="Horas de Uso" required>
+                                                <label for="HorasdeUso">Horas de Uso</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-5">
+                                        <div class="form-floating mb-3">
+                                                <select class="form-select" id="Año" name="Año" aria-label="Año" size="1" required>
+                                                    <option disabled selected hidden>Año</option>
+                                                    <?php 
+                                                    for ($i=1990; $i < 2014; $i++) { 
+                                                    ?>
+                                                    <option value="<?php echo $i?>"><?php echo $i?></option>
+                                                    <?php } ?>
+                                                </select>
+                                                <label for="Año">Año</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <div class="form-floating mb-3">
+                                                <select class="form-select" id="Trabajador" name="Trabajador" aria-label="Trabajador" required>
+                                                    <option disabled selected hidden>Trabajador</option>
+                                                </select>
+                                                <label for="Trabajador">Trabajador</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 col-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="Cargo" placeholder="Cargo">
-                                        <label for="Cargo">Cargo</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 col-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="Fecha_Entrada"
-                                            placeholder="Fecha Entrada">
-                                        <label for="Fecha Entrada">Fecha Entrada</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="Fecha_de_Permiso"
-                                            placeholder="Fecha de Permiso">
-                                        <label for="Fecha de Permiso">Fecha de Permiso</label>
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                                
                             </div>
-                        </form>
-                        <!-- FIN Cuerpo del formulario -->
+
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-success"><i class="bi bi-check2-circle"></i>
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
                             Guardar</button>
                     </div>
+                    </form>
+                    <!-- FIN Cuerpo del formulario -->
                 </div>
             </div>
         </div>
-        <!--  fin Modal Editar -------------------------------------- -->
+        <!--  fin Modal Nuevo -------------------------------------- -->
         <!--======= Final TABLA--------------------------------------------------- =======   -->
     </main><!-- End #main -->
 <!-- Pie de pagina---- -->
@@ -165,6 +189,8 @@
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.responsive.min.js"></script>
     <script src="assets/js/sweetalert2.all.min.js"></script>
+       <!-- Consultas de los modales en este script -->
+       <script src="./assets/js/Consultar_Datos_Modal.js"></script>
 
 
     <script>
@@ -220,9 +246,9 @@
     //  Boton Eliminar Maquinaria ------------------------------------------------
 
     $(document).on('click', '.btnEliminar', function() {
-        var id_maquinaria = this.id;
-        
-        EliminarRegistroMaquinaria(id_maquinaria);
+        var id_trabajador = this.id;
+        console.log(id_trabajador);
+        EliminarRegistroMaquinaria(id_trabajador);
     });
 
     // Fin Boton Eliminar Maquinaria ------------------------------------------------

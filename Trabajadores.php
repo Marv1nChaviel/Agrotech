@@ -190,12 +190,12 @@
         </div>
         <!--  fin Modal Nuevo -------------------------------------- -->
         <!-- Modal Editar -------------------------------------- -->
-        <div class="modal fade" id="ModalEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="ModalEditarTrabajadores" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="Titulo">Editar Datos Trabajadores</h1>
+                        <h1 class="modal-title fs-5" id="Titulo">Agregar Trabajadores</h1>
 
                         <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
                             <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
@@ -203,70 +203,104 @@
                     </div>
                     <div class="modal-body">
                         <!-- Cuerpo del formulario------ -->
-                        <form>
+                        <form id="FormularioEnviar">
                             <!-- Columna izquierda -->
                             <div class="row">
                                 <div class="col-md-4 col-12 ">
-                                    <div class="row"></div>
+                                    <div class="row">
+                                    <input type="number" class="form-control" id="E_id_trabajador" name="E_id_trabajador" hidden>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-3 col-8 ">
-                                            <img src="./assets/img/soporte.png" alt="" width="130" height="130">
+                                            <img src="./assets/img/icon-user.png" id="E_FotoTrabajadores" alt="" width="130" height="130">
                                         </div>
                                     </div>
-                                    <div class="row"></div>
+                                    <div class="row">
+
+                                        <!-- Boton de subir foto -->
+                                        <div class="file-input">
+                                            <input type="file" name="file-input" id="file-input"
+                                                class="file-input__input" />
+                                            <label class="file-input__label" for="file-input"><i
+                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                        </div>
+                                        <!-- Fin Boton de subir foto -->
+
+                                    </div>
                                 </div>
                                 <!-- fin Columna izquierda -->
                                 <div class="col-md-8 col-12">
                                     <div class="row g-3">
-                                        <div class="col-md-6 col-6">
+                                        <div class="col-md-12 col-12">
                                             <div class="form-floating">
-                                                <input type="number" class="form-control" id="Cedula"
-                                                    placeholder="Cedula">
-                                                <label for="Cedula">Cedula</label>
+                                                <input type="text" class="form-control" id="E_NombreApellido"
+                                                    name="NombreApellido" placeholder="Sueldo" required>
+                                                <label for="NombreApellido">Nombre y Apellido</label>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-6 col-6">
+                                        <div class="col-md-12 col-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="Cargo" placeholder="Cargo">
+                                                <input type="text" class="form-control" id="E_Cargo" name="Cargo"
+                                                    placeholder="Cargo" required>
                                                 <label for="Cargo">Cargo</label>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 col-6">
-                                            <div class="input-group date">
-                                                <input type="text" class="form-control"><span
-                                                    class="input-group-addon"><i
+                                            <div class="form-floating">
+                                                <input type="number" class="form-control" id="E_Cedula" name="Cedula"
+                                                    placeholder="Cedula" required>
+                                                <label for="Cedula">Cedula</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-6">
+                                            <div class="input-group mb-3">
+                                                <div class="form-floating">
+                                                    <input type="number" class="form-control" id="E_Sueldo"
+                                                        placeholder="Username">
+                                                    <label for="Sueldo">Sueldo</label>
+                                                </div>
+                                                <span class="input-group-text"><i
+                                                        class="bi bi-currency-dollar"></i></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-6">
+                                            <div class="input-group date input-fecha-trabajador">
+                                                <input type="date" class="form-control" id="E_Fecha_Entrada"
+                                                    name="Fecha_Entrada"><span class="input-group-addon"><i
                                                         class="glyphicon glyphicon-th"></i></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="Fecha_de_Permiso"
-                                                    placeholder="Fecha de Permiso">
-                                                <label for="Fecha de Permiso">Fecha de Permiso</label>
+                                                <input type="text" class="form-control" id="E_Telefono" name="Telefono"
+                                                    placeholder="Telefono" required>
+                                                <label for="Telefono">Telefono</label>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
 
                             </div>
-                        </form>
-                        <!-- FIN Cuerpo del formulario -->
+
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-success"><i class="bi bi-check2-circle"></i>
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
                             Guardar</button>
                     </div>
+                    </form>
+                    <!-- FIN Cuerpo del formulario -->
                 </div>
             </div>
-        </div>
         <!--  fin Modal Editar -------------------------------------- -->
         <!-- Modal Agregar Salida Permiso -------------------------------------- -->
         <div class="modal fade" id="ModalSalidaPermiso" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="Titulo">Salida de Permiso</h1>
@@ -287,7 +321,7 @@
                     <div class="modal-footer">
 
                         <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
-                            Generar</button>
+                            Guardar</button>
                     </div>
                 </div>
             </div>
@@ -314,6 +348,7 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/principal.js"></script>
+    <script src="assets/js/Consulta_Modal_Editar.js"></script>
 
     <script>
     $(document).ready(function() {
@@ -426,40 +461,13 @@
     $(document).on('click', '.btnSalidaPermiso', function() {
         var id_trabajador = this.id;
         $('#id_trabajador').val(id_trabajador);
-
-        $('#ModalSalidaPermiso').modal('show'); //Abre modal
+        $('#ModalSalidaPermiso').modal('show'); //Abre modal //Abre modal
+        
 
     });
 
     // Insertar Salida Permiso-----------------------------
-    $('#formularioSalidaPermiso').submit(function(e) {
-        e.preventDefault();
-
-        const Datos = {
-            N_TipoRebaño: $("#N_TipoRebaño_G").val(),
-        };
-
-        console.log(Datos);
-        $.post('./BackEnd/Agregar_Inventario_Rebaño_Registros_Grandes.php', Datos, function(
-            respuesta) { // metodo post del query igualmente funcional que el anterior
-
-            //   console.log(Datos);
-            if (respuesta = "Ejecutado") {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Registro Guardado',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                $("#ModalRegistrosGrandes").modal('hide');
-
-                //DataTable.ajax.reload();
-
-            } else {}
-        });
-
-    });
+   
     //  Boton Eliminar Trabajador ------------------------------------------------
 
     $(document).on('click', '.btnEliminar', function() {
@@ -469,6 +477,16 @@
     });
 
     // Fin Boton Eliminar Trabajador ------------------------------------------------
+
+    //  Boton Editar Trabajador ------------------------------------------------
+
+    $(document).on('click', '.btnEditarTrabajadores', function() {
+        var id_trabajador = this.id;
+        console.log(id_trabajador);
+        ModalEditarTrabajadores(id_trabajador);
+    });
+
+    // Fin Boton Editar Trabajador ------------------------------------------------
     </script>
 
     <script>

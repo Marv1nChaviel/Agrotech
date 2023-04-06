@@ -111,7 +111,7 @@
                                     <label for="floatingName">Numero del Animal</label>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-6 col-7">
                                 <div class="form-floating mb-3">
                                     <select class="form-select" id="N_TipoRebaño" name="N_TipoRebaño"
@@ -307,10 +307,10 @@
     include('./Modal/Modal_QR.php');
     ?>
 
-    <!-- Modal Mostrar Qr independiente--------------- -->
+        <!-- Modal Mostrar Qr independiente--------------- -->
 
-    <!-- Modal QR------------------------- -->
-<div class="modal fade" id="ModalQR_Mostrar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <!-- Modal QR------------------------- -->
+        <div class="modal fade" id="ModalQR_Mostrar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -322,7 +322,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                       <div id="Mostrar_Qr_Animal"></div>
+                        <div id="Mostrar_Qr_Animal"></div>
                     </div>
                     <div class="modal-footer">
 
@@ -330,9 +330,9 @@
                 </div>
             </div>
         </div>
-<!-- Fin Modal QR---------------------- -->
+        <!-- Fin Modal QR---------------------- -->
 
-    <!-- Fin Modal Mostrar Qr independiente -------------------- -->
+        <!-- Fin Modal Mostrar Qr independiente -------------------- -->
 
         <!-- Modal Registros Grandes------------------------- -->
         <div class="modal fade" id="ModalRegistrosGrandes" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -484,6 +484,7 @@
     <!-- otros js -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/principal.js"></script>
+    <script src="assets/js/Consulta_Modal_Editar.js"></script>
     <script src="assets/js/sweetalert2.all.min.js"></script>
     <!-- Iconos -->
     <script src="https://kit.fontawesome.com/76b5f911f3.js" crossorigin="anonymous"></script>
@@ -587,15 +588,15 @@
                 })
                 $("#ModalNuevo").modal('hide');
 
-                //DataTable.ajax.reload();
-                tabla.ajax.reload(null, false);
-                DataTable.ajax.reload();
             } else {
 
             }
 
         });
 
+
+        // Busca la tabla Inventario Rebaño y la recarga
+        $('#Inventario_Rebaño').DataTable().ajax.reload();
     });
 
     // Insertar Registros Grandes-----------------------------
@@ -627,47 +628,20 @@
                 $("#ModalRegistrosGrandes").modal('hide');
 
                 //DataTable.ajax.reload();
-                
+
             } else {
 
             }
 
         });
-
+        // Busca la tabla inventario Rebaño y la recarga
+        $('#Inventario_Rebaño').DataTable().ajax.reload();
     });
 
 
     // Fin insertar Registros Grandes----------------------------
 
-    $(document).on('click', '.btnEditar', function() {
-        var id_animal = this.id;
-
-
-        const Datos = {
-            id_animal: id_animal
-        };
-        $.post('./BackEnd/Consulta_Inventario_Rebaño_Modal_Editar.php', Datos, function(
-            respuesta) { // metodo post del query igualmente funcional que el anterior
-            console.log(id_animal);
-            $('#ModalEditar').modal('show'); //Abre modal
-            let json = JSON.parse(respuesta); //Almacena el resultado del json en el let json
-            json.forEach(json => { //Se asignan los valores obtendios en json a su respectivo input
-                $('#NumeroAnimal').val(json.ID_animal);
-                $('#TipoRebaño').val(json.Tipo_rebaño_ID_tipo_rebaño);
-                $('#Color').val(json.Color);
-                $('#Lote').val(json.Lote_ID_lote);
-                $('#Partos').val(json.Partos);
-                $('#Peso').val(json.Peso);
-                $('#SRaza').val(json.Raza);
-                $('#SSexo').val(json.Sexo);
-                $('#Clasificacion').val(json.ID_clasificacion);
-
-
-            });
-
-
-        });
-    });
+   
 
     // Click Boton mostrar Qr de la tabla editar ------------------
 
@@ -750,10 +724,11 @@
         EliminarRegistroInventarioRebaño(id_animal);
     });
 
+
     // Fin Boton Eliminar inventario ------------------------------------------------
     </script>
 
-    
+
 
     <!--  -->
 
