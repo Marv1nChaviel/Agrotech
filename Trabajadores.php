@@ -296,11 +296,12 @@
                     <!-- FIN Cuerpo del formulario -->
                 </div>
             </div>
+            </div>
         <!--  fin Modal Editar -------------------------------------- -->
         <!-- Modal Agregar Salida Permiso -------------------------------------- -->
         <div class="modal fade" id="ModalSalidaPermiso" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="Titulo">Salida de Permiso</h1>
@@ -321,7 +322,7 @@
                     <div class="modal-footer">
 
                         <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
-                            Guardar</button>
+                            Generar</button>
                     </div>
                 </div>
             </div>
@@ -442,7 +443,7 @@
                     timer: 1500
                 })
                 $("#ModalNuevo").modal('hide');
-
+                $('#InventarioTrabajadores').DataTable().ajax.reload();
                 //DataTable.ajax.reload();
 
 

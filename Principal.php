@@ -243,31 +243,25 @@
             }
         })
     });
-// Tabla de pagina principal de actividad reciente inicialzacion y configuracion
+    // Tabla de pagina principal de actividad reciente inicialzacion y configuracion
     $(document).ready(function() {
-        $('#ActividadReciente').DataTable({
+        var Tabla = $('#ActividadReciente').DataTable({
             scrollY: '200px',
             scrollCollapse: true,
             searching: false,
             paging: false,
             info: false,
-           
+            order: [[0, 'desc']], //Odenar datatable de manera descendente para que los ultimos registros queden arriba
+
             ajax: {
                 url: './BackEnd/Consulta_Actividad_Reciente.php',
                 dataSrc: '',
             },
             // Aqui definimos caracteristicas de la tabla y 
-            // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
-            columnDefs: [{
-                targets: [0],
-                searchable: false,
-                orderable: true
+
+            columns: [{
+                data: 'Datos'
             }, ],
-            columns: [
-                {
-                    data: 'Datos'
-                },
-            ],
             language: {
                 url: './assets/es-ES.json'
             },

@@ -17,7 +17,7 @@ while($datos = $resultado->fetch()){
       'Stock' => $datos['Stock']." Unidades",
       'Trabajador' => $datos['Nombre'],
       'Opciones'=>'
-      <button type="button" class="btn btn-warning btnEditar" name="btnEditar" id="" ><i class="bi bi-pencil"></i></button>
+      <button type="button" class="btn btn-warning btnEditar" name="btnEditar" id="'.$datos['ID_inventario'].'" ><i class="bi bi-pencil"></i></button>
       <button type="button" class="btn btn-danger btnEliminar" id="'.$datos['ID_inventario'].'"><i class="bi bi-trash3"></i></button>'
     );
     

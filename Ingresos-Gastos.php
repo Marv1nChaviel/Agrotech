@@ -132,22 +132,14 @@
                 <!-- Tabla de ingresos  -->
 
                 <div class="table-ingresos">
-                    <table id="myIngresos" class="display">
+                    <table id="TablaIngresos" class="display">
                         <thead>
                             <tr>
-                                <th>Column 1</th>
-                                <th>Column 2</th>
+                                <th>Fecha</th>
+                                <th>Ingreso</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Row 1 Data 1</td>
-                                <td>Row 1 Data 2</td>
-                            </tr>
-                            <tr>
-                                <td>Row 2 Data 1</td>
-                                <td>Row 2 Data 2</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -236,22 +228,15 @@
                 <!-- Tabla de Egresos -->
 
                 <div class="table-Egresos">
-                    <table id="myEgresos" class="display">
+                    <table id="TablaEgresos" class="display">
                         <thead>
                             <tr>
-                                <th>Column 1</th>
-                                <th>Column 2</th>
+                                <th>Fecha</th>
+                                <th>Egreso</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Row 1 Data 1</td>
-                                <td>Row 1 Data 2</td>
-                            </tr>
-                            <tr>
-                                <td>Row 2 Data 1</td>
-                                <td>Row 2 Data 2</td>
-                            </tr>
+
                         </tbody>
                     </table>
 
@@ -358,30 +343,34 @@
                             <div class="container-fluid">
                                 <label for=""><b>Selecciona el registro de Produccion:</b></label>
                                 <div class="row">
-                                <div class="col-4">
-                                <label for="">Fecha:</label>
-                                    <select class="form-select" size="7" aria-label="size 3 select example">
-                                    <!-- <option selected>Selecciona el registro de Produccion</option> -->
-                                    <option value="1">29/10/2022</option>
-                                </select></div>
-                                <div class="col-4">
-                                <label for="">N° Animal:</label>
-                                    <select class="form-select" size="7" aria-label="size 3 select example">
-                                    <!-- <option selected>Selecciona el registro de Produccion</option> -->
-                                    <option value="1">25215235</option>
-                                </select></div>
-                                <div class="col-4">
-                                <label for="">Produccion:</label>
-                                <select class="form-select" size="7" aria-label="size 3 select example">
-                                    <!-- <option selected>Selecciona el registro de Produccion</option> -->
-                                    <option value="1">50 litros</option>
-                                </select></div>
+                                    <div class="col-4">
+                                        <label for="">Fecha:</label>
+                                        <select class="form-select" size="7"  id="SelectFechaRegistroProduccion" aria-label="size 3 select example" require>
+                                            <!-- <option selected>Selecciona el registro de Produccion</option> -->
+                                            <!-- <option value="1">29/10/2022</option> -->
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="">N° Animal:</label>
+                                        <select class="form-select" size="7" id="SelectAnimalRegistroProduccion" aria-label="size 3 select example" require>
+                                            <!-- <option selected>Selecciona el registro de Produccion</option> -->
+                                            <!-- <option value="1">25215235</option> -->
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="">Produccion:</label>
+                                        <select class="form-select" size="7" id="SelectProduccionRegistroProduccion" aria-label="size 3 select example" require>
+                                            <!-- <option selected>Selecciona el registro de Produccion</option> -->
+                                            <!-- <option value="1">50 litros</option> -->
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                     </div>
                     <div class="modal-footer">
 
-                        <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i> Seleccionar</button>
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
+                            Seleccionar</button>
                     </div>
                     </form>
                     <!-- FIN Cuerpo del formulario -->
@@ -408,52 +397,31 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/principal.js"></script>
+    <script src="assets/js/Select_Produccion.js"></script>
     <script>
     $(document).ready(function() {
-        $('#myIngresos').DataTable({
+        $('#TablaIngresos').DataTable({
+            scrollY: '200px',
+            scrollCollapse: true,
+            searching: false,
+            paging: false,
+            info: false,
+            
             ajax: {
-                url: './BackEnd/Consulta_Inventario_Rebaño.php',
+                url: './BackEnd/Consulta_Ingresos.php',
                 dataSrc: '',
+                type: "POST",
+                data: {
+                    Operacion: "Ingresos"
+                }
             },
             // Aqui definimos caracteristicas de la tabla y 
-            // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
-            columnDefs: [{
-                targets: [0, 9],
-                searchable: false,
-                orderable: false
-            }, ],
             columns: [{
-                    data: 'Nro_animal'
+                    data: 'Fecha'
                 },
                 {
-                    data: 'Tipo_rebaño_ID_tipo_rebaño'
+                    data: 'Ingreso'
                 },
-                {
-                    data: 'Color'
-                },
-                {
-                    data: 'Lote_ID_lote'
-                },
-                {
-                    data: 'Partos'
-                },
-                {
-                    data: 'Peso'
-                },
-                {
-                    data: 'ID_raza'
-                },
-                {
-                    data: 'Sexo'
-                },
-                {
-                    data: 'ID_clasificacion'
-                },
-                {
-                    data: 'Opciones'
-                },
-
-
 
             ],
 
@@ -467,50 +435,32 @@
 
 
         });
-        $('#myEgresos').DataTable({
+
+    });
+    $(document).ready(function() {
+        $('#TablaEgresos').DataTable({
+            scrollY: '200px',
+            scrollCollapse: true,
+            searching: false,
+            paging: false,
+            info: false,
+
             ajax: {
-                url: './BackEnd/Consulta_Inventario_Rebaño.php',
+                url: './BackEnd/Consulta_Egresos.php',
                 dataSrc: '',
+                type: "POST",
+                data: {
+                    Operacion: "Egresos"
+                }
             },
             // Aqui definimos caracteristicas de la tabla y 
-            // evitamos que la columna 0 y la 10 sean buscables y no se puedan ordenar
-            columnDefs: [{
-                targets: [0, 9],
-                searchable: false,
-                orderable: false
-            }, ],
+
             columns: [{
-                    data: 'Nro_animal'
+                    data: 'Fecha'
                 },
                 {
-                    data: 'Tipo_rebaño_ID_tipo_rebaño'
+                    data: 'Egresos'
                 },
-                {
-                    data: 'Color'
-                },
-                {
-                    data: 'Lote_ID_lote'
-                },
-                {
-                    data: 'Partos'
-                },
-                {
-                    data: 'Peso'
-                },
-                {
-                    data: 'ID_raza'
-                },
-                {
-                    data: 'Sexo'
-                },
-                {
-                    data: 'ID_clasificacion'
-                },
-                {
-                    data: 'Opciones'
-                },
-
-
 
             ],
 

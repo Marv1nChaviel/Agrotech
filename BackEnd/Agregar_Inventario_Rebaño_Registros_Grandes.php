@@ -1,6 +1,6 @@
 <?php 
 include('./conexion_be.php');
-
+include('./Agregar_Actividad_Reciente.php');
 $N_TipoRebaño = $_POST['N_TipoRebaño'];
 $N_Lote = $_POST['N_Lote'];
 $N_selectsexo = $_POST['N_Sexo'];
@@ -33,6 +33,7 @@ $ejecutar->execute();
 
 if($ejecutar->errorCode() == 0){
     echo "Ejecutado";
+    AgregarActividadReciente("Se agregaron ".$Cantidad." nuevos registros a Inventario Rebaño","text-success");
 }else{
     echo "Error";
 }

@@ -128,7 +128,7 @@ window.addEventListener('load', function() {
                 'success'
               )
                 // Busca la tabla Maquinaria y la recarga
-            $('#Inventario').DataTable().ajax.reload();
+            $('#InventarioMaquina').DataTable().ajax.reload();
             }else{
                 Swal.fire(
                     'ERROR!',

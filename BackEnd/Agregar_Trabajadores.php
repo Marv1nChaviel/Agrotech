@@ -1,6 +1,6 @@
 <?php 
 include('./conexion_be.php');
-
+include('./Agregar_Actividad_Reciente.php');
 $N_Cedula = $_POST['N_Cedula'];
 $N_Nombre = $_POST['N_Nombre'];
 $N_Cargo = $_POST['N_Cargo'];
@@ -64,6 +64,7 @@ $ejecutar->bindParam(6,$N_Nombre);
 // Excecute
 if($ejecutar->execute()){
     echo "Ejecutado";
+    AgregarActividadReciente("Se agrego el trabajador ".$N_Nombre." al Registro","text-success");
 }else{
     echo "Error";
 }

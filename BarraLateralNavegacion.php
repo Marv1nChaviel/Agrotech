@@ -26,12 +26,12 @@ $nombre_dueño = $_SESSION['Nombre_Usuario'];
 
 
 
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
 
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                 <i class="bi bi-bell"></i>
                 <span class="badge bg-primary badge-number">8</span>
-            </a><!-- End Notification Icon -->
+            </a>
 
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                 <li class="dropdown-header">
@@ -97,9 +97,9 @@ $nombre_dueño = $_SESSION['Nombre_Usuario'];
                     <a href="#">Show all notifications</a>
                 </li>
 
-            </ul><!-- End Notification Dropdown Items -->
+            </ul>
 
-        </li><!-- End Notification Nav -->
+        </li> -->
 
 
 
@@ -210,7 +210,7 @@ $nombre_dueño = $_SESSION['Nombre_Usuario'];
   </li><!-- End Error 404 Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="./BackEnd/Notificacion.php">
+    <a class="nav-link collapsed" href="./Produccion.php">
       <i class="fa-solid fa-drumstick-bite"></i>
       <span>Produccion</span>
     </a>

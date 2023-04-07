@@ -200,7 +200,7 @@
         </div>
         <!--  fin Modal Nuevo -------------------------------------- -->
         <!-- Modal Editar -------------------------------------- -->
-        <div class="modal fade" id="ModalEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="ModalEditarInventarioRebaño" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -213,11 +213,11 @@
                     </div>
                     <div class="modal-body">
                         <!-- Cuerpo del formulario------ -->
-                        <form class="row g-3">
+                        <form class="row g-3" id="FormularioEditar">
                             <div class="col-md-5 col-8">
                                 <div class="form-floating">
                                     <input type="number" class="form-control" id="NumeroAnimal" name="NumeroAnimal"
-                                        placeholder="Numero del Animal">
+                                        placeholder="Numero del Animal" required>
                                     <label for="floatingName">Numero del Animal</label>
                                 </div>
                             </div>
@@ -235,7 +235,7 @@
 
                             <div class="col-md-4 col-5">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="Color" placeholder="Color">
+                                    <input type="text" class="form-control" id="Color" placeholder="Color" required>
                                     <label for="Color">Color</label>
                                 </div>
                             </div>
@@ -251,19 +251,19 @@
 
                             <div class="col-md-3 col-5">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="Partos" placeholder="Partos">
+                                    <input type="number" class="form-control" id="Partos" placeholder="Partos" required>
                                     <label for="Partos">Partos</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="Peso" placeholder="Peso">
+                                    <input type="number" class="form-control" id="Peso" placeholder="Peso" required>
                                     <label for="Peso">Peso</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" id="SRaza" aria-label="Raza">
+                                    <select class="form-select" id="SRaza" aria-label="Raza" required> 
                                         <option value="0" disabled selected hidden>Raza</option>
 
                                     </select>
@@ -272,7 +272,7 @@
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" id="SSexo" aria-label="Sexo">
+                                    <select class="form-select" id="SSexo" aria-label="Sexo" required>
                                         <option selected>Sexo</option>
                                         <option value="H">Hembra</option>
                                         <option value="M">Macho</option>
@@ -291,7 +291,7 @@
                             </div>
 
 
-                        </form>
+                        
                         <!-- FIN Cuerpo del formulario -->
                     </div>
                     <div class="modal-footer">
@@ -299,6 +299,7 @@
                         <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
                             Guardar</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -709,7 +710,9 @@
 
 
         });
+        
         $('#ModalInformacionAdicional').modal('show'); //Abre modal
+        
 
         // Fin Tabala de informacion adicional ---------------------------------------------
 
@@ -755,7 +758,7 @@
             const Datos = {
                 id_animal: id_animal
             };
-            $.post('./BackEnd/Consulta_Inventario_Rebaño_Modal_Editar.php', Datos, function(
+            $.post('./BackEnd/Consulta_Modal_Editar.php', Datos, function(
                 respuesta) { // metodo post del query igualmente funcional que el anterior
                 // console.log(id_animal);
                 if (respuesta == "No") {

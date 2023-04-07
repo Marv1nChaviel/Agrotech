@@ -1,6 +1,6 @@
 <?php 
 include('./conexion_be.php');
-
+include('./Agregar_Actividad_Reciente.php');
 $N_NumeroAnimal = $_POST['N_NumeroAnimal'];
 $N_TipoRebaño = $_POST['N_TipoRebaño'];
 $N_Color = $_POST['N_Color'];
@@ -28,6 +28,8 @@ $ejecutar->bindParam(9,$N_TipoRebaño);
 // Excecute
 if($ejecutar->execute()){
     echo "Ejecutado";
+    AgregarActividadReciente("Se agrego un nuevo registro a Inventario Rebaño","text-success");
+
 }else{
     echo "Error";
 }

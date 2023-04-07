@@ -8,7 +8,7 @@ $(document).on('click', '.btnEditar', function() {
     $.post('./BackEnd/Consulta_Modal_Editar.php', Datos, function(
         respuesta) { // metodo post del query igualmente funcional que el anterior
         console.log(id_animal);
-        $('#ModalEditar').modal('show'); //Abre modal
+        $('#ModalEditarInventarioRebaño').modal('show'); //Abre modal
         let json = JSON.parse(respuesta); //Almacena el resultado del json en el let json
         json.forEach(json => { //Se asignan los valores obtendios en json a su respectivo input
             $('#NumeroAnimal').val(json.ID_animal);
@@ -27,6 +27,9 @@ $(document).on('click', '.btnEditar', function() {
 
     });
 });
+
+
+
 // Boton editar Trabajadores------------------------------
 function ModalEditarTrabajadores(id_trabajador){
     var id_trabajador = id_trabajador;
@@ -49,6 +52,58 @@ function ModalEditarTrabajadores(id_trabajador){
             $('#E_Fecha_Entrada').val(json.Fecha_entrada);
             $('#E_Telefono').val(json.Telefono);
 
+
+        });
+
+
+    });
+}
+
+// Boton editar Maquianria------------------------------
+function ModalEditarMaquinaria(id_Maquinaria){
+    var id_Maquinaria = id_Maquinaria;
+
+    const Datos = {
+        id_Maquinaria: id_Maquinaria
+    };
+    $.post('./BackEnd/Consulta_Modal_Editar.php', Datos, function(
+        respuesta) { // metodo post del query igualmente funcional que el anterior
+        
+        $('#ModalEditarMaquinaria').modal('show'); //Abre modal
+        let json = JSON.parse(respuesta); //Almacena el resultado del json en el let json
+        json.forEach(json => { //Se asignan los valores obtendios en json a su respectivo input
+            $('#E_id_Maquinaria').val(json.ID_maquinaria);
+            $('#E_Marca').val(json.Marca);
+            $('#E_Modelo').val(json.Modelo);
+            $('#E_Color').val(json.Color);
+            $('#E_HorasdeUso').val(json.Horas_uso);
+            $('#E_Año').val(json.Año);
+            $('#E_Trabajador').val(json.Trabajadores_ID_trabajador);
+
+        });
+
+
+    });
+}
+
+// Boton editar Inventario General------------------------------
+function ModalEditarInventarioGeneral(id_inventariogeneral){
+    var id_inventariogeneral = id_inventariogeneral;
+
+    const Datos = {
+        id_inventariogeneral: id_inventariogeneral
+    };
+    $.post('./BackEnd/Consulta_Modal_Editar.php', Datos, function(
+        respuesta) { // metodo post del query igualmente funcional que el anterior
+        
+        $('#ModalEditarInventarioGeneral').modal('show'); //Abre modal
+        let json = JSON.parse(respuesta); //Almacena el resultado del json en el let json
+        json.forEach(json => { //Se asignan los valores obtendios en json a su respectivo input
+            $('#E_id_inventario').val(json.id_Inventario);
+            $('#E_NombreObjeto').val(json.Nombre_item);
+            $('#E_InfoObjeto').val(json.Info_item);
+            $('#E_CantDisponible').val(json.Stock);
+            $('#E_Operador').val(json.Trabajador);
 
         });
 

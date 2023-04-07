@@ -18,7 +18,7 @@ $json[] = array(
     'Horas_uso'=> $datos['Horas_uso'],
     'Trabajadores_ID_trabajador'=> $datos['Ci'],
     'Opciones'=>'
-    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalEditar"><i class="bi bi-pencil"></i></button>
+    <button type="button" class="btn btn-warning btnEditarMaquinaria" id="'.$datos['ID_maquinaria'].'"><i class="bi bi-pencil"></i></button>
     <button type="button" class="btn btn-danger btnEliminar" id="'.$datos['ID_maquinaria'].'"><i class="bi bi-trash3"></i></button>'
     
 );

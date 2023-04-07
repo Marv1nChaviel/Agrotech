@@ -154,6 +154,85 @@
             </div>
         </div>
         <!--  fin Modal Nuevo -------------------------------------- -->
+        <!-- Modal Editar -------------------------------------- -->
+        <div class="modal fade" id="ModalEditarInventarioGeneral" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Titulo">Editar Inventario</h1>
+
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                            <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Cuerpo del formulario------ -->
+                        <form id="FormularioEnviar">
+                            <!-- Columna izquierda -->
+                            <div class="row">
+                                <div class="col-md-4 col-12 ">
+                                    <div class="row"></div>
+                                    <div class="row">
+                                        <div class="col-md-3 col-8 ">
+                                            <img src="./assets/img/inventario_icono.png" alt="" width="130" height="130">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- Boton de subir foto -->
+                                        <div class="file-input">
+                                            <input type="file" name="file-input" id="file-input" class="file-input__input" />
+                                            <label class="file-input__label" for="file-input"><i class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                        </div>
+                                        <!-- Fin Boton de subir foto -->
+                                    </div>
+                                </div>
+                                <!-- fin Columna izquierda -->
+                                <div class="col-md-8 col-12">
+                                    <div class="row g-3">
+                                        <div class="col-md-12 col-6">
+                                        <input type="text" class="form-control" id="E_id_inventario" required hidden>
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="E_NombreObjeto" name="NombreObjeto" placeholder="NombreObjeto" required>
+                                                <label for="NombreObjeto">Nombre del Objeto</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-6">
+                                            <div class="form-floating">
+                                                <input type="number" class="form-control" id="E_CantDisponible" name="CantDisponible" placeholder="CantDisponible" required>
+                                                <label for="CantDisponible">N° Disponible</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-6">
+                                            <div class="form-floating mb-3">
+                                                <select class="form-select" id="E_Operador" name="E_Operador" aria-label="Operador" required>
+                                                    <option disabled selected hidden>Operador</option>
+                                                </select>
+                                                <label for="Operador">Operador</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="E_InfoObjeto" name="InfoObjeto" placeholder="InfoObjeto" required>
+                                                <label for="InfoObjeto">Informacion del Objeto</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
+                            Guardar</button>
+                    </div>
+                    </form>
+                    <!-- FIN Cuerpo del formulario -->
+                </div>
+            </div>
+        </div>
+        <!--  fin Modal Editar -------------------------------------- -->
 
 
     </main><!-- End #main -->
@@ -176,6 +255,7 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/principal.js"></script>
     <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="assets/js/Consulta_Modal_Editar.js"></script>
     <!-- Iconos -->
     <script src="https://kit.fontawesome.com/76b5f911f3.js" crossorigin="anonymous"></script>
 
@@ -235,11 +315,11 @@
                 N_Operador: $("#Operador").val(),
                 N_InfoObjeto: $("#InfoObjeto").val(),
             };
-
+            console.log(Datos);
             $.post('./BackEnd/Agregar_Inventario_General.php', Datos, function(
                 respuesta) { // metodo post del query igualmente funcional que el anterior
 
-                //   console.log(Datos);
+                
                 //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
 
                 if (respuesta = "Ejecutado") {
@@ -251,10 +331,9 @@
                         timer: 1500
                     })
                     $("#ModalNuevo").modal('hide');
-
+                    $('#Inventario_General').DataTable().ajax.reload();
                     //DataTable.ajax.reload();
-                    tabla.ajax.reload(null, false);
-                    DataTable.ajax.reload();
+                   
                 } else {
 
                 }
@@ -271,6 +350,12 @@
         });
 
         // Fin Boton Eliminar inventario general ------------------------------------------------
+        //  Boton Editar inventario general ------------------------------------------------
+
+        $(document).on('click', '.btnEditar', function() {
+            var id_inventario = this.id;
+            ModalEditarInventarioGeneral(id_inventario);
+        });
     </script>
 
 
