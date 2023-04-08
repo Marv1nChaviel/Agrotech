@@ -96,8 +96,29 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <link rel="stylesheet" href="./assets/css/Mapas/tamaño_mapa.css">
-    
+
     <script>
+    // Buscar y cargar datos de las ubicaciones si existen
+    $(document).ready(function() {
+        $.ajax({
+            url: "./BackEnd/CrearJsonDatos/LeerJson.php",
+            type: "GET",
+            success: function(respuesta) {
+                // console.log(respuesta)
+                // Poligono de ubicacion
+                var polygon = L.polygon([
+                    [10.688250, -71.681130],
+                    [10.688866, -71.682316],
+                    [10.689349, -71.682082],
+                    [10.688884, -71.680823],
+                ]).addTo(map);
+            },
+        });
+    });
+
+    // Array donde se almacenara la informacion de los puntos manejados en el mapa
+    const Datos = [];
+    //    Mensaje del switch para activar y desactivar el modo edicion
     function ModoEditorMensaje() {
         const ModoEditar = document.getElementById('AgregarSwitch');
         if (ModoEditar.checked) {
@@ -118,6 +139,9 @@
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     Swal.fire('Guardado', '', 'success')
+
+                    GuardarDatos(Datos);
+
                 } else if (result.isDenied) {
                     ModoEditar.checked = true;
                 }
@@ -125,6 +149,36 @@
         }
     }
 
+    async function GuardarDatos(DatosGuardar) {
+
+
+        const {
+            value: titulo
+        } = await Swal.fire({
+            title: 'Registro',
+            input: 'text',
+            inputLabel: 'Nombre del area creada',
+            inputPlaceholder: 'Ejemplo : Campo 1'
+        })
+
+        if (titulo) {
+            console.log(titulo);
+            Swal.fire(`Nombre ${titulo} Agregado`)
+            $.ajax({
+                type: "POST",
+                url: './BackEnd/CrearJsonDatos/GuardarJson.php',
+                data: {
+                    'GuardarDatos': JSON.stringify(DatosGuardar),
+                    'Titulo': titulo
+                }, //capturo array     
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+
+
+    }
 
 
     var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
@@ -135,42 +189,42 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    // Poligono de ubicacion
-    var polygon = L.polygon([
-        [10.688250, -71.681130],
-        [10.688866, -71.682316],
-        [10.689349, -71.682082],
-        [10.688884, -71.680823],
-    ]).addTo(map);
+    // // Poligono de ubicacion
+    // var polygon = L.polygon([
+    //     [10.688250, -71.681130],
+    //     [10.688866, -71.682316],
+    //     [10.689349, -71.682082],
+    //     [10.688884, -71.680823],
+    // ]).addTo(map);
     // Fin poligono ubicacion
 
-    function ObtenerUbicacion(){
-// Ubicacon mediante gps
-function onLocationFound(e) {
-        const radius = e.accuracy / 30;
+    function ObtenerUbicacion() {
+        // Ubicacon mediante gps
+        function onLocationFound(e) {
+            const radius = e.accuracy / 30;
 
-        const locationMarker = L.marker(e.latlng).addTo(map)
-            .bindPopup(`Ubicacion Estimada`).openPopup();
+            const locationMarker = L.marker(e.latlng).addTo(map)
+                .bindPopup(`Ubicacion Estimada`).openPopup();
 
-        const locationCircle = L.circle(e.latlng, radius, {
-            color: 'blue',
-            fillColor: '#f03',
-            fillOpacity: 0,
-        }).addTo(map);
+            const locationCircle = L.circle(e.latlng, radius, {
+                color: 'blue',
+                fillColor: '#f03',
+                fillOpacity: 0,
+            }).addTo(map);
+        }
+
+        function onLocationError(e) {
+            alert(e.message);
+        }
+
+        map.on('locationfound', onLocationFound);
+        map.on('locationerror', onLocationError);
+
+        map.locate({
+            setView: true
+        });
     }
 
-    function onLocationError(e) {
-        alert(e.message);
-    }
-
-    map.on('locationfound', onLocationFound);
-    map.on('locationerror', onLocationError);
-
-    map.locate({
-        setView: true
-    });
-    }
-    
 
 
     // Agrega notificacion con la ubicacion donde se le da click
@@ -184,6 +238,9 @@ function onLocationFound(e) {
             var marker = L.marker(e.latlng).addTo(map);
             marker.bindPopup("<b>Punto N° " + inicial + "</b>").openPopup();
             inicial += 1;
+            Datos.push(e.latlng);
+
+
 
         } else {
 
@@ -198,7 +255,11 @@ function onLocationFound(e) {
     }
 
     map.on('click', onMapClick);
+
+
+    // Enviar datos por ajax a guardar 
     </script>
+
     <!-- Mapa para instalaciones -->
 </body>
 
