@@ -2,7 +2,7 @@
     function obtenerFecha() {
         include '../conexion_be.php';
 
-        $sql = "SELECT * FROM produccion";
+        $sql = "SELECT * FROM produccion GROUP BY Fecha DESC";
         $resultado = $conexion->prepare($sql);
         $resultado->execute();  
 

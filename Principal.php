@@ -96,7 +96,7 @@
                                             <i class="bi bi-currency-dollar"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>$954,3</h6>
+                                            <h6 id="Ingresos"></h6>
 
                                         </div>
                                     </div>
@@ -118,7 +118,7 @@
                                             <i class="bi bi-currency-dollar"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>$356,8</h6>
+                                            <h6 id="Gastos"></h6>
 
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@
                                 </div> -->
 
                                 <div class="card-body">
-                                    <h5 class="card-title">Actividad Reciente <span>| Ultimos 10 cambios</span></h5>
+                                    <h5 class="card-title">Actividad Reciente <span>| Ultimos Cambios</span></h5>
 
                                     <div class="activity">
 
@@ -237,9 +237,11 @@
             type: 'GET',
             success: function(respuesta) {
                 let json = JSON.parse(respuesta);
-                console.log(json[0]['cantidad_rebaño']);
+                // console.log(json[0]['cantidad_rebaño']);
                 $('#cantganado').text(json[0]['cantidad_rebaño']);
                 $('#canttrabajadores').text(json[0]['cantidad_trabajadores']);
+                $('#Ingresos').text(json[0]['Ganancias']);
+                $('#Gastos').text(json[0]['Gastos']);
             }
         })
     });

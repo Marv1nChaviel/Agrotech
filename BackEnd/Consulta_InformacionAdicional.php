@@ -25,12 +25,12 @@ if($Columnas_Optenidas <= 0){
   
     $json[] = array( 
       'Fecha' => $datos['Fecha'],
-      'Tipo_produccion' => $datos['Produccion_carne']." Carne",
+      'Tipo_produccion' => $datos['Produccion_carne']." Kg de Carne",
     );
   }else{
     $json[] = array( 
       'Fecha' => $datos['Fecha'],
-      'Tipo_produccion' => $datos['Produccion_leche']." de Leche",
+      'Tipo_produccion' => $datos['Produccion_leche']." Lts de Leche",
     );
   }
   

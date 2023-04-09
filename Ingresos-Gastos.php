@@ -72,60 +72,10 @@
 
 
                 <div>
-                    <div class="graficaing" id="reportsChart"></div>
+                    <div class="graficaing" id="Ingresos"></div>
 
                     <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                        new ApexCharts(document.querySelector("#reportsChart"), {
-                            series: [{
-                                name: 'Ganancias',
-                                data: [11, 32, 45, 32, 34, 52, 41]
-                            }],
-                            chart: {
-                                height: 200,
-                                type: 'area',
-                                toolbar: {
-                                    show: false
-                                },
-                            },
-                            markers: {
-                                size: 4
-                            },
-                            colors: ['#2eca6a'],
-                            fill: {
-                                type: "gradient",
-                                gradient: {
-                                    shadeIntensity: 1,
-                                    opacityFrom: 0.3,
-                                    opacityTo: 0.4,
-                                    stops: [0, 90, 100]
-                                }
-                            },
-                            dataLabels: {
-                                enabled: false
-                            },
-                            stroke: {
-                                curve: 'smooth',
-                                width: 2
-                            },
-                            xaxis: {
-                                type: 'datetime',
-                                categories: ["2018-09-19T00:00:00.000Z",
-                                    "2018-09-19T01:30:00.000Z",
-                                    "2018-09-19T02:30:00.000Z",
-                                    "2018-09-19T03:30:00.000Z",
-                                    "2018-09-19T04:30:00.000Z",
-                                    "2018-09-19T05:30:00.000Z",
-                                    "2018-09-19T06:30:00.000Z"
-                                ]
-                            },
-                            tooltip: {
-                                x: {
-                                    format: 'dd/MM/yy HH:mm'
-                                },
-                            }
-                        }).render();
-                    });
+
                     </script>
                 </div>
 
@@ -159,7 +109,8 @@
 
                 <div class="btn-Egreso">
 
-                    <a><button class="btn-ingreso-3"><i class="bi bi-dash-circle"></i> Egresos</button></a>
+                    <a><button class="btn-ingreso-3" data-bs-toggle="modal" data-bs-target="#ModalNuevoEgreso"><i
+                                class="bi bi-dash-circle"></i> Egresos</button></a>
                     <!---------------------------------->
                     <a><button class="btn-ingreso-2"><i class="bi bi-question-circle"></i></button></a>
 
@@ -171,57 +122,7 @@
                     <div class="graficaEg" id="Egresos"></div>
 
                     <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                        new ApexCharts(document.querySelector("#Egresos"), {
-                            series: [{
-                                name: 'Gastos',
-                                data: [31, 40, 28, 51, 42, 82, 56],
-                            }],
-                            chart: {
-                                height: 200,
-                                type: 'area',
-                                toolbar: {
-                                    show: false
-                                },
-                            },
-                            markers: {
-                                size: 4
-                            },
-                            colors: ['#FF0000'],
-                            fill: {
-                                type: "gradient",
-                                gradient: {
-                                    shadeIntensity: 1,
-                                    opacityFrom: 0.3,
-                                    opacityTo: 0.4,
-                                    stops: [0, 90, 100]
-                                }
-                            },
-                            dataLabels: {
-                                enabled: false
-                            },
-                            stroke: {
-                                curve: 'smooth',
-                                width: 2
-                            },
-                            xaxis: {
-                                type: 'datetime',
-                                categories: ["2018-09-19T00:00:00.000Z",
-                                    "2018-09-19T01:30:00.000Z",
-                                    "2018-09-19T02:30:00.000Z",
-                                    "2018-09-19T03:30:00.000Z",
-                                    "2018-09-19T04:30:00.000Z",
-                                    "2018-09-19T05:30:00.000Z",
-                                    "2018-09-19T06:30:00.000Z"
-                                ]
-                            },
-                            tooltip: {
-                                x: {
-                                    format: 'dd/MM/yy HH:mm'
-                                },
-                            }
-                        }).render();
-                    });
+
                     </script>
                 </div>
 
@@ -260,31 +161,52 @@
                         <!-- Cuerpo del formulario------ -->
                         <form id="FormularioEnviar">
                             <div class="row">
+                                <div class="col-12">
+                                <center><label for=""><b>Tipo de Ingreso:</b></label></center>
+                            </div>
+                            <div class="row">
                                 <div class="col-4">
-                                    <label for=""><b>Tipo de Ingreso:</b></label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                            id="flexRadioDefault1">
+                                        <input class="form-check-input" type="radio" name="operacion"
+                                            id="flexRadioDefault1" value="Leche">
                                         <label class="form-check-label" for="flexRadioDefault1">Venta de Leche</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                            id="flexRadioDefault2">
+                                    </div></div>
+                                <div class="col-4">
+                                <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="operacion"
+                                            id="flexRadioDefault2" value="Carne">
                                         <label class="form-check-label" for="flexRadioDefault2">Venta de Carne</label>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                            id="flexRadioDefault2">
+                                </div>
+                                <div class="col-4">
+                                <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="operacion"
+                                            id="flexRadioDefault2" value="Animal" readonly>
                                         <label class="form-check-label" for="flexRadioDefault2">Venta del Animal</label>
                                     </div>
                                 </div>
-                                <div class="col-7">
+
+                                
+                                    
+                                    
+                                </div>
+                            </div>
+                                    
+                                   
+                            
+                            <div class="row">
+                            <div class="col-12">
                                     <center> <label for=""><b>Datos del Animal:</b></label></center>
                                     <div class="row">
                                         <div class="col-6">
-                                            <input type="number" class="form-control" id="Numero_Animal"
-                                                name="Numero_Animal" placeholder="N° Animal" readonly="readonly"
-                                                required>
+                                                <div class="input-group mb-3">
+                                                <div class="form-floating">
+                                                    <input type="number" class="form-control" id="Numero_Animal"
+                                                        placeholder="N° Animal" required>
+                                                    <label for="Numero_Animal">N° Animal</label>
+                                                </div>
+                                               
+                                            </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="input-group date">
@@ -292,26 +214,54 @@
                                                     id="Fecha_Ingreso" name="Fecha_Ingreso" required>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <input type="text" class="form-control" id="Produccion"
-                                                    name="Produccion" placeholder="Produccion" required>
+
+                                        <div class="col-6">
+                                            
+                                        <div class="form-floating">
+                                                <input type="number" class="form-control" id="Produccion" name="Produccion"
+                                                    placeholder="Produccion" required readonly>
+                                                <label for="Produccion">Produccion</label>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-7">
-                                                    <a><button class="btn btn-info"
+
+                                        </div>
+                                        <div class="col-6">
+                                        <div class="input-group mb-3">
+                                                <div class="form-floating">
+                                                    <input type="number" class="form-control" id="Ganancias"
+                                                        placeholder="Ganancias">
+                                                    <label for="Ganancias">Ganancias</label>
+                                                </div>
+                                                <span class="input-group-text"><i
+                                                        class="bi bi-currency-dollar"></i></span>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-12">
+                                        <div class="form-floating">
+                                                <input type="text" class="form-control" id="Descripcion" name="Descripcion"
+                                                    placeholder="Descripcion" required>
+                                                <label for="Descripcion">Descripcion</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="container">
+                                            <div class="col-6">
+                                                <center><a><button class="btn btn-info"
                                                             data-bs-target="#ModalBuscarProduccion"
                                                             data-bs-toggle="modal"><i class="bi bi-search"></i>
-                                                            Buscar</button></a>
-                                                </div>
+                                                            Buscar</button></a> </center>
+
                                             </div>
                                         </div>
+
 
 
                                     </div>
 
                                 </div>
                             </div>
+                                
+                            
 
                     </div>
                     <div class="modal-footer">
@@ -339,45 +289,131 @@
                     </div>
                     <div class="modal-body">
                         <!-- Cuerpo del formulario------ -->
-                        <form id="FormularioEnviar">
-                            <div class="container-fluid">
-                                <label for=""><b>Selecciona el registro de Produccion:</b></label>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <label for="">Fecha:</label>
-                                        <select class="form-select" size="7"  id="SelectFechaRegistroProduccion" aria-label="size 3 select example" require>
-                                            <!-- <option selected>Selecciona el registro de Produccion</option> -->
-                                            <!-- <option value="1">29/10/2022</option> -->
-                                        </select>
-                                    </div>
-                                    <div class="col-4">
-                                        <label for="">N° Animal:</label>
-                                        <select class="form-select" size="7" id="SelectAnimalRegistroProduccion" aria-label="size 3 select example" require>
-                                            <!-- <option selected>Selecciona el registro de Produccion</option> -->
-                                            <!-- <option value="1">25215235</option> -->
-                                        </select>
-                                    </div>
-                                    <div class="col-4">
-                                        <label for="">Produccion:</label>
-                                        <select class="form-select" size="7" id="SelectProduccionRegistroProduccion" aria-label="size 3 select example" require>
-                                            <!-- <option selected>Selecciona el registro de Produccion</option> -->
-                                            <!-- <option value="1">50 litros</option> -->
-                                        </select>
-                                    </div>
+
+                        <div class="container-fluid">
+                            <label for=""><b>Selecciona el registro de Produccion:</b></label>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label for="">Fecha:</label>
+                                    <select class="form-select" size="7" id="SelectFechaRegistroProduccion"
+                                        aria-label="size 3 select example" require>
+                                        <!-- <option selected>Selecciona el registro de Produccion</option> -->
+                                        <!-- <option value="1">29/10/2022</option> -->
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <label for="">N° Animal:</label>
+                                    <select class="form-select" size="7" id="SelectAnimalRegistroProduccion"
+                                        aria-label="size 3 select example" require>
+                                        <!-- <option selected>Selecciona el registro de Produccion</option> -->
+                                        <!-- <option value="1">25215235</option> -->
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <label for="">Produccion:</label>
+                                    <select class="form-select" size="7" id="SelectProduccionRegistroProduccion"
+                                        aria-label="size 3 select example" require>
+                                        <!-- <option selected>Selecciona el registro de Produccion</option> -->
+                                        <!-- <option value="1">50 litros</option> -->
+                                    </select>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button class="btn btn-success" id="btnModalCambio" data-bs-target="#ModalNuevoIngreso"
+                            data-bs-toggle="modal"><i class="bi bi-check2-circle"></i>
+                            Seleccionar</button>
+                    </div>
+
+                    <!-- FIN Cuerpo del formulario -->
+                </div>
+            </div>
+        </div>
+        <!--  fin Modal Buscar Produccion-------------------------------------- -->
+        <!-- Modal agregar Gastooo -------------------------------------- ------->
+        <div class="modal fade" id="ModalNuevoEgreso" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Titulo">Agregar Egreso</h1>
+
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                            <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Cuerpo del formulario------ -->
+                        <form id="FormularioEnviarGastos">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label for=""><b>Tipo de Egreso:</b></label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="operacion"
+                                            id="flexRadioDefault1" value="Leche">
+                                        <label class="form-check-label" for="flexRadioDefault1">Sueldo</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="operacion"
+                                            id="flexRadioDefault2" value="Carne">
+                                        <label class="form-check-label" for="flexRadioDefault2">Salud Animal</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="operacion"
+                                            id="flexRadioDefault2" value="Animal" readonly>
+                                        <label class="form-check-label" for="flexRadioDefault2">Mantenimiento</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="operacion"
+                                            id="flexRadioDefault2" value="Animal" readonly>
+                                        <label class="form-check-label" for="flexRadioDefault2">Otros</label>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <center> <label for=""><b>Datos del Egreso:</b></label></center>
+                                    <div class="row">
+
+                                        <div class="col-6">
+                                            <div class="input-group date">
+                                                <input type="date" class="form-control" placeholder="Fecha"
+                                                    id="Fecha_Gasto" name="Fecha_Gasto" required>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-6">
+                                            <input type="number" class="form-control" id="Gasto" name="Gasto"
+                                                placeholder="Gasto" required>
+
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control" id="Egresos_Descripcion" name="Egresos_Descripcion"
+                                                placeholder="Descripcion" required>
+
+                                        </div>
+
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
                     </div>
                     <div class="modal-footer">
 
                         <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
-                            Seleccionar</button>
+                            Guardar</button>
                     </div>
                     </form>
                     <!-- FIN Cuerpo del formulario -->
                 </div>
             </div>
         </div>
-        <!--  fin Modal Buscar Produccion-------------------------------------- -->
+        <!--  fin Modal agregar Gastooo -------------------------------------- -->
     </main><!-- End #main -->
 
     <!-- Pie de pagina---- -->
@@ -398,6 +434,7 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/principal.js"></script>
     <script src="assets/js/Select_Produccion.js"></script>
+    <script src="assets/js/sweetalert2.all.min.js"></script>
     <script>
     $(document).ready(function() {
         $('#TablaIngresos').DataTable({
@@ -406,7 +443,7 @@
             searching: false,
             paging: false,
             info: false,
-            
+
             ajax: {
                 url: './BackEnd/Consulta_Ingresos.php',
                 dataSrc: '',
@@ -474,7 +511,182 @@
 
 
         });
+
+        // Click en boton del modal buscar registro -------------
+
+        $('#btnModalCambio').click(function() {
+
+            var Fecha = $('#SelectFechaRegistroProduccion').val();
+
+            var Animal = $('#SelectAnimalRegistroProduccion').val();
+
+            var Produccion = $('#SelectProduccionRegistroProduccion').val();
+
+            // console.log(Fecha,Animal,Produccion);
+
+            $('#Numero_Animal').val(Animal);
+            $('#Produccion').val(Produccion);
+
+
+        });
+        //  Click en radio del modal ingresos------------------------------
+        $('#FormularioEnviar').submit(function(e) {
+            e.preventDefault();
+            var RadioOpcion = document.querySelector('input[name="operacion"]:checked').value;
+            var AnimalEnviar = $('#Numero_Animal').val();
+            var FechaEnviar = $('#Fecha_Ingreso').val();
+            var ProduccionEnviar = $('#Produccion').val();
+            var Id_Produccion = $('#Produccion').val();
+            var Ganancias = $('#Ganancias').val();
+            var Descripcion = $('#Descripcion').val();
+            console.log(Id_Produccion);
+
+            const Datos = {
+                RadioOpcion: RadioOpcion,
+                Animal: AnimalEnviar,
+                Fecha: FechaEnviar,
+                Produccion: ProduccionEnviar,
+                Ganancias: Ganancias,
+                Descripcion: Descripcion
+            };
+            $.post('./BackEnd/Agregar_Ingresos.php', Datos, function(
+                respuesta) { // metodo post del query igualmente funcional que el anterior
+            if (respuesta = "Ejecutado") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro Guardado',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $('#TablaIngresos').DataTable().ajax.reload();
+                $('#ModalNuevoIngreso').modal('hide');
+                //DataTable.ajax.reload();
+
+            } else {
+
+            }
+
+            });
+            
+        });
+        //  Boton enviar gastos a la db--------------
+        $('#FormularioEnviarGastos').submit(function(e) {
+            e.preventDefault();
+            var Fecha = $('#Fecha_Gasto').val();
+            var Gasto = $('#Gasto').val();
+            var Descripcion = $('#Egresos_Descripcion').val();
+
+
+            const Datos = {
+                Fecha: Fecha,
+                Gasto: Gasto,
+                Descripcion: Descripcion
+            };
+
+            console.log(Datos);
+            $.post('./BackEnd/Agregar_Egresos.php', Datos, function(
+                respuesta) { // metodo post del query igualmente funcional que el anterior
+
+                if (respuesta = "Ejecutado") {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Registro Guardado',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    $('#TablaEgresos').DataTable().ajax.reload();
+                    $('#ModalNuevoEgreso').modal('hide');
+                    
+
+                    //DataTable.ajax.reload();
+
+                } else {
+
+                }
+
+            });
+           
+        });
+
     });
+    </script>
+    <script>
+    // Grafico de Ingreso ------------------------------------
+    $.getJSON('./BackEnd/Consulta_Graficos_Ingresos.php', function(response) {
+        chart2.updateSeries([{
+            name: 'Ingresos',
+            data: response
+        }])
+    });
+
+
+    var options = {
+        series: [{
+            name: 'series1',
+            data: []
+        }],
+        chart: {
+            height: 200,
+            type: 'area'
+        },
+        colors: ['#008f39'],
+
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth',
+            width: 2
+        },
+        xaxis: {
+            categories: []
+        },
+
+    };
+
+    var chart2 = new ApexCharts(document.querySelector("#Ingresos"), options);
+    chart2.render();
+
+
+
+    // Grafico Egresooo--------------------------------------------------------------
+
+    $.getJSON('./BackEnd/Consulta_Graficos_Egresos.php', function(response) {
+        chart3.updateSeries([{
+            name: 'Gastos',
+            data: response
+        }])
+    });
+
+
+    var options = {
+        series: [{
+            name: 'series1',
+            data: []
+        }],
+        chart: {
+            height: 205,
+            type: 'area'
+        },
+        colors: ['#FF0000'],
+
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth',
+            width: 2
+        },
+        xaxis: {
+            categories: []
+        },
+
+    };
+
+    var chart3 = new ApexCharts(document.querySelector("#Egresos"), options);
+    chart3.render();
     </script>
 </body>
 

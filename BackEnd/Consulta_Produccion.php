@@ -15,7 +15,6 @@ while($datos=$resultado->fetch(PDO::FETCH_ASSOC)){
             'Produccion'=> $datos['Produccion_leche']." litros de Leche",
             'Animal'=> $datos['ID_animal'],
             'Opciones'=>'
-            <button type="button" class="btn btn-warning btnEditarProduccion" id="'.$datos['ID_produccion'].'"><i class="bi bi-pencil"></i></button>
             <button type="button" class="btn btn-danger btnEliminar" id="'.$datos['ID_produccion'].'"><i class="bi bi-trash3"></i></button>',
         );
 
@@ -26,11 +25,10 @@ while($datos=$resultado->fetch(PDO::FETCH_ASSOC)){
             'Produccion'=> $datos['Produccion_carne']." KG de Carne",
             'Animal'=> $datos['ID_animal'],
             'Opciones'=>'
-            <button type="button" class="btn btn-warning btnEditarProduccion" id="'.$datos['ID_produccion'].'"><i class="bi bi-pencil"></i></button>
             <button type="button" class="btn btn-danger btnEliminar" id="'.$datos['ID_produccion'].'"><i class="bi bi-trash3"></i></button>',
         );
     }
-
+// <button type="button" class="btn btn-warning btnEditarProduccion" id="'.$datos['ID_produccion'].'"><i class="bi bi-pencil"></i></button>
 
 }
 echo json_encode($json,JSON_UNESCAPED_UNICODE);

@@ -23,17 +23,17 @@ while($datos=$resultado->fetch(PDO::FETCH_ASSOC)){
   
         $json[] = array( 
           'Fecha' => $datos['Fecha'],
-          'Ingreso' => $datos['Venta_leche']." $",
+          'Ingreso' => $datos['Venta_leche']." ".$datos['Ganancias']."$ de Ganancia",
         );
       }else if($datos['Venta_carne'] != null){
         $json[] = array( 
           'Fecha' => $datos['Fecha'],
-          'Ingreso' => $datos['Venta_carne']." $",
+          'Ingreso' => $datos['Venta_carne']." ".$datos['Ganancias']."$ de Ganancia",
         );
       }else{
         $json[] = array( 
             'Fecha' => $datos['Fecha'],
-            'Ingreso' => $datos['Venta_animal']."",
+            'Ingreso' => $datos['Venta_animal']." ".$datos['Ganancias']."$ de Ganancia",
           );
       }
 

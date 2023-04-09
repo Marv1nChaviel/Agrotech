@@ -3,9 +3,8 @@
 
     include('./conexion_be.php');
 
-    // $sql = "SELECT MONTH(Fecha) as MES FROM produccion GROUP BY Fecha";
-    // $sql = "SELECT SUM(Produccion_leche) AS ProduccionLeche FROM produccion GROUP BY Fecha";
-    $sql = "SELECT MONTH(Fecha) as MES, SUM(Produccion_carne) AS ProduccionCarne FROM produccion GROUP BY MONTH(Fecha)";
+
+    $sql = "SELECT MONTH(Fecha) as MES, SUM(Egresos) AS Egresos FROM egresos GROUP BY MONTH(Fecha)";
     $resultado = $conexion->prepare($sql);
     $resultado->execute();
     
@@ -15,7 +14,7 @@
         $mesatexto = date("F",mktime(0,0,0,$mes,10));
         $json[] = array( 
             'x' => $mesatexto,
-            'y' => $datos['ProduccionCarne'],
+            'y' => $datos['Egresos'],
           );
           
       }

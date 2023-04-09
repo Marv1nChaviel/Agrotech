@@ -19,6 +19,11 @@ if(isset($_POST['id_animal'])){
 }else if(isset($_POST['id_inventario'])){
     $id_inventario=$_POST['id_inventario'];
     EliminarRegistroInventarioGeneral($id_inventario);
+    
+    // Se verifica el envio de datos de produccion
+}else if(isset($_POST['id_Produccion'])){
+    $id_produccion=$_POST['id_Produccion'];
+    EliminarRegistroProduccion($id_produccion);
 }
 
 
@@ -78,6 +83,21 @@ function EliminarRegistroInventarioGeneral($id_inventario){
 if($resultado->execute()){
     echo "Ejecutado";
     AgregarActividadReciente("Se elimino registro de Inventario General","text-danger");
+    }else{
+    echo "no ejecutado";
+    }
+}
+
+function EliminarRegistroProduccion($id_Produccion){
+    include('./conexion_be.php');
+    include('./Agregar_Actividad_Reciente.php');
+    $sql = "DELETE FROM produccion WHERE ID_produccion  = $id_Produccion";
+    $resultado = $conexion->prepare($sql);
+
+
+if($resultado->execute()){
+    echo "Ejecutado";
+    AgregarActividadReciente("Se elimino un registro de Produccion","text-danger");
     }else{
     echo "no ejecutado";
     }

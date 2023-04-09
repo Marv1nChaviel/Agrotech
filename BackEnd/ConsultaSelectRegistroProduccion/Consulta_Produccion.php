@@ -18,11 +18,15 @@ function obtenerProduccion($Animal,$Fecha) {
 
             if($datos['Produccion_leche'] == null){
                 $json[] = array(
+                    'Id' => $datos['ID_produccion'],
                     'Produccion' => $datos['Produccion_carne'],
+                    'ProduccionYMedida' => $datos['Produccion_carne']." Kg Carne",
                 );
             }else{
                 $json[] = array(
+                    'Id' => $datos['ID_produccion'],
                     'Produccion' => $datos['Produccion_leche'],
+                    'ProduccionYMedida' => $datos['Produccion_leche']." Lts Leche",
                 );
             }
             

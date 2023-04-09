@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="assets/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="assets/css/cargando.css">
+    <link rel="stylesheet" href="assets/css/leaflet-geoman.css">
     <!-- Mapa para instalaciones -->
 
 
@@ -56,14 +57,7 @@
         <!-- Mapa iniciador -->
         <div class="col-md-6 col-12">
 
-            <div class="btn-group" role="group" aria-label="Second group">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" onclick="ModoEditorMensaje();" id="AgregarSwitch">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Modo Editor</label>
-                </div>
-                <button type="button" class="btn btn-warning">Eliminar Zona</button>
-                <button type="button" class="btn btn-primary" onclick="ObtenerUbicacion();">Obtener ubicacion</button>
-            </div>
+
 
         </div>
         <hr>
@@ -96,202 +90,79 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <link rel="stylesheet" href="./assets/css/Mapas/tamaño_mapa.css">
+    <script src="assets/js/leaflet-geoman.min.js"></script>
+    <script src="./BackEnd/CrearJsonDatos/json/MapaInstalaciones.js"></script>
 
     <script>
     // Buscar y cargar datos de las ubicaciones si existen
     $(document).ready(function() {
 
-        $.ajax({
-            url: "./BackEnd/LeerMysqlMapa.php",
-            type: "GET",
-            success: function(respuesta) {
+        var map = L.map('map').setView([10.694235107808765, -71.63364763393179], 17);
 
-                let Ubicacion = JSON.parse(
-                    respuesta); //Almacena el resultado del json en el let json
-                Ubicacion.forEach(
-                    Ubi => { //Se asignan los valores obtendios en json a su respectivo input
-                        var coordenadas = Ubi.Coordenada;
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
 
-                    });
+        var myLayer = L.geoJSON().addTo(map);
+        myLayer.addData(Mapa);
 
-            },
+        map.pm.addControls({
+            position: 'topleft',
+            drawMarker: true,
+            drawPolygon: true,
+            editMode: false,
+            drawPolyline: false,
+            removalMode: true,
+            optionsControls: false,
+            customControls: true,
+            oneBlock: false,
+            drawCircleMarker: false,
+            dragMode: false,
         });
-    });
 
-    // Array donde se almacenara la informacion de los puntos manejados en el mapa
-    const Datos = [];
-    //    Mensaje del switch para activar y desactivar el modo edicion
-    function ModoEditorMensaje() {
-        const ModoEditar = document.getElementById('AgregarSwitch');
-        if (ModoEditar.checked) {
-            Swal.fire(
-                'Modo Edicion Activado',
-                'Ya puede marcar en el mapa!',
-                'success'
-            )
-        } else {
-            // ModoEditar.checked = !confirm('¿Esta seguro que no quiere guardar?');
-            Swal.fire({
-                title: '¿Desea guardar los cambios?',
-                showDenyButton: true,
-                confirmButtonText: 'Guardar',
-                denyButtonText: 'Continuar',
-                denyButtonColor: '#808080',
-            }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                    Swal.fire('Guardado', '', 'success')
-                    $.ajax({
-                        type: "POST",
-                        url: './BackEnd/CrearJsonDatos/CambiarFormatoJsonCoordenada.php',
-                        data: {
-                            'Datos': JSON.stringify(Datos)
-                        }, //capturo array     
-                        success: function(data) {
-                            console.log(data);
-                            // GuardarDatos(Datos);
+        map.pm.Toolbar.createCustomControl({
+            name: 'alertBox',
+            block: 'custom',
+            className: 'leaflet-pm-icon-marker xyz-class',
+            title: 'Ubicacion',
+            onClick: () => {
+                ObtenerUbicacion();
+            },
+            toggle: false,
+        });
 
-                        }
-                    });
-
-                    
+        
 
 
+        function ObtenerUbicacion() {
+            // Ubicacon mediante gps
+            function onLocationFound(e) {
+                const radius = e.accuracy / 300;
 
-                } else if (result.isDenied) {
-                    ModoEditar.checked = true;
-                }
-            })
-        }
-    }
+                const locationMarker = L.marker(e.latlng).addTo(map)
+                    .bindPopup(`Ubicacion Estimada`).openPopup();
 
-    async function GuardarDatos(DatosGuardar) {
+                const locationCircle = L.circle(e.latlng, radius, {
+                    color: 'blue',
+                    fillColor: '#f03',
+                    fillOpacity: 0,
+                    maxZoom: 19,
+                }).addTo(map);
+            }
 
+            function onLocationError(e) {
+                alert(e.message);
+            }
 
-        var FormatoJson = {
-            "type": "FeatureCollection",
-            "features": [{
-                "type": "Feature",
-                "properties": {},
-                "geometry": {
-                    "coordinates": [
-                        [
-                            DatosGuardar
-                        ]
-                    ],
-                    "type": "Polygon"
-                }
-            }]
-        };
+            map.on('locationfound', onLocationFound);
+            map.on('locationerror', onLocationError);
 
-        const {
-            value: titulo
-        } = await Swal.fire({
-            title: 'Registro',
-            input: 'text',
-            inputLabel: 'Nombre del area creada',
-            inputPlaceholder: 'Ejemplo : Campo 1'
-        })
-
-        if (titulo) {
-            console.log(titulo);
-            Swal.fire(`Nombre ${titulo} Agregado`)
-            $.ajax({
-                type: "POST",
-                url: './BackEnd/CrearJsonDatos/GuardarJson.php',
-                data: {
-                    'GuardarDatos': JSON.stringify(FormatoJson),
-                    'Titulo': titulo
-                }, //capturo array     
-                success: function(data) {
-                    console.log(data);
-
-                }
+            map.setLocate({
+                setView: true
             });
         }
-
-
-    }
-
-
-    var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
-    // var marker = L.marker([10.688453, -71.680253]).addTo(map); //colocar flecha de indicacion 
-    // marker.bindPopup("<b>Tu ubicacion</b>").openPopup();
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-    // // Poligono de ubicacion
-    // var polygon = L.polygon([
-    //     [10.688250, -71.681130],
-    //     [10.688866, -71.682316],
-    //     [10.689349, -71.682082],
-    //     [10.688884, -71.680823],
-    // ]).addTo(map);
-    // Fin poligono ubicacion
-
-    function ObtenerUbicacion() {
-        // Ubicacon mediante gps
-        function onLocationFound(e) {
-            const radius = e.accuracy / 30;
-
-            const locationMarker = L.marker(e.latlng).addTo(map)
-                .bindPopup(`Ubicacion Estimada`).openPopup();
-
-            const locationCircle = L.circle(e.latlng, radius, {
-                color: 'blue',
-                fillColor: '#f03',
-                fillOpacity: 0,
-            }).addTo(map);
-        }
-
-        function onLocationError(e) {
-            alert(e.message);
-        }
-
-        map.on('locationfound', onLocationFound);
-        map.on('locationerror', onLocationError);
-
-        map.locate({
-            setView: true
-        });
-    }
-
-
-
-    // Agrega notificacion con la ubicacion donde se le da click
-    var popup = L.popup();
-    var inicial = 0;
-
-    function onMapClick(e) {
-        const ModoEditar = document.getElementById('AgregarSwitch');
-
-        if (ModoEditar.checked) {
-            var marker = L.marker(e.latlng).addTo(map);
-            marker.bindPopup("<b>Punto N° " + inicial + "</b>").openPopup();
-            inicial += 1;
-            Datos.push(e.latlng);
-
-
-
-
-        } else {
-
-            popup
-                .setLatLng(e.latlng)
-                .setContent("Boton chequeado " + e.latlng.toString())
-                .openOn(map);
-
-        }
-
-
-    }
-
-    map.on('click', onMapClick);
-
-
-    // Enviar datos por ajax a guardar 
+    });
     </script>
 
     <!-- Mapa para instalaciones -->

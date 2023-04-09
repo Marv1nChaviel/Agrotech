@@ -64,7 +64,7 @@ $(document).ready(function () {
                 let template = ''
     
                 respuestas.forEach(respuesta => {
-                    template += `<option  value="${respuesta.Produccion}">${respuesta.Produccion}</option>`;
+                    template += `<option  value="${respuesta.Id}">${respuesta.ProduccionYMedida}</option>`;
                 })
 
                 $Producion.innerHTML = template;

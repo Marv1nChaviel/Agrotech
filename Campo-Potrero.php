@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="assets/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="assets/css/cargando.css">
+    <link rel="stylesheet" href="assets/css/leaflet-geoman.css">
     <!-- Mapa para instalaciones -->
 
 
@@ -54,13 +55,6 @@
         </div>
         <!--=======Final Texto de la tabla interna =======   -->
         <!-- Mapa iniciador -->
-        <div class="col-md-6 col-12">
-            <div class="btn-group" role="group" aria-label="Second group">
-                <button type="button" class="btn btn-success">Agregar Zona</button>
-                <button type="button" class="btn btn-warning">Eliminar Zona</button>
-                <button type="button" class="btn btn-primary">Obtener ubicacion</button>
-            </div>
-        </div>
         <hr>
         <!-- Mapa  -->
         <div id="map" style="width: 150vh; height: 60vh;"></div>
@@ -91,41 +85,79 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <link rel="stylesheet" href="./assets/css/Mapas/tamaño_mapa.css">
+    <script src="assets/js/leaflet-geoman.min.js"></script>
+    <script src="./BackEnd/CrearJsonDatos/json/MapaCampo.js"></script>
+
     <script>
-    var map = L.map('map').setView([10.688453, -71.680253], 17); //rango este ultimo 13 a 17, ubicacion
-    var marker = L.marker([10.688453, -71.680253]).addTo(map); //colocar flecha de indicacion 
-    marker.bindPopup("<b>Tu ubicacion</b>").openPopup();
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-    navigator.geolocation.getCurrentPosition((data) => console.table(data), (err) => console.error(err))
+    // Buscar y cargar datos de las ubicaciones si existen
+    $(document).ready(function() {
 
-    // Poligono de ubicacion potrero 1
-    var polygon = L.polygon([
-        [10.688250, -71.681130],
-        [10.688866, -71.682316],
-        [10.689349, -71.682082],
-        [10.688884, -71.680823]
-    ],
-    {color: 'red'}).addTo(map);
-    var marker = L.marker([10.68886, -71.681669]).addTo(map); //colocar flecha de indicacion 
-    marker.bindPopup("<b>Potrero 1</b>").openPopup();
-    // Fin poligono ubicacion
+        var map = L.map('map').setView([10.694235107808765, -71.63364763393179], 17);
 
-    // Poligono de ubicacion potrero 2
-    var polygon = L.polygon([
-        [10.688931, -71.680764],
-        [10.689394, -71.682046],
-        [10.689996, -71.681831],
-        [10.689146, -71.680608]
-    ],
-    {color: 'green'}).addTo(map);
-    var marker = L.marker([10.689389, -71.681321]).addTo(map); //colocar flecha de indicacion 
-    marker.bindPopup("<b>Potrero 2</b>").openPopup();
-    // Fin poligono ubicacion
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
 
-    
+        var myLayer = L.geoJSON().addTo(map);
+        myLayer.addData(Campo);
+
+        map.pm.addControls({
+            position: 'topleft',
+            drawMarker: true,
+            drawPolygon: true,
+            editMode: false,
+            drawPolyline: false,
+            removalMode: true,
+            optionsControls: false,
+            customControls: true,
+            oneBlock: false,
+            drawCircleMarker: false,
+            dragMode: false,
+        });
+
+        map.pm.Toolbar.createCustomControl({
+            name: 'alertBox',
+            block: 'custom',
+            className: 'leaflet-pm-icon-marker xyz-class',
+            title: 'Ubicacion',
+            onClick: () => {
+                ObtenerUbicacion();
+            },
+            toggle: false,
+        });
+
+        
+
+
+        function ObtenerUbicacion() {
+            // Ubicacon mediante gps
+            function onLocationFound(e) {
+                const radius = e.accuracy / 300;
+
+                const locationMarker = L.marker(e.latlng).addTo(map)
+                    .bindPopup(`Ubicacion Estimada`).openPopup();
+
+                const locationCircle = L.circle(e.latlng, radius, {
+                    color: 'blue',
+                    fillColor: '#f03',
+                    fillOpacity: 0,
+                    maxZoom: 19,
+                }).addTo(map);
+            }
+
+            function onLocationError(e) {
+                alert(e.message);
+            }
+
+            map.on('locationfound', onLocationFound);
+            map.on('locationerror', onLocationError);
+
+            map.setLocate({
+                setView: true
+            });
+        }
+    });
     </script>
     <!-- Mapa para instalaciones -->
 </body>

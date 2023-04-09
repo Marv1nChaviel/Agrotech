@@ -242,10 +242,45 @@
 
         };
 
+        $.post('./BackEnd/Agregar_Produccion.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
 
+            //   console.log(Datos);
+            //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
 
+            if (respuesta = "Ejecutado") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro Guardado',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $("#ModalProduccion").modal('hide');
+                $('#InventarioProduccion').DataTable().ajax.reload();
 
-        // Busca la tabla Inventario Rebaño y la recarga
+            } else {
+
+            }
+
+        });
+
+        // Actualizar Graficos al agregar datos al formulario---------------------------------------
+        $.getJSON('./BackEnd/Consulta_Graficos_Produccion_Leche.php', function(response) {
+            chart.updateSeries([{
+                name: 'Leche Lts',
+                data: response
+            }])
+        });
+
+        $.getJSON('./BackEnd/Consulta_Graficos_Produccion_Carne.php', function(response) {
+            chart1.updateSeries([{
+                name: 'Carne KG',
+                data: response
+            }])
+        });
+
+        
 
     });
 
@@ -253,9 +288,9 @@
     //  Boton Eliminar Produccion ------------------------------------------------
 
     $(document).on('click', '.btnEliminar', function() {
-        var id_trabajador = this.id;
-        console.log(id_trabajador);
-        EliminarRegistroTablaTrabajadores(id_trabajador);
+        var id_Produccion = this.id;
+        console.log(id_Produccion);
+        EliminarRegistroProduccion(id_Produccion);
     });
 
     // Fin Boton Eliminar Trabajador ------------------------------------------------
