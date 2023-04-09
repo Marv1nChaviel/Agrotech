@@ -95,7 +95,7 @@
                                 <div class="col-md-4 col-12 ">
                                     <div class="row"></div>
                                     <div class="row">
-                                        <div class="col-md-3 col-8 ">
+                                        <div class="img_object ">
                                             <img src="./assets/img/inventario_icono.png" alt="" width="130" height="130">
                                         </div>
                                     </div>
@@ -173,7 +173,7 @@
                                 <div class="col-md-4 col-12 ">
                                     <div class="row"></div>
                                     <div class="row">
-                                        <div class="col-md-3 col-8 ">
+                                        <div class="img_object">
                                             <img src="./assets/img/inventario_icono.png" alt="" width="130" height="130">
                                         </div>
                                     </div>

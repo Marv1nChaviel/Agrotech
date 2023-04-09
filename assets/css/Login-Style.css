@@ -115,7 +115,7 @@ input {
 	border: 0;
 	z-index: 1;
 	background-color: transparent;
-	border-bottom: 2px solid #eee; 
+	border-bottom: 2px solid rgba(0, 0, 0, 0.519); 
 	font: inherit;
 	font-size: 1.125rem;
 	padding: .25rem 0;
@@ -156,4 +156,45 @@ left: 25%;
 	text-align: center;
 	font-size: .875rem;
 	color: #8597a3;
+}
+
+@media (max-width:1280px)  {
+	.img-background {
+		display: none;
+	}
+
+    .login-section{
+		position: relative;
+		left: 100px;
+		
+	}
+
+	.input{ 
+		width: 300px;
+		position: relative;
+		bottom: 20px;
+		left: 25px;
+	}
+     	
+	.card-heading {
+		left: 20px;
+		font-size: 80px;
+	}
+
+	.action-button {
+		position: relative;
+		left: 70px;
+		width: 200px;
+	}
+
+	.action-button-register {
+		position: relative;
+		left: 90px;
+		width: 200px;
+	}
+
+	.card-info {
+		position: relative;
+		left: 10px;
+	}
 }

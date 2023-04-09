@@ -82,8 +82,8 @@
 
             </tfoot>
         </table>
-        <!-- Modal Nuevo -------------------------------------- -->
-        <div class="modal fade" id="ModalNuevo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         <!-- Modal Nuevo -------------------------------------- -->
+         <div class="modal fade" id="ModalNuevo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -102,7 +102,7 @@
                                 <div class="col-md-4 col-12 ">
                                     <div class="row"></div>
                                     <div class="row">
-                                        <div class="col-md-3 col-8 ">
+                                        <div class="img_object ">
                                             <img src="./assets/img/icon-user.png" alt="" width="130" height="130">
                                         </div>
                                     </div>
@@ -211,7 +211,7 @@
                                     <input type="number" class="form-control" id="E_id_trabajador" name="E_id_trabajador" hidden>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-3 col-8 ">
+                                        <div class="img_object">
                                             <img src="./assets/img/icon-user.png" id="E_FotoTrabajadores" alt="" width="130" height="130">
                                         </div>
                                     </div>

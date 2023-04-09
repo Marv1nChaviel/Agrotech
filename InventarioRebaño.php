@@ -139,7 +139,7 @@
                                     <label for="Lote">Lote</label>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-5">
+                            <div class="col-md-4 col-7">
                                 <div class="form-floating">
                                     <input type="number" class="form-control" id="N_Partos" name="N_Partos"
                                         placeholder="Partos" required>
@@ -335,6 +335,7 @@
 
         <!-- Fin Modal Mostrar Qr independiente -------------------- -->
 
+        
         <!-- Modal Registros Grandes------------------------- -->
         <div class="modal fade" id="ModalRegistrosGrandes" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -364,10 +365,10 @@
                                     <div class="form-floating mb-3">
                                         <select class="form-select" id="N_TipoRebaño_G" name="N_TipoRebaño_G"
                                             aria-label="Tipo de Rebaño" required>
-                                            <option value="" disabled selected hidden>Tipo de Rebaño</option>
+                                            <option class="tph" value="" disabled selected hidden>Tipo de Rebaños</option>
 
                                         </select>
-                                        <label for="Raza">Tipo de Rebaño</label>
+                                        <label class="rebaño_tipo" for="Raza">Tipo de Rebaño</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-4">

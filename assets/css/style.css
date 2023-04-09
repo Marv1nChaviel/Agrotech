@@ -46,6 +46,25 @@ h6 {
   transition: all 0.3s;
 }
 
+.btn-qr {
+  background-color: blue;
+  margin: 20px;
+  color: #fff;
+  border-radius: 5px;
+  width: 150px;
+  height: 50px;
+  
+}
+
+.btn-regitros-grandes {
+  color: #fff;
+  background-color: #498967;
+ border-color: #498967;
+ border-radius: 8px;
+ height: 50px;
+
+
+}
 @media (max-width: 1199px) {
   #main {
     padding: 20px;
@@ -65,6 +84,8 @@ h6 {
   font-weight: 600;
   color: #012970;
 }
+
+
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -1278,6 +1299,12 @@ h6 {
   z-index: -1;
 }
 
+.file-input { 
+  margin: 5px 0px 10px 10px;
+  position: relative;
+ 
+}
+
 .file-input__label {
   cursor: pointer;
   display: inline-flex;
@@ -1295,4 +1322,106 @@ h6 {
 .file-input__label svg {
   height: 16px;
   margin-right: 4px;
+}
+
+#Fecha_Produccion{
+  height: 58px;
+}
+
+#Fecha_Entrada{
+  height: 58px;
+}
+
+
+
+#Fecha_Ingreso{
+  height: 58px;
+}
+#Fecha_Gasto{
+  height: 58px;
+}
+
+
+@media(max-width:920px) {
+  .img_object  { 
+      display: flex;
+      justify-content: center;
+  }
+
+  .file-input { 
+    display: flex;
+    justify-content: center;
+    margin: 5px 0px 10px 0px;
+  }
+
+  .col-4 {
+    margin: 20px 0px 5px 0px;
+    width: 100%;
+    }
+    
+    .col-8 {
+      width: 100%;
+    }
+
+    .btn-primary {
+      margin: 10px;
+    } 
+    
+    .btn-warning {
+      position: relative;
+      top: 10px;
+      height: 62px;
+    }
+   
+    .btn-success { 
+      position: relative;
+      top: 10px;
+      height: 62px;
+    }
+    
+    #N_Sexo_G {
+      width: 150px;
+    }
+
+    #N_TipoRebaño_G {
+      position: relative;
+      left: 70px;
+      width: 180px;
+    }
+/* tipo de rabaño titulo */
+  
+    .rebaño_tipo{
+     display: none;
+    }
+   
+    .btn-qr {
+      background-color: blue;
+      margin: 20px;
+      color: #fff;
+      border-radius: 5px;
+      width: 150px;
+      height: 50px;
+      position: relative;
+      left: 100px;
+    }
+
+    .btn-regitros-grandes {
+      color: #fff;
+      background-color: #498967;
+     border-color: #498967;
+     border-radius: 8px;
+     height: 50px;
+     position: relative;
+     left: 30px;
+    }
+    .btn-regitros-grandes-tb {
+      color: #fff;
+      background-color: #498967;
+     border-color: #498967;
+     border-radius: 8px;
+     height: 50px;
+     position: relative;
+     left: 110px;
+    }
+
 }
