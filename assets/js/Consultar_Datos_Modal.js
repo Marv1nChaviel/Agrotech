@@ -168,5 +168,31 @@ $(document).ready(function () {
   });
 });
 
+// Consulta id animal para produccion
+// <!-- Consultar Operador -->
+
+$(document).ready(function () {
+  $.ajax({
+    url: "./BackEnd/Consulta_Animal_Rebaño.php",
+    type: "GET",
+    success: function (respuesta) {
+      let json = JSON.parse(respuesta);
+      var len = json.length;
+
+      // $("#selectraza").empty();
+      for (var i = 0; i < len; i++) {
+        var id_Animal= json[i]["ID_animal"];
+        var RazaPro= json[i]["Raza"];
+
+        // console.log('Raza id de la misma es '+id_rebaño);
+
+        $("#SelectAnimalProduccion").append(
+          "<option value='" + id_Animal + "'>"+id_Animal+"-" + RazaPro + "</option>"
+        );
+      }
+    },
+  });
+});
+
 
 

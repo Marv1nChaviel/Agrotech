@@ -53,6 +53,7 @@
             <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalProduccion"><i
                     class="bi bi-person-add"></i>
                 Nuevo Registro</button>
+            
             <!-- <button type="button" class="btn btn-primary " data-bs-toggle="modal"
                 data-bs-target="#ModalSalidaPermiso"><i class="bi bi-person-fill-exclamation"></i>
                 Agregar Salida Permiso</button> -->
@@ -81,14 +82,18 @@
                 <!--======= Final TABLA--------------------------------------------------- =======   -->
             </div>
             <div class="col-4">
-                <div class="row"><div id="GraficoVentaLeche"> </div></div>
-                <div class="row"><div id="GraficoVentaCarne"> </div></div>
+                <div class="row">
+                    <div id="GraficoVentaLeche"> </div>
+                </div>
+                <div class="row">
+                    <div id="GraficoVentaCarne"> </div>
+                </div>
             </div>
         </div>
         <!-- Modal Nueva Produccion -------------------------------------- -->
         <div class="modal fade" id="ModalProduccion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="Titulo">Agregar Produccion</h1>
@@ -100,22 +105,69 @@
                     <div class="modal-body">
                         <!-- Cuerpo del formulario------ -->
                         <form id="FormularioEnviar">
+                            <!-- Columna izquierda -->
                             <div class="row">
-                                
+
+                                <!-- fin Columna izquierda -->
+                                <div class="col-md-12 col-12">
+                                    <div class="row g-3">
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-floating">
+                                                <select class="form-select" id="TipoProduccion" required>
+                                                    <option selected disabled> Selecciona </option>
+                                                    <option value="Leche">Produccion de Leche</option>
+                                                    <option value="Carne">Produccion de Carne</option>
+                                                </select>
+                                                <label for="TipoProduccion">Tipo de Produccion:</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-5">
+                                            <div class="form-floating">
+                                                <input type="number" class="form-control" id="Cantidad" name="Cantidad"
+                                                    placeholder="Cantidad" required>
+                                                <label for="Cantidad">Cantidad</label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-7 col-7">
+
+                                            <div class="input-group date input-fecha-trabajador">
+                                                <input type="date" class="form-control input-lg" id="Fecha_Produccion"
+                                                    name="Fecha_Entrada" required><span class="input-group-addon"><i
+                                                        class="glyphicon glyphicon-th"></i></span>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-8">
+                                            <div class="form-floating">
+                                                <select class="form-select" id="SelectAnimalProduccion" required>
+                                                    <option selected disabled>Selecciona</option>
+
+                                                </select>
+                                                <label for="Telefono">Seleccion Animal</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-4">
+                                            <button type="button" class="btn btn-info btnMostrarQr"><i
+                                                    class="bi bi-qr-code" style="font-size: 1.6em;"></i></button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
                             </div>
+                            <div class="modal-footer">
 
+                                <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
+                                    Guardar</button>
+                            </div>
+                        </form>
+                        <!-- FIN Cuerpo del formulario -->
                     </div>
-                    <div class="modal-footer">
-
-                        <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
-                            Guardar</button>
-                    </div>
-                    </form>
-                    <!-- FIN Cuerpo del formulario -->
                 </div>
             </div>
-        </div>
-        <!--  fin Modal Nueva Produccion -------------------------------------- -->
+            <!--  fin Modal Nueva Produccion -------------------------------------- -->
     </main><!-- End #main -->
     <!-- Pie de pagina---- -->
     <?php 
@@ -136,8 +188,8 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/principal.js"></script>
+    <script src="assets/js/Consultar_Datos_Modal.js"></script>
     <script src="assets/js/Consulta_Modal_Editar.js"></script>
-    <script src="assets/js/Graficos-Produccion.js"></script>
 
     <script>
     $(document).ready(function() {
@@ -178,7 +230,24 @@
 
     });
     // End rellenar tablña con datos ajax
+    // Rellenar datatables con datos mediante ajax---------------
+    $('#FormularioEnviar').submit(function(e) {
+        e.preventDefault();
 
+        const Datos = {
+            TipoProduccion: $('#TipoProduccion').val(),
+            Cantidad: $("#Cantidad").val(),
+            Fecha_Produccion: $("#Fecha_Produccion").val(),
+            SelectAnimalProduccion: $("#SelectAnimalProduccion").val(),
+
+        };
+
+
+
+
+        // Busca la tabla Inventario Rebaño y la recarga
+
+    });
 
 
     //  Boton Eliminar Produccion ------------------------------------------------
@@ -194,6 +263,102 @@
 
 
     // Fin Boton Editar Trabajador ------------------------------------------------
+    </script>
+
+    <script>
+    // Grafico Venta Leche -------------------------------------------------------------------------
+    $.getJSON('./BackEnd/Consulta_Graficos_Produccion_Leche.php', function(response) {
+            chart.updateSeries([{
+                name: 'Leche Lts',
+                data: response
+            }])
+        });
+    
+
+
+        var options = {
+            series: [{
+                data: [222, 333, 444]
+            }],
+            chart: {
+                type: 'bar',
+                height: 250
+            },
+            colors: ['#38CFFF'],
+            plotOptions: {
+                bar: {
+                    borderRadius: 4,
+                    horizontal: true,
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            xaxis: {
+                categories: [],
+            },
+            title: {
+                text: 'Produccion Leche',
+                align: 'center',
+                floating: true
+            },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#GraficoVentaLeche"), options);
+        chart.render();
+
+
+    
+
+    // --------------------------------------------------------------------------------------
+
+    // Grafico Venta Carne -------------------------------------------------------------------------
+           
+
+        $.getJSON('./BackEnd/Consulta_Graficos_Produccion_Carne.php', function(response) {
+            chart1.updateSeries([{
+                name: 'Carne KG',
+                data: response
+            }])
+        });
+
+        var options = {
+            series: [{
+                data: [400, 430, 448, 470],
+            }],
+            chart: {
+                type: 'bar',
+                height: 250
+            },
+            colors: ['#FF8038'],
+            plotOptions: {
+                bar: {
+                    borderRadius: 4,
+                    horizontal: true,
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            xaxis: {
+                categories: [],
+            },
+            title: {
+                text: 'Produccion Carne',
+                align: 'center',
+                floating: true
+            },
+        };
+
+        var chart1 = new ApexCharts(document.querySelector("#GraficoVentaCarne"), options);
+        chart1.render();
+
+
+
+
+
+    
+    // --------------------------------------------------------------------------------------
     </script>
 
 

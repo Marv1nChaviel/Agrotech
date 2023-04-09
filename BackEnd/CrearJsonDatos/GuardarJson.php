@@ -6,7 +6,7 @@
 //   }
 
 
-$datos = json_decode($_POST['GuardarDatos']);
+$datos = $_POST['GuardarDatos'];
 $titulo = $_POST['Titulo'];
 // $resul = json_encode($datos);
 
@@ -24,12 +24,12 @@ $titulo = $_POST['Titulo'];
         mkdir($micarpeta, 0777, true);
         //-------Crear archivo json-----------
         $creador = fopen($directorio . "/json/".$titulo.".json", "w+");
-        fwrite($creador, $DatosCodificadosCompletos);
+        fwrite($creador, $datos);
         fclose($creador);
     } else {
         //-------Crear archivo json-----------
         $creador = fopen($directorio . "/json/".$titulo.".json", "w+");
-        fwrite($creador, $DatosCodificadosCompletos);
+        fwrite($creador, $datos);
         fclose($creador);
     }
 

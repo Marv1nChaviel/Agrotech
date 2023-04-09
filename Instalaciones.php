@@ -100,18 +100,20 @@
     <script>
     // Buscar y cargar datos de las ubicaciones si existen
     $(document).ready(function() {
+
         $.ajax({
-            url: "./BackEnd/CrearJsonDatos/LeerJson.php",
+            url: "./BackEnd/LeerMysqlMapa.php",
             type: "GET",
             success: function(respuesta) {
-                // console.log(respuesta)
-                // Poligono de ubicacion
-                var polygon = L.polygon([
-                    [10.688250, -71.681130],
-                    [10.688866, -71.682316],
-                    [10.689349, -71.682082],
-                    [10.688884, -71.680823],
-                ]).addTo(map);
+
+                let Ubicacion = JSON.parse(
+                    respuesta); //Almacena el resultado del json en el let json
+                Ubicacion.forEach(
+                    Ubi => { //Se asignan los valores obtendios en json a su respectivo input
+                        var coordenadas = Ubi.Coordenada;
+
+                    });
+
             },
         });
     });
@@ -139,8 +141,22 @@
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     Swal.fire('Guardado', '', 'success')
+                    $.ajax({
+                        type: "POST",
+                        url: './BackEnd/CrearJsonDatos/CambiarFormatoJsonCoordenada.php',
+                        data: {
+                            'Datos': JSON.stringify(Datos)
+                        }, //capturo array     
+                        success: function(data) {
+                            console.log(data);
+                            // GuardarDatos(Datos);
 
-                    GuardarDatos(Datos);
+                        }
+                    });
+
+                    
+
+
 
                 } else if (result.isDenied) {
                     ModoEditar.checked = true;
@@ -151,6 +167,22 @@
 
     async function GuardarDatos(DatosGuardar) {
 
+
+        var FormatoJson = {
+            "type": "FeatureCollection",
+            "features": [{
+                "type": "Feature",
+                "properties": {},
+                "geometry": {
+                    "coordinates": [
+                        [
+                            DatosGuardar
+                        ]
+                    ],
+                    "type": "Polygon"
+                }
+            }]
+        };
 
         const {
             value: titulo
@@ -168,11 +200,12 @@
                 type: "POST",
                 url: './BackEnd/CrearJsonDatos/GuardarJson.php',
                 data: {
-                    'GuardarDatos': JSON.stringify(DatosGuardar),
+                    'GuardarDatos': JSON.stringify(FormatoJson),
                     'Titulo': titulo
                 }, //capturo array     
                 success: function(data) {
                     console.log(data);
+
                 }
             });
         }
@@ -239,6 +272,7 @@
             marker.bindPopup("<b>Punto N° " + inicial + "</b>").openPopup();
             inicial += 1;
             Datos.push(e.latlng);
+
 
 
 
