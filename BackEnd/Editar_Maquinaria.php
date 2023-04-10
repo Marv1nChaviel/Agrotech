@@ -3,15 +3,14 @@
     include('./conexion_be.php');
 
 // -----Se definen las variables obtenniendo datos del post------
-    $E_NumeroAnimal = $_POST['E_NumeroAnimal'];
-    $E_TipoRebaño = $_POST['E_TipoRebaño'];
+    $E_id_Maquinaria = $_POST['E_id_Maquinaria'];
+    $E_Marca = $_POST['E_Marca'];
+    $E_Modelo = $_POST['E_Modelo'];
     $E_Color = $_POST['E_Color'];
-    $E_Lote = $_POST['E_Lote'];
-    $E_Partos = $_POST['E_Partos'];
-    $E_Peso = $_POST['E_Peso'];
-    $E_selectraza = $_POST['E_selectraza'];
-    $E_selectsexo = $_POST['E_selectsexo'];
-    $E_Clasificacion = $_POST['E_Clasificacion'];
+    $E_HorasdeUso = $_POST['E_HorasdeUso'];
+    $E_Año = $_POST['E_Año'];
+    $E_Trabajador = $_POST['E_Trabajador'];
+ 
 
     // $E_NumeroAnimal = "1";
     // $E_TipoRebaño = "1";
@@ -25,9 +24,8 @@
 
    
 
-    $ejecutar = $conexion->prepare("UPDATE inventario_rebaño SET Color= '$E_Color', Partos= '$E_Partos', Peso= '$E_Peso', 
-    ID_raza= '$E_selectraza', Sexo= '$E_selectsexo', ID_clasificacion= '$E_Clasificacion', Lote_ID_lote= '$E_Lote',
-    Tipo_rebaño_ID_tipo_rebaño= '$E_TipoRebaño' WHERE ID_animal= '$E_NumeroAnimal'");
+    $ejecutar = $conexion->prepare("UPDATE maquinaria SET Marca= '$E_Marca', Modelo= '$E_Modelo', Color= '$E_Color', 
+    Año= '$E_Año', Horas_uso= '$E_HorasdeUso', Trabajadores_ID_trabajador = '$E_Trabajador' WHERE ID_maquinaria  = '$E_id_Maquinaria'");
 
 
     

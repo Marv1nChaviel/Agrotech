@@ -55,14 +55,10 @@
         </div>
         <!--=======Final Texto de la tabla interna =======   -->
         <!-- Mapa iniciador -->
-        <div class="col-md-6 col-12">
-
-
-
-        </div>
+    
         <hr>
         <!-- Mapa -->
-        <div id="map" style="width: 150vh; height: 60vh;"></div>
+        <div id="map"  style="width: 100%; height: 60vh;"></div>
         <!-- End Mapa -->
 
     </main><!-- End #main -->

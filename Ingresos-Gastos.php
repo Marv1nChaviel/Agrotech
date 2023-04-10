@@ -295,23 +295,23 @@
                             <div class="row">
                                 <div class="col-4">
                                     <label for="">Fecha:</label>
-                                    <select class="form-select" size="7" id="SelectFechaRegistroProduccion"
+                                    <select class="form-select" size="4" id="SelectFechaRegistroProduccion"
                                         aria-label="size 3 select example" require>
                                         <!-- <option selected>Selecciona el registro de Produccion</option> -->
                                         <!-- <option value="1">29/10/2022</option> -->
                                     </select>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
                                     <label for="">N° Animal:</label>
-                                    <select class="form-select" size="7" id="SelectAnimalRegistroProduccion"
+                                    <select class="form-select" size="4" id="SelectAnimalRegistroProduccion"
                                         aria-label="size 3 select example" require>
                                         <!-- <option selected>Selecciona el registro de Produccion</option> -->
                                         <!-- <option value="1">25215235</option> -->
                                     </select>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-5">
                                     <label for="">Produccion:</label>
-                                    <select class="form-select" size="7" id="SelectProduccionRegistroProduccion"
+                                    <select class="form-select" size="4" id="SelectProduccionRegistroProduccion"
                                         aria-label="size 3 select example" require>
                                         <!-- <option selected>Selecciona el registro de Produccion</option> -->
                                         <!-- <option value="1">50 litros</option> -->

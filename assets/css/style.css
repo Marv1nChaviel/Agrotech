@@ -1342,7 +1342,7 @@ h6 {
 }
 
 
-@media(max-width:920px) {
+@media(max-width:1028px) {
   .img_object  { 
       display: flex;
       justify-content: center;
@@ -1354,9 +1354,20 @@ h6 {
     margin: 5px 0px 10px 0px;
   }
 
+  .container { 
+    display: block;
+  }
   .col-4 {
     margin: 20px 0px 5px 0px;
     width: 100%;
+    }
+
+    .btn-ingreso-3 {
+      margin: 10px 0px 5px 0px;
+    }
+
+    .table-Egresos { 
+      height: 250px;
     }
     
     .col-8 {
@@ -1423,5 +1434,9 @@ h6 {
      position: relative;
      left: 110px;
     }
-
+   
+    .dropdown-toggle {
+      position: relative;
+      right: 40px;
+    }
 }

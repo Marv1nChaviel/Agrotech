@@ -73,12 +73,13 @@
 
             </tbody>
             <tfoot>
-                
+
             </tfoot>
         </table>
 
         <!-- Modal Nuevo -------------------------------------- -->
-        <div class="modal fade" id="ModalNuevo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="ModalNuevo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -103,8 +104,10 @@
                                     <div class="row">
                                         <!-- Boton de subir foto -->
                                         <div class="file-input">
-                                            <input type="file" name="file-input" id="file-input" class="file-input__input" />
-                                            <label class="file-input__label" for="file-input"><i class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                            <input type="file" name="file-input" id="file-input"
+                                                class="file-input__input" />
+                                            <label class="file-input__label" for="file-input"><i
+                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label>
                                         </div>
                                         <!-- Fin Boton de subir foto -->
                                     </div>
@@ -114,31 +117,36 @@
                                     <div class="row g-3">
                                         <div class="col-md-6 col-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="Marca" name="Marca" placeholder="Marca" required>
+                                                <input type="text" class="form-control" id="Marca" name="Marca"
+                                                    placeholder="Marca" required>
                                                 <label for="Marca">Marca</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
-                                        <div class="form-floating">
-                                                <input type="text" class="form-control" id="Modelo" name="Modelo" placeholder="Modelo" required>
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Modelo" name="Modelo"
+                                                    placeholder="Modelo" required>
                                                 <label for="Modelo">Modelo</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
-                                        <div class="form-floating">
-                                                <input type="text" class="form-control" id="Color" name="Color" placeholder="Color" required>
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Color" name="Color"
+                                                    placeholder="Color" required>
                                                 <label for="Color">Color</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
-                                        <div class="form-floating">
-                                                <input type="number" class="form-control" id="HorasdeUso" name="HorasdeUso" placeholder="Horas de Uso" required>
+                                            <div class="form-floating">
+                                                <input type="number" class="form-control" id="HorasdeUso"
+                                                    name="HorasdeUso" placeholder="Horas de Uso" required>
                                                 <label for="HorasdeUso">Horas de Uso</label>
                                             </div>
                                         </div>
                                         <div class="col-md-5 col-5">
-                                        <div class="form-floating mb-3">
-                                                <select class="form-select" id="Año" name="Año" aria-label="Año" size="1" required>
+                                            <div class="form-floating mb-3">
+                                                <select class="form-select" id="Año" name="Año" aria-label="Año"
+                                                    size="1" required>
                                                     <option disabled selected hidden>Año</option>
                                                     <?php 
                                                     for ($i=1990; $i < 2014; $i++) { 
@@ -151,7 +159,8 @@
                                         </div>
                                         <div class="col-md-7 col-7">
                                             <div class="form-floating mb-3">
-                                                <select class="form-select" id="Trabajador" name="Trabajador" aria-label="Trabajador" required>
+                                                <select class="form-select" id="Trabajador" name="Trabajador"
+                                                    aria-label="Trabajador" required>
                                                     <option disabled selected hidden>Trabajador</option>
                                                 </select>
                                                 <label for="Trabajador">Trabajador</label>
@@ -174,8 +183,9 @@
             </div>
         </div>
         <!--  fin Modal Nuevo -------------------------------------- -->
-         <!-- Modal Editar -------------------------------------- -->
-         <div class="modal fade" id="ModalEditarMaquinaria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <!-- Modal Editar -------------------------------------- -->
+        <div class="modal fade" id="ModalEditarMaquinaria" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -187,7 +197,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Cuerpo del formulario------ -->
-                        <form id="FormularioEnviar">
+                        <form id="FormularioEditar">
                             <!-- Columna izquierda -->
                             <div class="row">
                                 <div class="col-md-4 col-12 ">
@@ -200,8 +210,10 @@
                                     <div class="row">
                                         <!-- Boton de subir foto -->
                                         <div class="file-input">
-                                            <input type="file" name="file-input" id="file-input" class="file-input__input" />
-                                            <label class="file-input__label" for="file-input"><i class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                            <input type="file" name="file-input" id="file-input"
+                                                class="file-input__input" />
+                                            <label class="file-input__label" for="file-input"><i
+                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label>
                                         </div>
                                         <!-- Fin Boton de subir foto -->
                                     </div>
@@ -209,34 +221,39 @@
                                 <!-- fin Columna izquierda -->
                                 <div class="col-md-8 col-12">
                                     <div class="row g-3">
-                                    <input type="text" class="form-control" id="E_id_Maquinaria" required hidden>
+                                        <input type="text" class="form-control" id="E_id_Maquinaria" required hidden>
                                         <div class="col-md-6 col-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="E_Marca" name="Marca" placeholder="Marca" required>
+                                                <input type="text" class="form-control" id="E_Marca" name="Marca"
+                                                    placeholder="Marca" required>
                                                 <label for="Marca">Marca</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
-                                        <div class="form-floating">
-                                                <input type="text" class="form-control" id="E_Modelo" name="Modelo" placeholder="Modelo" required>
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="E_Modelo" name="Modelo"
+                                                    placeholder="Modelo" required>
                                                 <label for="Modelo">Modelo</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
-                                        <div class="form-floating">
-                                                <input type="text" class="form-control" id="E_Color" name="Color" placeholder="Color" required>
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="E_Color" name="Color"
+                                                    placeholder="Color" required>
                                                 <label for="Color">Color</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6">
-                                        <div class="form-floating">
-                                                <input type="number" class="form-control" id="E_HorasdeUso" name="HorasdeUso" placeholder="Horas de Uso" required>
+                                            <div class="form-floating">
+                                                <input type="number" class="form-control" id="E_HorasdeUso"
+                                                    name="HorasdeUso" placeholder="Horas de Uso" required>
                                                 <label for="HorasdeUso">Horas de Uso</label>
                                             </div>
                                         </div>
                                         <div class="col-md-5 col-5">
-                                        <div class="form-floating mb-3">
-                                                <select class="form-select" id="E_Año" name="E_Año" aria-label="Año" size="1" required>
+                                            <div class="form-floating mb-3">
+                                                <select class="form-select" id="E_Año" name="E_Año" aria-label="Año"
+                                                    size="1" required>
                                                     <option disabled selected hidden>Año</option>
                                                     <?php 
                                                     for ($i=1990; $i < 2014; $i++) { 
@@ -249,7 +266,8 @@
                                         </div>
                                         <div class="col-md-7 col-7">
                                             <div class="form-floating mb-3">
-                                                <select class="form-select" id="E_Trabajador" name="E_Trabajador" aria-label="Trabajador" required>
+                                                <select class="form-select" id="E_Trabajador" name="E_Trabajador"
+                                                    aria-label="Trabajador" required>
                                                     <option disabled selected hidden>Trabajador</option>
                                                 </select>
                                                 <label for="Trabajador">Trabajador</label>
@@ -274,7 +292,7 @@
         <!--  fin Modal Editar -------------------------------------- -->
         <!--======= Final TABLA--------------------------------------------------- =======   -->
     </main><!-- End #main -->
-<!-- Pie de pagina---- -->
+    <!-- Pie de pagina---- -->
     <?php 
     include('./Pie_De_Pagina.php');
     ?>
@@ -287,9 +305,9 @@
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.responsive.min.js"></script>
     <script src="assets/js/sweetalert2.all.min.js"></script>
-       <!-- Consultas de los modales en este script -->
-       <script src="./assets/js/Consultar_Datos_Modal.js"></script>
-       <script src="./assets/js/Consulta_Modal_Editar.js"></script>
+    <!-- Consultas de los modales en este script -->
+    <script src="./assets/js/Consultar_Datos_Modal.js"></script>
+    <script src="./assets/js/Consulta_Modal_Editar.js"></script>
 
 
     <script>
@@ -306,8 +324,7 @@
                 searchable: false,
                 orderable: false
             }, ],
-            columns: [
-                {
+            columns: [{
                     data: 'Marca'
                 },
                 {
@@ -344,43 +361,84 @@
     });
     // Enviar Datos del Modal Maquinaria para guardar---------------
     $('#FormularioEnviar').submit(function(e) {
-            e.preventDefault();
+        e.preventDefault();
 
-            const Datos = {
-                Marca: $('#Marca').val(),
-                Modelo: $("#Modelo").val(),
-                Color: $("#Color").val(),
-                HorasdeUso: $("#HorasdeUso").val(),
-                Año: $("#Año").val(),
-                Trabajador: $("#Trabajador").val(),
-                Extras: $("#Extras").val(),
-            };
-            console.log(Datos);
-            $.post('./BackEnd/Agregar_Maquinaria.php', Datos, function(
-                respuesta) { // metodo post del query igualmente funcional que el anterior
+        const Datos = {
+            Marca: $('#Marca').val(),
+            Modelo: $("#Modelo").val(),
+            Color: $("#Color").val(),
+            HorasdeUso: $("#HorasdeUso").val(),
+            Año: $("#Año").val(),
+            Trabajador: $("#Trabajador").val(),
+            Extras: $("#Extras").val(),
+        };
+        console.log(Datos);
+        $.post('./BackEnd/Agregar_Maquinaria.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
 
-                
-                //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
 
-                if (respuesta = "Ejecutado") {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Agregado a inventario!',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    $("#ModalNuevo").modal('hide');
-                    $('#InventarioMaquina').DataTable().ajax.reload();
-                    //DataTable.ajax.reload();
-                   
-                } else {
+            //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
 
-                }
+            if (respuesta = "Ejecutado") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Agregado a inventario!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $("#ModalNuevo").modal('hide');
+                $('#InventarioMaquina').DataTable().ajax.reload();
+                //DataTable.ajax.reload();
 
-            });
+            } else {
+
+            }
 
         });
+
+    });
+
+    // Formulario Editar Registro ----------------------------------------
+    $('#FormularioEditar').submit(function(e) {
+        e.preventDefault();
+
+        const Datos = {
+            E_id_Maquinaria: $('#E_id_Maquinaria').val(),
+            E_Marca: $("#E_Marca").val(),
+            E_Modelo: $("#E_Modelo").val(),
+            E_Color: $("#E_Color").val(),
+            E_HorasdeUso: $("#E_HorasdeUso").val(),
+            E_Año: $("#E_Año").val(),
+            E_Trabajador: $("#E_Trabajador").val(),
+        };
+
+        $.post('./BackEnd/Editar_Maquinaria.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
+
+            //   console.log(Datos);
+            //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
+
+            if (respuesta = "Ejecutado") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro Guardado',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $("#ModalEditarMaquinaria").modal('hide');
+
+            } else {
+
+            }
+
+        });
+
+
+        // Busca la tabla Inventario Rebaño y la recarga
+        $('#InventarioMaquina').DataTable().ajax.reload();
+    });
     //  Boton Eliminar Maquinaria ------------------------------------------------
 
     $(document).on('click', '.btnEliminar', function() {
@@ -391,9 +449,9 @@
 
     // Fin Boton Eliminar Maquinaria ------------------------------------------------
 
-     //  Boton Editar Maquinaria ------------------------------------------------
+    //  Boton Editar Maquinaria ------------------------------------------------
 
-     $(document).on('click', '.btnEditarMaquinaria', function() {
+    $(document).on('click', '.btnEditarMaquinaria', function() {
         var id_Maquinaria = this.id;
         console.log(id_Maquinaria);
         ModalEditarMaquinaria(id_Maquinaria);

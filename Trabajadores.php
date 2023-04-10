@@ -50,7 +50,7 @@
                     <li class="breadcrumb-item active">Trabajadores Datos</li>
                 </ol>
             </nav>
-            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
+            <button type="button" class="btn-regitros-grandes" data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
                     class="bi bi-person-add"></i>
                 Nuevo Trabajador</button>
             <!-- <button type="button" class="btn btn-primary " data-bs-toggle="modal"
@@ -110,8 +110,8 @@
 
                                         <!-- Boton de subir foto -->
                                         <div class="file-input">
-                                            <input type="file" name="file-input" id="file-input"
-                                                class="file-input__input" />
+                                            <input accept="image/*" type="file"  name="Foto" id="Foto"
+                                                class="file-input__input" >
                                             <label class="file-input__label" for="file-input"><i
                                                     class="bi bi-upload"></i><span>-Subir Foto</span></label>
                                         </div>
@@ -203,7 +203,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Cuerpo del formulario------ -->
-                        <form id="FormularioEnviar">
+                        <form id="FormularioEditar">
                             <!-- Columna izquierda -->
                             <div class="row">
                                 <div class="col-md-4 col-12 ">
@@ -312,18 +312,19 @@
                     </div>
                     <div class="modal-body">
                         <form id="formularioSalidaPermiso">
-                            <input type="number" class="form-control" id="id_trabajador" name="id_trabajador" hidden>
+                            <input type="number" class="form-control" id="id_trabajador_h" name="id_trabajador" hidden>
                             <div class="input-group date input-fecha-permiso">
-                                <input type="text" class="form-control"><span class="input-group-addon"><i
+                                <input type="text" class="form-control" id="Salida_Permiso"><span class="input-group-addon"><i
                                         class="glyphicon glyphicon-th"></i></span>
                             </div>
-                        </form>
+                        
                     </div>
                     <div class="modal-footer">
 
                         <button type="submit" class="btn btn-success"><i class="bi bi-check2-circle"></i>
                             Generar</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -461,10 +462,47 @@
 
     $(document).on('click', '.btnSalidaPermiso', function() {
         var id_trabajador = this.id;
-        $('#id_trabajador').val(id_trabajador);
+        $('#id_trabajador_h').val(id_trabajador);
         $('#ModalSalidaPermiso').modal('show'); //Abre modal //Abre modal
         
 
+    });
+
+    // Salida de Permiso ----------------------
+     // Formulario Editar Registro ------------------------------
+     $('#formularioSalidaPermiso').submit(function(e) {
+        e.preventDefault();
+
+        const Datos = {
+            S_id_trabajador: $('#id_trabajador_h').val(),
+            S_Salida_Permiso: $("#Salida_Permiso").val(),
+        };
+
+        $.post('./BackEnd/Agregar_Salida_Permiso_Trabajadore.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
+                console.log(Datos);
+            //   console.log(Datos);
+            //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
+
+            if (respuesta = "Ejecutado") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro Guardado',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $("#ModalSalidaPermiso").modal('hide');
+
+            } else {
+
+            }
+
+        });
+
+
+        // Busca la tabla Inventario Rebaño y la recarga
+        $('#InventarioTrabajadores').DataTable().ajax.reload();
     });
 
     // Insertar Salida Permiso-----------------------------
@@ -487,7 +525,49 @@
         ModalEditarTrabajadores(id_trabajador);
     });
 
+
     // Fin Boton Editar Trabajador ------------------------------------------------
+
+    // Formulario Editar Registro ------------------------------
+    $('#FormularioEditar').submit(function(e) {
+        e.preventDefault();
+
+        const Datos = {
+            E_id_trabajador: $('#E_id_trabajador').val(),
+            E_NombreApellido: $("#E_NombreApellido").val(),
+            E_Cargo: $("#E_Cargo").val(),
+            E_Cedula: $("#E_Cedula").val(),
+            E_Sueldo: $("#E_Sueldo").val(),
+            E_Fecha_Entrada: $("#E_Fecha_Entrada").val(),
+            E_Telefono: $("#E_Telefono").val(),
+        };
+
+        $.post('./BackEnd/Editar_Trabajadores.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
+
+            //   console.log(Datos);
+            //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
+
+            if (respuesta = "Ejecutado") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro Guardado',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $("#ModalEditarTrabajadores").modal('hide');
+
+            } else {
+
+            }
+
+        });
+
+
+        // Busca la tabla Inventario Rebaño y la recarga
+        $('#InventarioTrabajadores').DataTable().ajax.reload();
+    });
     </script>
 
     <script>

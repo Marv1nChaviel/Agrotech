@@ -51,14 +51,14 @@
                     <li class="breadcrumb-item active">Inventario del Rebaño</li>
                 </ol>
             </nav>
-            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
+            <button type="button" class="btn-regitros-grandes " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
                     class="bi bi-file-earmark-plus"></i>
                 Nuevo Registro</button>
-            <button type="button" class="btn btn-success " data-bs-toggle="modal"
+            <button type="button" class="btn-regitros-grandes " data-bs-toggle="modal"
                 data-bs-target="#ModalRegistrosGrandes"><i class="bi bi-infinity"></i>
                 Registros Grandes</button>
-            <button type="button" class="btn btn-primary " onclick="QR()" data-bs-toggle="modal"
-                data-bs-target="#ModalQR"><i class="bi bi-qr-code-scan"></i>
+            <button type="button" class="btn-qr " onclick="QR()" data-bs-toggle="modal" data-bs-target="#ModalQR"><i
+                    class="bi bi-qr-code-scan"></i>
                 Busqueda Qr</button>
         </div>
         <!--=======Final Texto de la tabla interna =======   -->
@@ -200,8 +200,8 @@
         </div>
         <!--  fin Modal Nuevo -------------------------------------- -->
         <!-- Modal Editar -------------------------------------- -->
-        <div class="modal fade" id="ModalEditarInventarioRebaño" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="ModalEditarInventarioRebaño" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -213,7 +213,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Cuerpo del formulario------ -->
-                        <form class="row g-3" id="FormularioEditar">
+                        <form class="row g-3" id="FormularioEditarEditar">
                             <div class="col-md-5 col-8">
                                 <div class="form-floating">
                                     <input type="number" class="form-control" id="NumeroAnimal" name="NumeroAnimal"
@@ -263,7 +263,7 @@
                             </div>
                             <div class="col-md-4 col-4">
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" id="SRaza" aria-label="Raza" required> 
+                                    <select class="form-select" id="SRaza" aria-label="Raza" required>
                                         <option value="0" disabled selected hidden>Raza</option>
 
                                     </select>
@@ -291,8 +291,8 @@
                             </div>
 
 
-                        
-                        <!-- FIN Cuerpo del formulario -->
+
+                            <!-- FIN Cuerpo del formulario -->
                     </div>
                     <div class="modal-footer">
 
@@ -335,7 +335,7 @@
 
         <!-- Fin Modal Mostrar Qr independiente -------------------- -->
 
-        
+
         <!-- Modal Registros Grandes------------------------- -->
         <div class="modal fade" id="ModalRegistrosGrandes" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -365,7 +365,8 @@
                                     <div class="form-floating mb-3">
                                         <select class="form-select" id="N_TipoRebaño_G" name="N_TipoRebaño_G"
                                             aria-label="Tipo de Rebaño" required>
-                                            <option class="tph" value="" disabled selected hidden>Tipo de Rebaños</option>
+                                            <option class="tph" value="" disabled selected hidden>Tipo de Rebaños
+                                            </option>
 
                                         </select>
                                         <label class="rebaño_tipo" for="Raza">Tipo de Rebaño</label>
@@ -601,6 +602,49 @@
         $('#Inventario_Rebaño').DataTable().ajax.reload();
     });
 
+    // Formulario Editar Registro ------------------------------
+    $('#FormularioEditarEditar').submit(function(e) {
+        e.preventDefault();
+
+        const Datos = {
+            E_NumeroAnimal: $('#NumeroAnimal').val(),
+            E_TipoRebaño: $("#TipoRebaño").val(),
+            E_Color: $("#Color").val(),
+            E_Lote: $("#Lote").val(),
+            E_Partos: $("#Partos").val(),
+            E_Peso: $("#Peso").val(),
+            E_selectraza: $("#SRaza").val(),
+            E_selectsexo: $("#SSexo").val(),
+            E_Clasificacion: $("#Clasificacion").val(),
+        };
+
+        $.post('./BackEnd/Editar_Inventario_Rebaño.php', Datos, function(
+            respuesta) { // metodo post del query igualmente funcional que el anterior
+
+            //   console.log(Datos);
+            //document.getElementById("task-form").reset();  // este y el de abajo son metodos para resetear el formulario cuando se hace un submit
+
+            if (respuesta = "Ejecutado") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro Guardado',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $("#ModalEditarInventarioRebaño").modal('hide');
+
+            } else {
+
+            }
+
+        });
+
+
+        // Busca la tabla Inventario Rebaño y la recarga
+        $('#Inventario_Rebaño').DataTable().ajax.reload();
+    });
+
     // Insertar Registros Grandes-----------------------------
     $('#FormularioRegistrosGrandes').submit(function(e) {
         e.preventDefault();
@@ -643,7 +687,7 @@
 
     // Fin insertar Registros Grandes----------------------------
 
-   
+
 
     // Click Boton mostrar Qr de la tabla editar ------------------
 
@@ -711,9 +755,9 @@
 
 
         });
-        
+
         $('#ModalInformacionAdicional').modal('show'); //Abre modal
-        
+
 
         // Fin Tabala de informacion adicional ---------------------------------------------
 
@@ -732,14 +776,13 @@
     // Fin Boton Eliminar inventario ------------------------------------------------
     </script>
 
-
-
     <!--  -->
 
     <!-- QR IMPLEMENTACION EN BOTON QR -->
     <script src="./assets/js/html5-qrcode.min.js"></script>
     <script>
     function QR() {
+
         const scanner = new Html5QrcodeScanner('reader', {
             // Scanner will be initialized in DOM inside element with id of 'reader'
             qrbox: {
@@ -781,12 +824,12 @@
                     $('#ModalQR').modal('hide');
                     $('#ModalEditar').modal('show');
 
-                    scanner.clear();
-                    BuscarQr(result);
+                    
+
                 }
-
-
-
+                BuscarQr(result);
+                scanner.clear();
+                    
             });
             // console.log(result);
             // Prints result as a link inside result element

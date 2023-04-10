@@ -107,7 +107,7 @@ $nombre_dueño = $_SESSION['Nombre_Usuario'];
 
             <a class="nav-link nav-profile d-flex align-items-center pe-0"  data-bs-toggle="dropdown">
 
-                <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $nombre_dueño; ?></span>
+                <span class="dropdown-toggle ps-2"><?php echo $nombre_dueño; ?></span>
             </a><!-- End Profile Iamge Icon -->
 
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">

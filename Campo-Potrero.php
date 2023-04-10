@@ -57,7 +57,7 @@
         <!-- Mapa iniciador -->
         <hr>
         <!-- Mapa  -->
-        <div id="map" style="width: 150vh; height: 60vh;"></div>
+        <div id="map" style="width: 100%; height: 60vh;"></div>
         <!-- End Mapa  -->
     </main><!-- End #main -->
     <!-- Pie de pagina---- -->
