@@ -1,6 +1,7 @@
 <?php 
 // Comprobacion de datos post inventario Rebaño#######################################################
     include('./conexion_be.php');
+    include('./Agregar_Actividad_Reciente.php');
 
 // -----Se definen las variables obtenniendo datos del post------
     $E_NumeroAnimal = $_POST['E_NumeroAnimal'];
@@ -34,6 +35,8 @@
     // Excecute
     if($ejecutar->execute()){
         echo "Ejecutado";
+        AgregarActividadReciente("Se edito un registro en inventario rebaño del animal  ".$E_NumeroAnimal."","text-warning");
+
        
     }else{
         echo "Error";

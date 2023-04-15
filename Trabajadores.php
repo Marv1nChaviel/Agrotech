@@ -71,7 +71,6 @@
                     <th>Sueldo</th>
                     <th>Cargo</th>
                     <th>Telefono</th>
-                    <th>Foto</th>
                     <th>Opciones</th>
 
                 </tr>
@@ -110,10 +109,10 @@
 
                                         <!-- Boton de subir foto -->
                                         <div class="file-input">
-                                            <input accept="image/*" type="file"  name="Foto" id="Foto"
+                                            <!-- <input accept="image/*" type="file"  name="Foto" id="Foto"
                                                 class="file-input__input" >
                                             <label class="file-input__label" for="file-input"><i
-                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label> -->
                                         </div>
                                         <!-- Fin Boton de subir foto -->
 
@@ -219,10 +218,10 @@
 
                                         <!-- Boton de subir foto -->
                                         <div class="file-input">
-                                            <input type="file" name="file-input" id="file-input"
+                                            <!-- <input type="file" name="file-input" id="file-input"
                                                 class="file-input__input" />
                                             <label class="file-input__label" for="file-input"><i
-                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label> -->
                                         </div>
                                         <!-- Fin Boton de subir foto -->
 
@@ -314,9 +313,10 @@
                         <form id="formularioSalidaPermiso">
                             <input type="number" class="form-control" id="id_trabajador_h" name="id_trabajador" hidden>
                             <div class="input-group date input-fecha-permiso">
-                                <input type="text" class="form-control" id="Salida_Permiso"><span class="input-group-addon"><i
+                                <input type="date" class="form-control" id="Salida_Permiso"><span class="input-group-addon"><i
                                         class="glyphicon glyphicon-th"></i></span>
                             </div>
+                            
                         
                     </div>
                     <div class="modal-footer">
@@ -390,9 +390,7 @@
                 {
                     data: 'Telefono'
                 },
-                {
-                    data: 'Imagen'
-                },
+                
                 {
                     data: 'Opciones'
                 },
@@ -492,7 +490,10 @@
                     showConfirmButton: false,
                     timer: 1500
                 })
+                
+                
                 $("#ModalSalidaPermiso").modal('hide');
+                document.getElementsByClassName("Salida_Permiso").value = "";
 
             } else {
 

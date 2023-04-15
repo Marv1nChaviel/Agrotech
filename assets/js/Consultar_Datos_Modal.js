@@ -55,6 +55,9 @@ $(document).ready(function () {
         $("#N_TipoRebaño_G").append(
           "<option value='" + id_rebaño + "'>" + tipo_rebaño + "</option>"
         );
+        $("#TipoRebaño").append(
+          "<option value='" + id_rebaño + "'>" + tipo_rebaño + "</option>"
+        );
       }
     },
   });
@@ -189,6 +192,7 @@ $(document).ready(function () {
         $("#SelectAnimalProduccion").append(
           "<option value='" + id_Animal + "'>"+id_Animal+"-" + RazaPro + "</option>"
         );
+        
       }
     },
   });

@@ -323,7 +323,16 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <input type="text" class="form-control" id="id_animal_qr" placeholder="id_animal_qr" required
+                            hidden>
                         <div id="Mostrar_Qr_Animal"></div>
+                        <div class="opacity-50">
+
+                        <center><h1 class="modal-title fs-5" id="">Click en la imagen para descargar</h1></center>
+                        </div>
+                        <!-- <center><button class="btn btn-success .btnDescargarQr"><i class="bi bi-qr-code"
+                                    style="font-size: 1.6em;"></i>
+                                Descargar Qr</button></center> -->
                     </div>
                     <div class="modal-footer">
 
@@ -450,7 +459,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
+       
                                         </tbody>
                                         <tfoot id="Tabla_Produccion_Animal_foot">
 
@@ -692,6 +701,8 @@
     // Click Boton mostrar Qr de la tabla editar ------------------
 
     $(document).on('click', '.btnMostrarQr', function() {
+
+        
         var id_animal = $('#NumeroAnimal').val();
         console.log(id_animal);
         const Datos = {
@@ -699,10 +710,12 @@
         };
         $.post('./BackEnd/MostrarQr_Animal.php', Datos, function(
             respuesta) { // metodo post del query igualmente funcional que el anterior
-
+            
             $('#ModalQR_Mostrar').modal('show'); //Abre modal
-            $('#ModalEditar').modal('hide'); //Abre modal
+            $('#ModalEditarInventarioRebaño').modal('hide'); //Abre modal
             $('#Mostrar_Qr_Animal').html(respuesta);
+            $('#id_animal_qr').val(id_animal);
+
 
         });
     });
@@ -774,6 +787,15 @@
 
 
     // Fin Boton Eliminar inventario ------------------------------------------------
+
+    // Boton Descargar Qr ------------------------------------------------
+
+    $(document).on('click', '.btnDescargarQr', function() {
+        var id_animal = this.id;
+        console.log(id_animal);
+        var source = "./assets/qr_creados/"+id_animal+".png";
+
+    });
     </script>
 
     <!--  -->
@@ -808,7 +830,7 @@
                 if (respuesta == "No") {
                     error(respuesta);
                 } else {
-                    $('#ModalEditar').modal('show'); //Abre modal
+                    $('#ModalEditarInventarioRebaño').modal('show'); //Abre modal
                     let json = JSON.parse(respuesta); //Almacena el resultado del json en el let json
                     json.forEach(json => { //Se asignan los valores obtendios en json a su respectivo input
                         $('#NumeroAnimal').val(json.ID_animal);
@@ -822,14 +844,14 @@
                         $('#Clasificacion').val(json.ID_clasificacion);
                     });
                     $('#ModalQR').modal('hide');
-                    $('#ModalEditar').modal('show');
+                    $('#ModalEditarInventarioRebaño').modal('show');
 
-                    
+
 
                 }
                 BuscarQr(result);
                 scanner.clear();
-                    
+
             });
             // console.log(result);
             // Prints result as a link inside result element

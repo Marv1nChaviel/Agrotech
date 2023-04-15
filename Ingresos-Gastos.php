@@ -63,7 +63,7 @@
                     <a><button class="btn-ingreso-1" data-bs-toggle="modal" data-bs-target="#ModalNuevoIngreso"><i
                                 class="bi bi-plus-circle"></i> Ingresos</button></a>
                     <!---------------------------------->
-                    <a><button class="btn-ingreso-2"><i class="bi bi-question-circle"></i></button></a>
+                    <!-- <a><button class="btn-ingreso-2"><i class="bi bi-question-circle"></i></button></a> -->
 
                 </div>
 
@@ -112,7 +112,7 @@
                     <a><button class="btn-ingreso-3" data-bs-toggle="modal" data-bs-target="#ModalNuevoEgreso"><i
                                 class="bi bi-dash-circle"></i> Egresos</button></a>
                     <!---------------------------------->
-                    <a><button class="btn-ingreso-2"><i class="bi bi-question-circle"></i></button></a>
+                    <!-- <a><button class="btn-ingreso-2"><i class="bi bi-question-circle"></i></button></a> -->
 
                 </div>
 
@@ -162,50 +162,54 @@
                         <form id="FormularioEnviar">
                             <div class="row">
                                 <div class="col-12">
-                                <center><label for=""><b>Tipo de Ingreso:</b></label></center>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="operacion"
-                                            id="flexRadioDefault1" value="Leche">
-                                        <label class="form-check-label" for="flexRadioDefault1">Venta de Leche</label>
-                                    </div></div>
-                                <div class="col-4">
-                                <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="operacion"
-                                            id="flexRadioDefault2" value="Carne">
-                                        <label class="form-check-label" for="flexRadioDefault2">Venta de Carne</label>
-                                    </div>
+                                    <center><label for=""><b>Tipo de Ingreso:</b></label></center>
                                 </div>
-                                <div class="col-4">
-                                <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="operacion"
-                                            id="flexRadioDefault2" value="Animal" readonly>
-                                        <label class="form-check-label" for="flexRadioDefault2">Venta del Animal</label>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="operacion"
+                                                id="flexRadioDefault1" value="Leche">
+                                            <label class="form-check-label" for="flexRadioDefault1">Venta de
+                                                Leche</label>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="operacion"
+                                                id="flexRadioDefault2" value="Carne">
+                                            <label class="form-check-label" for="flexRadioDefault2">Venta de
+                                                Carne</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="operacion"
+                                                id="flexRadioDefault2" value="Animal" readonly>
+                                            <label class="form-check-label" for="flexRadioDefault2">Venta del
+                                                Animal</label>
+                                        </div>
+                                    </div>
 
-                                
-                                    
-                                    
+
+
+
                                 </div>
                             </div>
-                                    
-                                   
-                            
+
+
+
                             <div class="row">
-                            <div class="col-12">
+                                <div class="col-12">
                                     <center> <label for=""><b>Datos del Animal:</b></label></center>
                                     <div class="row">
                                         <div class="col-6">
-                                                <div class="input-group mb-3">
+                                            <div class="input-group mb-3">
                                                 <div class="form-floating">
                                                     <input type="number" class="form-control" id="Numero_Animal"
                                                         placeholder="N° Animal" required>
                                                     <label for="Numero_Animal">N° Animal</label>
                                                 </div>
-                                               
+
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -216,16 +220,16 @@
                                         </div>
 
                                         <div class="col-6">
-                                            
-                                        <div class="form-floating">
-                                                <input type="number" class="form-control" id="Produccion" name="Produccion"
-                                                    placeholder="Produccion" required readonly>
+
+                                            <div class="form-floating">
+                                                <input type="number" class="form-control" id="Produccion"
+                                                    name="Produccion" placeholder="Produccion" required readonly>
                                                 <label for="Produccion">Produccion</label>
                                             </div>
 
                                         </div>
                                         <div class="col-6">
-                                        <div class="input-group mb-3">
+                                            <div class="input-group mb-3">
                                                 <div class="form-floating">
                                                     <input type="number" class="form-control" id="Ganancias"
                                                         placeholder="Ganancias">
@@ -237,9 +241,9 @@
 
                                         </div>
                                         <div class="col-12">
-                                        <div class="form-floating">
-                                                <input type="text" class="form-control" id="Descripcion" name="Descripcion"
-                                                    placeholder="Descripcion" required>
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Descripcion"
+                                                    name="Descripcion" placeholder="Descripcion" required>
                                                 <label for="Descripcion">Descripcion</label>
                                             </div>
 
@@ -260,8 +264,8 @@
 
                                 </div>
                             </div>
-                                
-                            
+
+
 
                     </div>
                     <div class="modal-footer">
@@ -384,13 +388,21 @@
 
 
                                         <div class="col-6">
-                                            <input type="number" class="form-control" id="Gasto" name="Gasto"
-                                                placeholder="Gasto" required>
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Gasto" name="Gasto"
+                                                    placeholder="Gasto" required>
+                                                <label for="Gasto">Gasto</label>
+                                            </div>
 
                                         </div>
+
                                         <div class="col-12">
-                                            <input type="text" class="form-control" id="Egresos_Descripcion" name="Egresos_Descripcion"
-                                                placeholder="Descripcion" required>
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Egresos_Descripcion"
+                                                    name="Egresos_Descripcion" placeholder="Egresos_Descripcion"
+                                                    required>
+                                                <label for="Egresos_Descripcion">Egresos_Descripcion</label>
+                                            </div>
 
                                         </div>
 
@@ -551,24 +563,31 @@
             };
             $.post('./BackEnd/Agregar_Ingresos.php', Datos, function(
                 respuesta) { // metodo post del query igualmente funcional que el anterior
-            if (respuesta = "Ejecutado") {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Registro Guardado',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                $('#TablaIngresos').DataTable().ajax.reload();
-                $('#ModalNuevoIngreso').modal('hide');
-                //DataTable.ajax.reload();
+                if (respuesta = "Ejecutado") {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Registro Guardado',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    $('#TablaIngresos').DataTable().ajax.reload();
+                    $('#ModalNuevoIngreso').modal('hide');
+                    //DataTable.ajax.reload();
 
-            } else {
 
-            }
+                } else {
+
+                }
 
             });
-            
+            // Grafico de Ingreso ------------------------------------
+            $.getJSON('./BackEnd/Consulta_Graficos_Ingresos.php', function(response) {
+                chart2.updateSeries([{
+                    name: 'Ingresos',
+                    data: response
+                }])
+            });
         });
         //  Boton enviar gastos a la db--------------
         $('#FormularioEnviarGastos').submit(function(e) {
@@ -598,7 +617,6 @@
                     })
                     $('#TablaEgresos').DataTable().ajax.reload();
                     $('#ModalNuevoEgreso').modal('hide');
-                    
 
                     //DataTable.ajax.reload();
 
@@ -607,7 +625,16 @@
                 }
 
             });
-           
+            // Grafico Egresooo--------------------------------------------------------------
+
+            $.getJSON('./BackEnd/Consulta_Graficos_Egresos.php', function(response) {
+                chart3.updateSeries([{
+                    name: 'Gastos',
+                    data: response
+                }])
+            });
+
+
         });
 
     });

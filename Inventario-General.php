@@ -50,7 +50,7 @@
                     <li class="breadcrumb-item active">Inventario General</li>
                 </ol>
             </nav>
-            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i class="bi bi-file-earmark-plus"></i>
+            <button type="button" class="btn-regitros-grandes " data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i class="bi bi-file-earmark-plus"></i>
                 Agregar Inventario</button>
 
         </div>

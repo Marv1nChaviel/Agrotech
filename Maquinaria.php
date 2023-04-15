@@ -49,7 +49,7 @@
                     <li class="breadcrumb-item active">Maquinaria Registro</li>
                 </ol>
             </nav>
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
+            <button type="button" class="btn-regitros-grandes" data-bs-toggle="modal" data-bs-target="#ModalNuevo"><i
                     class="bi bi-file-earmark-plus"></i>
                 Agregar Maquina</button>
         </div>
@@ -104,10 +104,10 @@
                                     <div class="row">
                                         <!-- Boton de subir foto -->
                                         <div class="file-input">
-                                            <input type="file" name="file-input" id="file-input"
+                                            <!-- <input type="file" name="Foto_Maquinaria" id="Foto_Maquinaria"
                                                 class="file-input__input" />
                                             <label class="file-input__label" for="file-input"><i
-                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label> -->
                                         </div>
                                         <!-- Fin Boton de subir foto -->
                                     </div>
@@ -166,6 +166,13 @@
                                                 <label for="Trabajador">Trabajador</label>
                                             </div>
                                         </div>
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="Extras"
+                                                    name="Extras" placeholder="Extras" required>
+                                                <label for="Extras">Extras</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -197,7 +204,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Cuerpo del formulario------ -->
-                        <form id="FormularioEditar">
+                        <form id="FormularioEditar" enctype="multipart/form-data">
                             <!-- Columna izquierda -->
                             <div class="row">
                                 <div class="col-md-4 col-12 ">
@@ -210,10 +217,10 @@
                                     <div class="row">
                                         <!-- Boton de subir foto -->
                                         <div class="file-input">
-                                            <input type="file" name="file-input" id="file-input"
+                                            <!-- <input type="file" name="Foto_Maquinaria" id="Foto_Maquinaria"
                                                 class="file-input__input" />
                                             <label class="file-input__label" for="file-input"><i
-                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label>
+                                                    class="bi bi-upload"></i><span>-Subir Foto</span></label> -->
                                         </div>
                                         <!-- Fin Boton de subir foto -->
                                     </div>
@@ -271,6 +278,13 @@
                                                     <option disabled selected hidden>Trabajador</option>
                                                 </select>
                                                 <label for="Trabajador">Trabajador</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="E_Extras"
+                                                    name="Extras" placeholder="Extras" required>
+                                                <label for="Extras">Extras</label>
                                             </div>
                                         </div>
                                     </div>
@@ -411,6 +425,8 @@
             E_HorasdeUso: $("#E_HorasdeUso").val(),
             E_Año: $("#E_Año").val(),
             E_Trabajador: $("#E_Trabajador").val(),
+            E_Extras: $("#E_Extras").val(),
+            
         };
 
         $.post('./BackEnd/Editar_Maquinaria.php', Datos, function(

@@ -53,7 +53,7 @@
             <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#ModalProduccion"><i
                     class="bi bi-person-add"></i>
                 Nuevo Registro</button>
-            
+
             <!-- <button type="button" class="btn btn-primary " data-bs-toggle="modal"
                 data-bs-target="#ModalSalidaPermiso"><i class="bi bi-person-fill-exclamation"></i>
                 Agregar Salida Permiso</button> -->
@@ -90,6 +90,39 @@
                 </div>
             </div>
         </div>
+        <!-- Modal QR------------------------- -->
+        <div class="modal fade" id="ModalQR_Mostrar_P" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Titulo">Qr del Animal</h1>
+
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                            <p style="font-size: 1.5em; color:red"><i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" id="id_animal_qr" placeholder="id_animal_qr" required
+                            hidden>
+                        <div id="Mostrar_Qr_Animal"></div>
+                        <div class="opacity-50">
+
+                            <center>
+                                <h1 class="modal-title fs-5" id="">Click en la imagen para descargar</h1>
+                            </center>
+                        </div>
+                        <!-- <center><button class="btn btn-success .btnDescargarQr"><i class="bi bi-qr-code"
+                                    style="font-size: 1.6em;"></i>
+                                Descargar Qr</button></center> -->
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Modal QR---------------------- -->
         <!-- Modal Nueva Produccion -------------------------------------- -->
         <div class="modal fade" id="ModalProduccion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -139,7 +172,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-md-8 col-8">
+                                        <div class="col-md-12 col-12">
                                             <div class="form-floating">
                                                 <select class="form-select" id="SelectAnimalProduccion" required>
                                                     <option selected disabled>Selecciona</option>
@@ -148,10 +181,7 @@
                                                 <label for="Telefono">Seleccion Animal</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 col-4">
-                                            <button type="button" class="btn btn-info btnMostrarQr"><i
-                                                    class="bi bi-qr-code" style="font-size: 1.6em;"></i></button>
-                                        </div>
+                                        
 
                                     </div>
                                 </div>
@@ -280,7 +310,7 @@
             }])
         });
 
-        
+
 
     });
 
@@ -298,101 +328,106 @@
 
 
     // Fin Boton Editar Trabajador ------------------------------------------------
+
+    // Click Boton mostrar Qr de la tabla editar ------------------
+
+    
     </script>
+    
 
     <script>
     // Grafico Venta Leche -------------------------------------------------------------------------
     $.getJSON('./BackEnd/Consulta_Graficos_Produccion_Leche.php', function(response) {
-            chart.updateSeries([{
-                name: 'Leche Lts',
-                data: response
-            }])
-        });
-    
+        chart.updateSeries([{
+            name: 'Leche Lts',
+            data: response
+        }])
+    });
 
 
-        var options = {
-            series: [{
-                data: [222, 333, 444]
-            }],
-            chart: {
-                type: 'bar',
-                height: 250
-            },
-            colors: ['#38CFFF'],
-            plotOptions: {
-                bar: {
-                    borderRadius: 4,
-                    horizontal: true,
-                }
-            },
-            dataLabels: {
-                enabled: false
-            },
-            xaxis: {
-                categories: [],
-            },
-            title: {
-                text: 'Produccion Leche',
-                align: 'center',
-                floating: true
-            },
-        };
 
-        var chart = new ApexCharts(document.querySelector("#GraficoVentaLeche"), options);
-        chart.render();
+    var options = {
+        series: [{
+            data: [222, 333, 444]
+        }],
+        chart: {
+            type: 'bar',
+            height: 250
+        },
+        colors: ['#38CFFF'],
+        plotOptions: {
+            bar: {
+                borderRadius: 4,
+                horizontal: true,
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        xaxis: {
+            categories: [],
+        },
+        title: {
+            text: 'Produccion Leche',
+            align: 'center',
+            floating: true
+        },
+    };
+
+    var chart = new ApexCharts(document.querySelector("#GraficoVentaLeche"), options);
+    chart.render();
 
 
-    
+
 
     // --------------------------------------------------------------------------------------
 
     // Grafico Venta Carne -------------------------------------------------------------------------
-           
-
-        $.getJSON('./BackEnd/Consulta_Graficos_Produccion_Carne.php', function(response) {
-            chart1.updateSeries([{
-                name: 'Carne KG',
-                data: response
-            }])
-        });
-
-        var options = {
-            series: [{
-                data: [400, 430, 448, 470],
-            }],
-            chart: {
-                type: 'bar',
-                height: 250
-            },
-            colors: ['#FF8038'],
-            plotOptions: {
-                bar: {
-                    borderRadius: 4,
-                    horizontal: true,
-                }
-            },
-            dataLabels: {
-                enabled: false
-            },
-            xaxis: {
-                categories: [],
-            },
-            title: {
-                text: 'Produccion Carne',
-                align: 'center',
-                floating: true
-            },
-        };
-
-        var chart1 = new ApexCharts(document.querySelector("#GraficoVentaCarne"), options);
-        chart1.render();
 
 
+    $.getJSON('./BackEnd/Consulta_Graficos_Produccion_Carne.php', function(response) {
+        chart1.updateSeries([{
+            name: 'Carne KG',
+            data: response
+        }])
+    });
+
+    var options = {
+        series: [{
+            data: [400, 430, 448, 470],
+        }],
+        chart: {
+            type: 'bar',
+            height: 250
+        },
+        colors: ['#FF8038'],
+        plotOptions: {
+            bar: {
+                borderRadius: 4,
+                horizontal: true,
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        xaxis: {
+            categories: [],
+        },
+        title: {
+            text: 'Produccion Carne',
+            align: 'center',
+            floating: true
+        },
+    };
+
+    var chart1 = new ApexCharts(document.querySelector("#GraficoVentaCarne"), options);
+    chart1.render();
 
 
 
-    
+
+
+
     // --------------------------------------------------------------------------------------
     </script>
 
