@@ -569,7 +569,7 @@
 
 
     // Rellenar datatables con datos mediante ajax---------------
-    $('#FormularioEnviar').submit(function(e) {
+    $('#FormularioCrearUsuarioAleatorio').submit(function(e) {
         e.preventDefault();
 
         const Datos = {
@@ -703,7 +703,7 @@
     $(document).on('click', '.btnMostrarQr', function() {
 
         
-        var id_animal = $('#NumeroAnimal').val();
+        var id_usuario = $('#NumeroAnimal').val();
         console.log(id_animal);
         const Datos = {
             id_animal: id_animal
